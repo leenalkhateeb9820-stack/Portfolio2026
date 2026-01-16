@@ -1,0 +1,76 @@
+ :root {
+            --burgundy-light: #800020;
+            --burgundy-dark: #4d0013;
+            --text-cream: #fff5f5;
+        }
+        body { 
+            background: linear-gradient(135deg, #2d0505 0%, #4d0013 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-cream);
+            overflow-x: hidden;
+        }
+        .section-title { font-family: 'Playfair Display', serif; }
+        
+        /* Glass Card (الهادئ لبقية الموقع) */
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        /* 💡 خاص بالمشاريع فقط: تأثير الضوء القوي */
+        .project-glow {
+            border: 2px solid rgba(234, 179, 8, 0.4);
+            box-shadow: 0 0 30px rgba(234, 179, 8, 0.1);
+            background: linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(124, 45, 18, 0.3));
+        }
+        .project-glow:hover {
+            border-color: rgba(234, 179, 8, 0.7);
+            box-shadow: 0 0 50px rgba(234, 179, 8, 0.2);
+            transform: translateY(-10px);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0d0d0d; }
+        ::-webkit-scrollbar-thumb { background: #7f1d1d; border-radius: 10px; }
+
+        /* Animation */
+        .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+        }
+
+       .reveal.active {
+       opacity: 1;
+       transform: translateY(0);
+       }
+        ::selection { background: #dc2626; color: white; }
+        /* أضيفي هاد الكود لملف style.css */
+
+/* تأثير عند الضغط على حقول الكتابة */
+input:focus, textarea:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #dc2626 !important; /* بصير لون الإطار أحمر لما تضغطي */
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
+    outline: none;
+    transform: scale(1.01); /* تكبير بسيط جداً */
+    transition: all 0.3s ease;
+}
+
+/* تأثير زر الإرسال */
+button[type="submit"] {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-5px); /* الزر بيطلع لفوق شوي */
+    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.4);
+    background-color: #b91c1c;
+}
+
+button[type="submit"]:active {
+    transform: scale(0.95); /* الزر بينضغط لجوه لما تنقري عليه */
+}

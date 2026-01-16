@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leen | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800&family=Playfair+Display:italic,wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="selection:bg-red-600 selection:text-white">
+
+    <nav class="flex justify-between items-center px-10 md:px-24 py-8 sticky top-0 z-50 bg-[#2d0505]/90 backdrop-blur-md">
+        <div class="text-2xl font-extrabold tracking-tighter uppercase">LEEN<span class="text-red-500">.</span>DEV</div>
+        <ul class="hidden md:flex gap-10 text-[11px] uppercase tracking-[0.2em] font-bold">
+            <li><a href="#" class="hover:text-red-400 transition">Experience</a></li>
+            <li><a href="#skills" class="hover:text-red-400 transition">Stack</a></li>
+            <li><a href="#projects" class="hover:text-red-400 transition">Projects</a></li>
+            <li><a href="#contact" class="hover:text-red-400 transition">Contact</a></li>
+            <li><a href="admin.html" target="_blank" class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl hover:bg-red-600 transition-all text-[9px] group"><i class="fa-solid fa-lock mr-2 text-red-500 group-hover:text-white"></i> Admin</a></li>
+        </ul>
+    </nav>
+
+    <header class="reveal h-[90vh] flex flex-col justify-center px-10 md:px-32">
+        <h2 class="text-red-500 font-bold tracking-[0.3em] uppercase text-sm mb-4">Certified Full Stack Developer</h2>
+        <h1 class="text-6xl md:text-9xl font-extrabold leading-none tracking-tighter mb-6">
+            Building the <br> <span class="section-title italic font-light text-red-100">Future Web.</span>
+        </h1>
+        <p class="max-w-xl text-red-100/60 text-lg leading-relaxed mb-10">
+            From database architecture to pixel-perfect front-end execution. I specialize in scalable applications and seamless user experiences.
+        </p>
+        <div class="flex gap-6">
+            <a href="#projects" class="bg-red-600 hover:bg-red-700 text-white px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-red-900/20">View Projects</a>
+            <a href="#contact" class="border border-red-200/20 hover:bg-white/5 px-10 py-4 rounded-full font-bold transition-all">Let's Talk</a>
+        </div>
+    </header>
+
+    <section id="skills" class="reveal py-32 px-10 md:px-32">
+        <h3 class="text-center section-title text-5xl mb-20">My Technical <span class="text-red-500">Arsenal</span></h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="glass-card p-8 rounded-3xl">
+                <i class="fa-solid fa-layer-group text-3xl text-red-500 mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">Frontend</h4>
+                <p class="text-sm text-red-100/50 mb-4 font-light">React.js, Tailwind CSS, JavaScript (ES6+), Responsive Design.</p>
+                <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-red-600 w-[95%] rounded-full"></div></div>
+            </div>
+            <div class="glass-card p-8 rounded-3xl">
+                <i class="fa-solid fa-gears text-3xl text-red-500 mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">Backend</h4>
+                <p class="text-sm text-red-100/50 mb-4 font-light">Node.js, Express, RESTful APIs, System Design.</p>
+                <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-red-600 w-[90%] rounded-full"></div></div>
+            </div>
+            <div class="glass-card p-8 rounded-3xl">
+                <i class="fa-solid fa-database text-3xl text-red-500 mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">Database</h4>
+                <p class="text-sm text-red-100/50 mb-4 font-light">MongoDB, SQL, Firebase, Data Modeling.</p>
+                <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-red-600 w-[85%] rounded-full"></div></div>
+            </div>
+            <div class="glass-card p-8 rounded-3xl">
+                <i class="fa-solid fa-box-open text-3xl text-red-500 mb-6"></i>
+                <h4 class="text-xl font-bold mb-4">Libraries</h4>
+                <p class="text-sm text-red-100/50 mb-4 font-light">Axios, Redux, Framer Motion, External APIs Integration.</p>
+                <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-red-600 w-[92%] rounded-full"></div></div>
+            </div>
+        </div>
+    </section>
+
+<section id="projects" class="py-32 px-10 md:px-32 relative overflow-visible">
+    <div class="max-w-6xl mx-auto">
+        <div class="mb-24">
+            <h3 class="text-5xl font-black text-white tracking-tighter">Featured <span class="text-orange-500 italic">Work</span></h3>
+        </div>
+        
+        <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-stretch">
+        </div>
+        
+    </div>
+</section>
+
+    <footer id="contact" class="reveal py-32 px-10 md:px-32 border-t border-white/5 relative overflow-visible">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div class="flex flex-col justify-center">
+                <h2 class="text-6xl font-black text-white mb-8 tracking-tighter">Let's <span class="text-red-600 italic">Connect</span></h2>
+                <p class="text-white/50 mb-12 max-w-sm leading-relaxed text-sm tracking-wide">I'm always open to discussing new projects or creative ideas.</p>
+                
+                <div class="space-y-8">
+                    <div class="flex items-center gap-6 group">
+                        <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all shadow-lg"><i class="fa-solid fa-envelope text-xl"></i></div>
+                        <div><p class="text-[9px] uppercase tracking-[0.4em] text-red-600 font-bold mb-1">Email Me</p><a href="mailto:leenalkhateeb9820@gmail.com" class="text-lg font-bold text-white hover:text-red-500 transition-colors">leenalkhateeb9820@gmail.com</a></div>
+                    </div>
+                    <div class="flex items-center gap-6 group">
+                        <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all shadow-lg"><i class="fa-brands fa-github text-2xl"></i></div>
+                        <div><p class="text-[9px] uppercase tracking-[0.4em] text-red-600 font-bold mb-1">Source Code</p><a href="https://github.com/leenalkhateeb9820-stack" target="_blank" class="text-lg font-bold text-white hover:text-red-500 transition-colors">github.com/leen-stack</a></div>
+                    </div>
+                    <div class="flex items-center gap-6 group">
+                        <div class="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-red-500 group-hover:bg-red-600 group-hover:text-white transition-all shadow-lg"><i class="fa-brands fa-linkedin-in text-2xl"></i></div>
+                        <div><p class="text-[9px] uppercase tracking-[0.4em] text-red-600 font-bold mb-1">Network</p><a href="https://jo.linkedin.com/in/leen-alkhateeb-8336961a9" target="_blank" class="text-lg font-bold text-white hover:text-red-500 transition-colors">linkedin.com/in/leen-dev</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div class="glass-card p-10 md:p-14 rounded-[3.5rem] bg-gradient-to-br from-white/10 to-red-950/30 backdrop-blur-3xl border-2 border-red-600/40 relative z-10 shadow-[0_0_40px_rgba(220,38,38,0.1)] transition-all duration-500 group-hover:shadow-[0_0_60px_rgba(220,38,38,0.2)]">
+                    <form action="https://formspree.io/f/xvzzgkjn" method="POST" class="space-y-6">
+                        <input type="text" name="name" placeholder="Your Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:outline-none focus:border-red-600/50 transition-all text-white text-sm">
+                        <input type="email" name="email" placeholder="Your Email" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl focus:outline-none focus:border-red-600/50 transition-all text-white text-sm">
+                        <textarea name="message" placeholder="Tell me about your project" rows="4" required class="w-full bg-white/5 border border-white/10 p-5 rounded-[2rem] focus:outline-none focus:border-red-600/50 transition-all text-white text-sm resize-none"></textarea>
+                        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-black py-5 rounded-2xl transition-all uppercase tracking-[0.3em] text-[10px] shadow-lg shadow-red-600/20 active:scale-95">Send Inquiry <i class="fa-solid fa-paper-plane ml-2"></i></button>
+                    </form>
+                </div>
+                <div class="absolute -z-10 -bottom-10 -right-10 w-64 h-64 bg-red-600/10 blur-[100px] rounded-full"></div>
+            </div>
+        </div>
+        <div class="mt-32 pt-10 border-t border-white/5 text-center"><p class="text-[9px] text-white/20 uppercase tracking-[0.6em] font-medium">© 2026 LEEN | Full Stack Developer Portfolio</p></div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
