@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 const app = express();
 app.use(express.json());
@@ -23,8 +24,24 @@ const projectSchema = new mongoose.Schema({
     colorClass: String,
     glowClass: String
 });
-
 const Project = mongoose.model('Project', projectSchema);
+
+const messageSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    subject: String,
+    message: String,
+    date: { type: Date, default: Date.now }
+});
+const Message = mongoose.model('Message', messageSchema);
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+    }
+});
 
 app.post('/api/verify-password', (req, res) => {
     const { password } = req.body;
@@ -41,7 +58,6 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// 1. جلب كل المشاريع
 app.get('/api/projects', async (req, res) => {
     try {
         const projects = await Project.find();
@@ -51,7 +67,6 @@ app.get('/api/projects', async (req, res) => {
     }
 });
 
-// 2. إضافة مشروع جديد
 app.post('/api/projects', async (req, res) => {
     try {
         const newProject = new Project(req.body);
@@ -62,7 +77,6 @@ app.post('/api/projects', async (req, res) => {
     }
 });
 
-// 3. تحديث (تعديل) مشروع موجود - الميزة الجديدة
 app.put('/api/projects/:id', async (req, res) => {
     try {
         const updatedProject = await Project.findByIdAndUpdate(
@@ -77,11 +91,48 @@ app.put('/api/projects/:id', async (req, res) => {
     }
 });
 
-// 4. حذف مشروع
 app.delete('/api/projects/:id', async (req, res) => {
     try {
         await Project.findByIdAndDelete(req.params.id);
         res.json({ message: "Project deleted successfully" });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.post('/api/contact', async (req, res) => {
+    try {
+        const { name, email, subject, message } = req.body;
+        const newMessage = new Message({ name, email, subject, message });
+        await newMessage.save();
+
+        const mailOptions = {
+            from: email,
+            to: process.env.EMAIL_USER,
+            subject: `New Portfolio Message: ${subject}`,
+            text: `From: ${name} (${email})\n\nMessage:\n${message}`
+        };
+
+        await transporter.sendMail(mailOptions);
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+app.get('/api/messages', async (req, res) => {
+    try {
+        const messages = await Message.find().sort({ date: -1 });
+        res.json(messages);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.delete('/api/messages/:id', async (req, res) => {
+    try {
+        await Message.findByIdAndDelete(req.params.id);
+        res.json({ success: true });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
