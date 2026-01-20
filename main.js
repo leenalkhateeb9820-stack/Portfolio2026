@@ -45,7 +45,11 @@ async function renderProjects() {
                 
                 <div class="relative z-20 pr-32 md:pr-40 text-left"> 
                     <span class="${p.colorClass || 'text-white'} font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">${p.type}</span>
-                    <h4 class="text-2xl md:text-3xl font-extrabold text-white mb-3 leading-tight">${p.title}</h4>
+                    
+                    <h4 class="text-xl md:text-3xl font-extrabold text-white mb-3 leading-tight truncate md:whitespace-normal">
+                        ${p.title}
+                    </h4>
+                    
                     <p class="text-white/70 text-[11px] md:text-xs leading-relaxed mb-4">${p.description}</p>
                     
                     <div class="flex flex-wrap gap-2 mb-6">
