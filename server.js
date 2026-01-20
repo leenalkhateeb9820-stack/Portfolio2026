@@ -117,7 +117,16 @@ app.post('/api/contact', async (req, res) => {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
             subject: `Portfolio: ${subject}`,
-            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            html: `
+                <div style="direction: rtl; font-family: Arial, sans-serif;">
+                    <h2>رسالة جديدة من الموقع</h2>
+                    <p><strong>الاسم:</strong> ${name}</p>
+                    <p><strong>الإيميل:</strong> ${email}</p>
+                    <p><strong>الموضوع:</strong> ${subject}</p>
+                    <p><strong>الرسالة:</strong></p>
+                    <p style="background: #f4f4f4; padding: 10px; border-radius: 5px;">${message}</p>
+                </div>
+            `
         };
 
         transporter.sendMail(mailOptions).catch(err => console.error(err));
@@ -151,5 +160,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-
