@@ -110,8 +110,11 @@ app.delete('/api/projects/:id', async (req, res) => {
 app.post('/api/contact', async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
+        
         const newMessage = new Message({ name, email, subject, message });
         await newMessage.save();
+
+        res.json({ success: true });
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
@@ -121,10 +124,12 @@ app.post('/api/contact', async (req, res) => {
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
         };
 
-        await transporter.sendMail(mailOptions);
-        res.json({ success: true });
+        transporter.sendMail(mailOptions).catch(err => console.error(err));
+
     } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
+        if (!res.headersSent) {
+            res.status(500).json({ success: false, error: err.message });
+        }
     }
 });
 
