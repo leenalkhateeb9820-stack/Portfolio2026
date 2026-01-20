@@ -81,4 +81,51 @@ async function renderProjects() {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-document.addEventListener('DOMContentLoaded', renderProjects);
+// Contact Form Submission Logic
+async function handleContactForm() {
+    const contactForm = document.getElementById('contactForm');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = document.getElementById('sendBtn');
+        const status = document.getElementById('formStatus');
+        
+        btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner animate-spin ml-2"></i>';
+        btn.disabled = true;
+
+        const formData = {
+            name: document.getElementById('contact-name').value,
+            email: document.getElementById('contact-email').value,
+            subject: document.getElementById('contact-subject').value,
+            message: document.getElementById('contact-message').value
+        };
+
+        try {
+            const response = await fetch('https://leen-portfolio2026.onrender.com/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                status.innerText = "✅ Message sent and saved to dashboard!";
+                status.className = "text-center text-[10px] font-bold uppercase tracking-widest mt-4 text-green-500";
+                contactForm.reset();
+            } else {
+                throw new Error();
+            }
+        } catch (err) {
+            status.innerText = "❌ Connection error. Try again.";
+            status.className = "text-center text-[10px] font-bold uppercase tracking-widest mt-4 text-red-500";
+        } finally {
+            btn.innerHTML = 'Send Inquiry <i class="fa-solid fa-paper-plane ml-2"></i>';
+            btn.disabled = false;
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderProjects();
+    handleContactForm();
+});
