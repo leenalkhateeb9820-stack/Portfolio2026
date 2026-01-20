@@ -68,6 +68,7 @@ document.getElementById('addProjectForm').addEventListener('submit', async (e) =
 });
 
 function prepareEdit(id, title, type, desc, image, link, tags) {
+    switchTab('projectsTab');
     editMode = true;
     editId = id;
     document.getElementById('title').value = title;
@@ -76,7 +77,7 @@ function prepareEdit(id, title, type, desc, image, link, tags) {
     document.getElementById('image').value = image;
     document.getElementById('link').value = link;
     document.getElementById('tags').value = tags;
-    const submitBtn = document.querySelector('#addProjectForm button[type="submit"]');
+    const submitBtn = document.getElementById('submit-btn');
     if (submitBtn) {
         submitBtn.innerText = "Update Project";
         submitBtn.classList.add('bg-blue-600');
@@ -88,7 +89,7 @@ function resetForm() {
     editMode = false;
     editId = null;
     document.getElementById('addProjectForm').reset();
-    const submitBtn = document.querySelector('#addProjectForm button[type="submit"]');
+    const submitBtn = document.getElementById('submit-btn');
     if (submitBtn) {
         submitBtn.innerText = "Commit to Portfolio";
         submitBtn.classList.remove('bg-blue-600');
@@ -131,30 +132,48 @@ async function deleteProject(id) {
 }
 
 async function loadAdminMessages() {
-    const list = document.getElementById('adminMessagesList');
-    if (!list) return;
+    const container = document.getElementById('adminMessagesList');
+    if (!container) return;
     try {
         const res = await fetch('https://leen-portfolio2026.onrender.com/api/messages');
         const messages = await res.json();
+        
         if (messages.length === 0) {
-            list.innerHTML = '<p class="text-white/20 text-center py-4 italic">No messages yet.</p>';
+            container.innerHTML = `<p class="text-white/30 text-center italic py-10">No messages found in your inbox.</p>`;
             return;
         }
-        list.innerHTML = messages.map(m => `
-            <div class="bg-black/20 p-5 rounded-2xl border border-white/5 relative group">
-                <button onclick="deleteMessage('${m._id}')" class="absolute top-4 right-4 text-white/10 group-hover:text-red-500 transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <div class="mb-2">
-                    <span class="text-orange-500 font-bold text-xs">${m.name}</span>
-                    <span class="text-[9px] text-white/20 ml-2">${new Date(m.date).toLocaleDateString()}</span>
+
+        container.innerHTML = messages.map(msg => `
+            <div class="message-item admin-card p-6 rounded-2xl relative group">
+                <div class="flex justify-between items-start mb-4 border-b border-white/10 pb-4">
+                    <div>
+                        <h4 class="text-red-400 font-bold text-lg">${msg.name}</h4>
+                        <p class="text-white/50 text-xs tracking-widest uppercase">${msg.email}</p>
+                    </div>
+                    <span class="text-[10px] text-white/30 font-mono bg-white/5 px-3 py-1 rounded-full">
+                        ${new Date(msg.date).toLocaleString()}
+                    </span>
                 </div>
-                <p class="text-white/40 text-[10px] mb-2">${m.email} | ${m.subject}</p>
-                <p class="text-white/70 text-xs leading-relaxed">${m.message}</p>
+                <div class="mb-6">
+                    <p class="text-orange-200/70 text-[10px] uppercase tracking-[0.2em] font-bold mb-1">Subject</p>
+                    <p class="text-white font-medium mb-3">${msg.subject}</p>
+                    <p class="text-orange-200/70 text-[10px] uppercase tracking-[0.2em] font-bold mb-1">Message Content</p>
+                    <div class="bg-black/20 p-4 rounded-xl text-white/80 leading-relaxed text-sm italic">"${msg.message}"</div>
+                </div>
+                <div class="flex gap-3 justify-end">
+                    <a href="mailto:${msg.email}?subject=Re: ${msg.subject}&body=Hi ${msg.name},%0D%0A%0D%0A" 
+                       class="bg-green-600/20 hover:bg-green-600 text-green-400 hover:text-white px-5 py-2 rounded-xl text-[10px] font-bold uppercase transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-reply"></i> Send Reply
+                    </a>
+                    <button onclick="deleteMessage('${msg._id}')" 
+                            class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-5 py-2 rounded-xl text-[10px] font-bold uppercase transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-trash"></i> Delete
+                    </button>
+                </div>
             </div>
         `).join('');
     } catch (err) {
-        list.innerHTML = '<p class="text-red-500/50 text-center py-4">Error loading messages.</p>';
+        container.innerHTML = '<p class="text-red-500/50 text-center py-4">Error loading messages.</p>';
     }
 }
 
