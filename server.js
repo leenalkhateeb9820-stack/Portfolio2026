@@ -41,6 +41,7 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+// 1. جلب كل المشاريع
 app.get('/api/projects', async (req, res) => {
     try {
         const projects = await Project.find();
@@ -50,6 +51,7 @@ app.get('/api/projects', async (req, res) => {
     }
 });
 
+// 2. إضافة مشروع جديد
 app.post('/api/projects', async (req, res) => {
     try {
         const newProject = new Project(req.body);
@@ -60,6 +62,22 @@ app.post('/api/projects', async (req, res) => {
     }
 });
 
+// 3. تحديث (تعديل) مشروع موجود - الميزة الجديدة
+app.put('/api/projects/:id', async (req, res) => {
+    try {
+        const updatedProject = await Project.findByIdAndUpdate(
+            req.params.id, 
+            req.body, 
+            { new: true, runValidators: true }
+        );
+        if (!updatedProject) return res.status(404).json({ message: "Project not found" });
+        res.json(updatedProject);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
+
+// 4. حذف مشروع
 app.delete('/api/projects/:id', async (req, res) => {
     try {
         await Project.findByIdAndDelete(req.params.id);
