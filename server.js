@@ -38,15 +38,9 @@ const Message = mongoose.model('Message', messageSchema);
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-    },
-    tls: {
-        rejectUnauthorized: false
     }
 });
 
@@ -118,7 +112,6 @@ app.post('/api/contact', async (req, res) => {
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            replyTo: email,
             to: process.env.EMAIL_USER,
             subject: `Portfolio: ${subject}`,
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
@@ -155,3 +148,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
