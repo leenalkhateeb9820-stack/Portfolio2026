@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -37,9 +38,15 @@ const Message = mongoose.model('Message', messageSchema);
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
+    },
+    tls: {
+        rejectUnauthorized: false
     }
 });
 
@@ -107,10 +114,11 @@ app.post('/api/contact', async (req, res) => {
         await newMessage.save();
 
         const mailOptions = {
-            from: email,
+            from: process.env.EMAIL_USER,
+            replyTo: email,
             to: process.env.EMAIL_USER,
-            subject: `New Portfolio Message: ${subject}`,
-            text: `From: ${name} (${email})\n\nMessage:\n${message}`
+            subject: `Portfolio: ${subject}`,
+            text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
         };
 
         await transporter.sendMail(mailOptions);
