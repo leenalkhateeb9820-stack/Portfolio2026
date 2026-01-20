@@ -15,6 +15,16 @@ async function renderProjects() {
     const container = document.getElementById('projects-grid');
     if (!container) return;
 
+    container.innerHTML = `
+        <div class="flex items-center justify-center w-full mb-12">
+            <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 min-h-[300px] bg-white/5 border border-white/10 flex flex-col justify-center">
+                <div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
+                <div class="h-8 w-48 bg-white/10 rounded mb-4"></div>
+                <div class="h-16 w-full bg-white/10 rounded"></div>
+            </div>
+        </div>
+    `;
+
     let allProjects = [];
 
     try {
@@ -68,5 +78,3 @@ async function renderProjects() {
 }
 
 document.addEventListener('DOMContentLoaded', renderProjects);
-
-
