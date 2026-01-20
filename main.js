@@ -21,13 +21,11 @@ async function renderProjects() {
         const response = await fetch('/api/projects');
         if (response.ok) {
             const dbProjects = await response.json();
-            // دمج المشاريع من الداتابيس، وإذا كانت فارغة نستخدم الثابت
             allProjects = dbProjects.length > 0 ? dbProjects : staticProjects;
         } else {
             allProjects = staticProjects;
         }
     } catch (err) {
-        console.log("Using static fallback.");
         allProjects = staticProjects;
     }
 
@@ -60,7 +58,6 @@ async function renderProjects() {
         </div>
     `).join('');
 
-    // تفعيل الأنيميشن يدوياً للمشاريع الجديدة
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) entry.target.classList.add('active');
