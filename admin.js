@@ -3,20 +3,18 @@ let editId = null;
 
 async function checkAccess() {
     const pass = document.getElementById('adminPass').value;
-    
     try {
         const response = await fetch('https://leen-portfolio2026.onrender.com/api/verify-password', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ password: pass })
         });
-
         const result = await response.json();
-
         if (result.success) {
             document.getElementById('loginOverlay').style.display = 'none';
             document.getElementById('adminContent').style.display = 'block';
             loadAdminProjects();
+            loadAdminMessages();
         } else {
             showLoginError();
         }
@@ -32,13 +30,10 @@ function showLoginError() {
     setTimeout(() => document.getElementById('loginOverlay').classList.remove('animate-bounce'), 500);
 }
 
-// دالة التعامل مع الإرسال (إضافة أو تعديل)
 document.getElementById('addProjectForm').addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const tagsInput = document.getElementById('tags').value;
     const tagsArray = tagsInput.split(',').map(tag => tag.trim());
-
     const projectData = {
         title: document.getElementById('title').value,
         type: document.getElementById('type').value,
@@ -54,15 +49,12 @@ document.getElementById('addProjectForm').addEventListener('submit', async (e) =
         ? `https://leen-portfolio2026.onrender.com/api/projects/${editId}` 
         : 'https://leen-portfolio2026.onrender.com/api/projects';
 
-    const method = editMode ? 'PUT' : 'POST';
-
     try {
         const response = await fetch(url, {
-            method: method,
+            method: editMode ? 'PUT' : 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(projectData)
         });
-
         if (response.ok) {
             document.getElementById('statusMessage').innerText = editMode ? "✅ Project updated!" : "✅ Project uploaded!";
             resetForm();
@@ -75,25 +67,20 @@ document.getElementById('addProjectForm').addEventListener('submit', async (e) =
     }
 });
 
-// دالة لتعبئة الفورم بالبيانات عند الرغبة في التعديل
 function prepareEdit(id, title, type, desc, image, link, tags) {
     editMode = true;
     editId = id;
-    
     document.getElementById('title').value = title;
     document.getElementById('type').value = type;
     document.getElementById('description').value = desc;
     document.getElementById('image').value = image;
     document.getElementById('link').value = link;
     document.getElementById('tags').value = tags;
-
-    // تغيير نص الزر ليعرف المستخدم أنه في وضع التعديل
     const submitBtn = document.querySelector('#addProjectForm button[type="submit"]');
     if (submitBtn) {
         submitBtn.innerText = "Update Project";
         submitBtn.classList.add('bg-blue-600');
     }
-    
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -103,7 +90,7 @@ function resetForm() {
     document.getElementById('addProjectForm').reset();
     const submitBtn = document.querySelector('#addProjectForm button[type="submit"]');
     if (submitBtn) {
-        submitBtn.innerText = "Upload Project";
+        submitBtn.innerText = "Commit to Portfolio";
         submitBtn.classList.remove('bg-blue-600');
     }
 }
@@ -111,11 +98,9 @@ function resetForm() {
 async function loadAdminProjects() {
     const grid = document.getElementById('adminProjectsGrid');
     if (!grid) return;
-
     try {
         const response = await fetch('https://leen-portfolio2026.onrender.com/api/projects');
         const projects = await response.json();
-
         grid.innerHTML = projects.map(p => `
             <div class="flex items-center justify-between bg-white/5 p-4 rounded-2xl border border-white/10 mb-3">
                 <div>
@@ -142,5 +127,40 @@ async function deleteProject(id) {
     if (confirm('Are you sure you want to delete this project?')) {
         await fetch(`https://leen-portfolio2026.onrender.com/api/projects/${id}`, { method: 'DELETE' });
         loadAdminProjects();
+    }
+}
+
+async function loadAdminMessages() {
+    const list = document.getElementById('adminMessagesList');
+    if (!list) return;
+    try {
+        const res = await fetch('https://leen-portfolio2026.onrender.com/api/messages');
+        const messages = await res.json();
+        if (messages.length === 0) {
+            list.innerHTML = '<p class="text-white/20 text-center py-4 italic">No messages yet.</p>';
+            return;
+        }
+        list.innerHTML = messages.map(m => `
+            <div class="bg-black/20 p-5 rounded-2xl border border-white/5 relative group">
+                <button onclick="deleteMessage('${m._id}')" class="absolute top-4 right-4 text-white/10 group-hover:text-red-500 transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="mb-2">
+                    <span class="text-orange-500 font-bold text-xs">${m.name}</span>
+                    <span class="text-[9px] text-white/20 ml-2">${new Date(m.date).toLocaleDateString()}</span>
+                </div>
+                <p class="text-white/40 text-[10px] mb-2">${m.email} | ${m.subject}</p>
+                <p class="text-white/70 text-xs leading-relaxed">${m.message}</p>
+            </div>
+        `).join('');
+    } catch (err) {
+        list.innerHTML = '<p class="text-red-500/50 text-center py-4">Error loading messages.</p>';
+    }
+}
+
+async function deleteMessage(id) {
+    if (confirm('Delete this message?')) {
+        await fetch(`https://leen-portfolio2026.onrender.com/api/messages/${id}`, { method: 'DELETE' });
+        loadAdminMessages();
     }
 }
