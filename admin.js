@@ -2,7 +2,7 @@ async function checkAccess() {
     const pass = document.getElementById('adminPass').value;
     
     try {
-        const response = await fetch('/api/verify-password', {
+        const response = await fetch('https://leen-portfolio2026.onrender.com/api/verify-password', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ password: pass })
@@ -18,7 +18,7 @@ async function checkAccess() {
             showLoginError();
         }
     } catch (err) {
-        alert("Server Error! Make sure your backend is running.");
+        alert("Server Error! Make sure your backend on Render is running.");
     }
 }
 
@@ -47,7 +47,7 @@ document.getElementById('addProjectForm').addEventListener('submit', async (e) =
     };
 
     try {
-        const response = await fetch('/api/projects', {
+        const response = await fetch('https://leen-portfolio2026.onrender.com/api/projects', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(projectData)
@@ -70,7 +70,7 @@ async function loadAdminProjects() {
     if (!grid) return;
 
     try {
-        const response = await fetch('/api/projects');
+        const response = await fetch('https://leen-portfolio2026.onrender.com/api/projects');
         const projects = await response.json();
 
         grid.innerHTML = projects.map(p => `
@@ -91,7 +91,7 @@ async function loadAdminProjects() {
 
 async function deleteProject(id) {
     if (confirm('Are you sure you want to delete this project?')) {
-        await fetch(`/api/projects/${id}`, { method: 'DELETE' });
+        await fetch(`https://leen-portfolio2026.onrender.com/api/projects/${id}`, { method: 'DELETE' });
         loadAdminProjects();
     }
 }
