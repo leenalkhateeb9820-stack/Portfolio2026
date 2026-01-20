@@ -18,7 +18,7 @@ async function renderProjects() {
     let allProjects = [];
 
     try {
-        const response = await fetch('/api/projects');
+        const response = await fetch('https://leen-portfolio.onrender.com/api/projects');
         if (response.ok) {
             const dbProjects = await response.json();
             allProjects = dbProjects.length > 0 ? dbProjects : staticProjects;
@@ -68,3 +68,4 @@ async function renderProjects() {
 }
 
 document.addEventListener('DOMContentLoaded', renderProjects);
+
