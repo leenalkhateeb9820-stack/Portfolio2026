@@ -1,9 +1,7 @@
-// [2026-01-16] حماية صفحة الآدمن عن طريق السيرفر (أمان كامل)
 async function checkAccess() {
     const pass = document.getElementById('adminPass').value;
     
     try {
-        // نرسل الباسورد للسيرفر ليفحصه هناك بدلاً من كتابته هنا
         const response = await fetch('/api/verify-password', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -44,12 +42,11 @@ document.getElementById('addProjectForm').addEventListener('submit', async (e) =
         image: document.getElementById('image').value,
         link: document.getElementById('link').value,
         tags: tagsArray,
-        colorClass: "text-orange-500", // يمكنكِ جعل هذا الحقل متغيراً من الفورم لاحقاً
+        colorClass: "text-orange-500", 
         glowClass: "project-glow"
     };
 
     try {
-        // تم تغيير الرابط ليصبح نسبياً (يعمل على Render و Localhost)
         const response = await fetch('/api/projects', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -59,7 +56,7 @@ document.getElementById('addProjectForm').addEventListener('submit', async (e) =
         if (response.ok) {
             document.getElementById('statusMessage').innerText = "✅ Project uploaded successfully!";
             document.getElementById('addProjectForm').reset();
-            loadAdminProjects(); // تحديث القائمة فوراً بعد الإضافة
+            loadAdminProjects(); 
         } else {
             document.getElementById('statusMessage').innerText = "❌ Failed to upload.";
         }
@@ -100,5 +97,4 @@ async function deleteProject(id) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // لا نحمل المشاريع إلا إذا كان المستخدم مسجل دخول (اختياري للأمان)
 });
