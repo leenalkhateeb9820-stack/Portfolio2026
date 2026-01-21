@@ -144,7 +144,9 @@ async function loadAdminMessages() {
         }
 
         container.innerHTML = messages.map(msg => {
-            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${msg.email}&su=Re: ${encodeURIComponent(msg.subject)}&body=Hi ${encodeURIComponent(msg.name)},%0D%0A%0D%0A`;
+            const originalDate = new Date(msg.date).toLocaleString();
+            const emailBody = `Hi ${msg.name},%0D%0A%0D%0A[اكتبي ردك هنا]%0D%0A%0D%0A--- Original Message ---%0D%0AFrom: ${msg.email}%0D%0ASent: ${originalDate}%0D%0ASubject: ${msg.subject}%0D%0A%0D%0A${msg.message}`;
+            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${msg.email}&su=Re: ${encodeURIComponent(msg.subject)}&body=${encodeURIComponent(emailBody)}`;
             
             return `
                 <div class="message-item admin-card p-6 rounded-2xl relative group">
@@ -154,7 +156,7 @@ async function loadAdminMessages() {
                             <p class="text-white/50 text-xs tracking-widest uppercase">${msg.email}</p>
                         </div>
                         <span class="text-[10px] text-white/30 font-mono bg-white/5 px-3 py-1 rounded-full">
-                            ${new Date(msg.date).toLocaleString()}
+                            ${originalDate}
                         </span>
                     </div>
                     <div class="mb-6">
