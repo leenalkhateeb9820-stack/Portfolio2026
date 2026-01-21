@@ -145,8 +145,14 @@ async function loadAdminMessages() {
 
         container.innerHTML = messages.map(msg => {
             const originalDate = new Date(msg.date).toLocaleString();
+            
+            // صياغة النص بأسطر نظيفة باستخدام \n
             const emailBody = `Hi ${msg.name},\n\n[Write your reply here]\n\n--- Original Message ---\nFrom: ${msg.email}\nSent: ${originalDate}\nSubject: ${msg.subject}\n\n${msg.message}`;
-            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${msg.email}&su=Re: ${encodeURIComponent(msg.subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            // تحويل النص بالكامل إلى صيغة URL آمنة
+            const encodedSubject = encodeURIComponent(`Re: ${msg.subject}`);
+            const encodedBody = encodeURIComponent(emailBody);
+            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${msg.email}&su=${encodedSubject}&body=${encodedBody}`;
             
             return `
                 <div class="message-item admin-card p-6 rounded-2xl relative group">
