@@ -56,14 +56,14 @@ document.getElementById('addProjectForm').addEventListener('submit', async (e) =
             body: JSON.stringify(projectData)
         });
         if (response.ok) {
-            document.getElementById('statusMessage').innerText = editMode ? "✅ Project updated!" : "✅ Project uploaded!";
+            alert(editMode ? "✅ Project updated!" : "✅ Project uploaded!");
             resetForm();
             loadAdminProjects(); 
         } else {
-            document.getElementById('statusMessage').innerText = "❌ Process failed.";
+            alert("❌ Process failed.");
         }
     } catch (err) {
-        document.getElementById('statusMessage').innerText = "❌ Connection Error.";
+        alert("❌ Connection Error.");
     }
 });
 
@@ -145,7 +145,7 @@ async function loadAdminMessages() {
 
         container.innerHTML = messages.map(msg => {
             const originalDate = new Date(msg.date).toLocaleString();
-            const emailBody = `Hi ${msg.name},%0D%0A%0D%0A[اكتبي ردك هنا]%0D%0A%0D%0A--- Original Message ---%0D%0AFrom: ${msg.email}%0D%0ASent: ${originalDate}%0D%0ASubject: ${msg.subject}%0D%0A%0D%0A${msg.message}`;
+            const emailBody = `Hi ${msg.name},\n\n[Write your reply here]\n\n--- Original Message ---\nFrom: ${msg.email}\nSent: ${originalDate}\nSubject: ${msg.subject}\n\n${msg.message}`;
             const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${msg.email}&su=Re: ${encodeURIComponent(msg.subject)}&body=${encodeURIComponent(emailBody)}`;
             
             return `
