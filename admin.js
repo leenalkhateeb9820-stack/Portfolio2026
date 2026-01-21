@@ -143,35 +143,39 @@ async function loadAdminMessages() {
             return;
         }
 
-        container.innerHTML = messages.map(msg => `
-            <div class="message-item admin-card p-6 rounded-2xl relative group">
-                <div class="flex justify-between items-start mb-4 border-b border-white/10 pb-4">
-                    <div>
-                        <h4 class="text-red-400 font-bold text-lg">${msg.name}</h4>
-                        <p class="text-white/50 text-xs tracking-widest uppercase">${msg.email}</p>
+        container.innerHTML = messages.map(msg => {
+            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${msg.email}&su=Re: ${encodeURIComponent(msg.subject)}&body=Hi ${encodeURIComponent(msg.name)},%0D%0A%0D%0A`;
+            
+            return `
+                <div class="message-item admin-card p-6 rounded-2xl relative group">
+                    <div class="flex justify-between items-start mb-4 border-b border-white/10 pb-4">
+                        <div>
+                            <h4 class="text-red-400 font-bold text-lg">${msg.name}</h4>
+                            <p class="text-white/50 text-xs tracking-widest uppercase">${msg.email}</p>
+                        </div>
+                        <span class="text-[10px] text-white/30 font-mono bg-white/5 px-3 py-1 rounded-full">
+                            ${new Date(msg.date).toLocaleString()}
+                        </span>
                     </div>
-                    <span class="text-[10px] text-white/30 font-mono bg-white/5 px-3 py-1 rounded-full">
-                        ${new Date(msg.date).toLocaleString()}
-                    </span>
+                    <div class="mb-6">
+                        <p class="text-orange-200/70 text-[10px] uppercase tracking-[0.2em] font-bold mb-1">Subject</p>
+                        <p class="text-white font-medium mb-3">${msg.subject}</p>
+                        <p class="text-orange-200/70 text-[10px] uppercase tracking-[0.2em] font-bold mb-1">Message Content</p>
+                        <div class="bg-black/20 p-4 rounded-xl text-white/80 leading-relaxed text-sm italic">"${msg.message}"</div>
+                    </div>
+                    <div class="flex gap-3 justify-end">
+                        <a href="${gmailLink}" target="_blank"
+                           class="bg-green-600/20 hover:bg-green-600 text-green-400 hover:text-white px-5 py-2 rounded-xl text-[10px] font-bold uppercase transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-reply"></i> Send Reply
+                        </a>
+                        <button onclick="deleteMessage('${msg._id}')" 
+                                class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-5 py-2 rounded-xl text-[10px] font-bold uppercase transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-trash"></i> Delete
+                        </button>
+                    </div>
                 </div>
-                <div class="mb-6">
-                    <p class="text-orange-200/70 text-[10px] uppercase tracking-[0.2em] font-bold mb-1">Subject</p>
-                    <p class="text-white font-medium mb-3">${msg.subject}</p>
-                    <p class="text-orange-200/70 text-[10px] uppercase tracking-[0.2em] font-bold mb-1">Message Content</p>
-                    <div class="bg-black/20 p-4 rounded-xl text-white/80 leading-relaxed text-sm italic">"${msg.message}"</div>
-                </div>
-                <div class="flex gap-3 justify-end">
-                    <a href="mailto:${msg.email}?subject=Re: ${msg.subject}&body=Hi ${msg.name},%0D%0A%0D%0A" 
-                       class="bg-green-600/20 hover:bg-green-600 text-green-400 hover:text-white px-5 py-2 rounded-xl text-[10px] font-bold uppercase transition-all flex items-center gap-2">
-                        <i class="fa-solid fa-reply"></i> Send Reply
-                    </a>
-                    <button onclick="deleteMessage('${msg._id}')" 
-                            class="bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white px-5 py-2 rounded-xl text-[10px] font-bold uppercase transition-all flex items-center gap-2">
-                        <i class="fa-solid fa-trash"></i> Delete
-                    </button>
-                </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
     } catch (err) {
         container.innerHTML = '<p class="text-red-500/50 text-center py-4">Error loading messages.</p>';
     }
