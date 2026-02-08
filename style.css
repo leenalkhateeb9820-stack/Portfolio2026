@@ -1,3 +1,4 @@
+/* 1. المتغيرات الأساسية ودعم الوضعين (Dark & Light) */
 :root {
     --gold: #eeba0b;
     --cream: #fefee3;
@@ -12,14 +13,15 @@
 .light {
     --main-bg: linear-gradient(135deg, #fff5f5 0%, #fefee3 100%);
     --burgundy-dark: #fefee3;
-    --cream: #4c0519; 
-    --gold: #b48a04; 
+    --cream: #4c0519; /* لون غامق للنصوص في الوضع الفاتح */
+    --gold: #b48a04;  /* ذهبي أغمق قليلاً للوضوح على الخلفية البيضاء */
     --cream-muted: rgba(76, 5, 25, 0.7);
     --card-bg: rgba(76, 5, 25, 0.05);
     --nav-bg: rgba(255, 245, 245, 0.85);
     --text-main: #4c0519;
 }
 
+/* 2. الإعدادات العامة والخطوط */
 * {
     margin: 0;
     padding: 0;
@@ -31,66 +33,83 @@ body {
     background: var(--main-bg);
     color: var(--text-main);
     transition: all 0.3s ease;
-    /* تثبيت العرض تماماً لمنع التداخل */
-    min-width: 1100px; 
-    width: 1100px;
-    margin: 0 auto;
-    overflow-x: hidden;
+    min-width: 1200px; /* ضمان ثبات العناصر وعدم تداخلها عند تصغير النافذة */
+    overflow-x: auto;
 }
 
+h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
+    font-family: 'Bricolage Grotesque', sans-serif !important;
+}
+
+/* 3. الهيدر والناف بار */
 nav {
-    width: 1100px;
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(238, 186, 11, 0.1);
     white-space: nowrap;
+    transition: background 0.3s ease;
 }
 
-.main-title {
-    font-size: 4.5rem;
-    line-height: 1.1;
-    font-weight: 800;
-    white-space: nowrap;
+.logo-text, 
+nav ul li a, 
+.sub-heading, 
+.section-title, 
+.gold-text, 
+.btn-gold-bg {
+    color: var(--gold) !important;
 }
 
+/* 4. الأزرار */
 .btn-gold-bg {
     background-color: var(--gold) !important;
     color: var(--burgundy-dark) !important;
+    font-weight: 800 !important;
     display: inline-block;
     text-align: center;
-    text-decoration: none;
 }
 
 .btn-gold-border {
     border: 2px solid var(--gold) !important;
     background: transparent !important;
-    text-decoration: none;
 }
 
+.cream-text { color: var(--cream) !important; }
+.muted-text { color: var(--cream-muted) !important; }
+
+/* 5. الكروت والمهارات */
 .glass-card {
     background: var(--card-bg);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(238, 186, 11, 0.2);
     border-radius: 2rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* حل مشكلة التداخل في كرت المشروع */
-#projects-grid .glass-card {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important; /* يمنع نزول الصورة تحت النص */
-    min-height: 400px;
-    padding: 40px;
+.skill-bar-bg { 
+    background: rgba(254, 254, 227, 0.1); 
+    height: 4px; 
+    border-radius: 2px; 
 }
 
-.skill-bar-bg { background: rgba(254, 254, 227, 0.1); height: 4px; border-radius: 2px; }
-.skill-bar-fill { background: var(--gold); height: 100%; border-radius: 2px; }
+.skill-bar-fill { 
+    background: var(--gold); 
+    height: 100%; 
+    border-radius: 2px; 
+}
 
-.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-.reveal.active { opacity: 1; transform: translateY(0); }
+/* 6. تأثيرات الظهور (Scroll Animations) */
+.reveal { 
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: 0.8s ease-out; 
+}
 
+.reveal.active { 
+    opacity: 1; 
+    transform: translateY(0); 
+}
+
+/* 7. الفوتر والتقسيم */
 .footer-divider {
     border-top: 1px solid rgba(254, 254, 227, 0.1);
     margin: 80px auto 0;
@@ -100,8 +119,17 @@ nav {
 .copyright-2026 {
     text-align: center;
     padding: 40px 0;
+    color: var(--text-main);
     opacity: 0.3;
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
+}
+
+/* منع الكلمات من التقطع في العناوين الكبيرة */
+.main-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.1;
+    font-weight: 800;
+    white-space: nowrap;
 }
