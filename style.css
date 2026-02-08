@@ -17,25 +17,34 @@
     --text-muted: #9f1239;
 }
 
-body, p, span, li, a, button, input, textarea { 
+* {
     font-family: 'Space Grotesk', sans-serif !important;
-    font-weight: 300;
 }
 
-h1, h2, h3, .section-title, [class*="text-6xl"], [class*="text-7xl"], [class*="text-4xl"] { 
+h1, h2, h3, .section-title, .main-title, .logo-text, 
+[class*="text-4xl"], [class*="text-5xl"], [class*="text-6xl"], [class*="text-8xl"], [class*="text-9xl"] {
     font-family: 'Bricolage Grotesque', sans-serif !important;
     font-weight: 800 !important;
-    letter-spacing: -0.03em !important;
+    letter-spacing: -0.04em !important;
 }
 
-h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
-    line-height: 1.1 !important;
+h1.main-title {
+    font-size: clamp(2.5rem, 8vw, 5rem) !important;
+    line-height: 1.05 !important;
+    margin-bottom: 2rem !important;
 }
 
-h4, .whitespace-nowrap, nav a, .font-bold { 
+p, .description, span:not(.text-red-500), li, .text-sm {
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 300 !important;
+    line-height: 1.7 !important;
+    color: var(--text-muted) !important;
+}
+
+nav ul li a {
     font-family: 'Space Grotesk', sans-serif !important;
     font-weight: 500 !important;
+    letter-spacing: 0.15em !important;
 }
 
 body { 
@@ -46,11 +55,6 @@ body {
 }
 
 nav { background-color: var(--nav-bg) !important; }
-
-p, .text-muted, .text-white\/50 { 
-    color: var(--text-muted) !important; 
-    line-height: 1.6;
-}
 
 .glass-card { 
     background: var(--card-bg); 
@@ -107,5 +111,5 @@ button[type="submit"] {
 .light nav { background-color: rgba(255, 241, 242, 0.9) !important; border-bottom: 1px solid rgba(190, 18, 60, 0.1); }
 .light .glass-card { background: rgba(255, 255, 255, 0.4) !important; border: 1px solid rgba(251, 113, 133, 0.2) !important; }
 .light h1, .light h2, .light h3, .light h4, .light .section-title { color: #881337 !important; }
-.light p, .light span:not(.text-red-500) { color: #9f1239 !important; }
+.light p, .light span:not(.text-red-500), .light li { color: #9f1239 !important; }
 .light #theme-toggle { color: #be123c; }
