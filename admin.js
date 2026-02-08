@@ -103,12 +103,12 @@ async function loadAdminProjects() {
         const response = await fetch('https://leen-portfolio2026.onrender.com/api/projects');
         const projects = await response.json();
         grid.innerHTML = projects.map(p => `
-            <div class="flex items-center justify-between bg-white/5 p-4 rounded-2xl border border-white/10 mb-3" style="font-family: 'Space Grotesk', sans-serif;">
+            <div class="flex items-center justify-between bg-white/5 p-4 rounded-2xl border border-white/10 mb-3">
                 <div>
-                    <p class="text-white font-bold text-sm" style="font-family: 'Bricolage Grotesque', sans-serif;">${p.title}</p>
+                    <p class="text-white font-bold text-sm">${p.title}</p>
                     <p class="text-white/40 text-[10px] uppercase tracking-widest">${p.type}</p>
                 </div>
-                <div class="flex gap-2 text-white">
+                <div class="flex gap-2">
                     <button onclick="prepareEdit('${p._id}', '${p.title.replace(/'/g, "\\'")}', '${p.type.replace(/'/g, "\\'")}', '${p.description.replace(/'/g, "\\'")}', '${p.image}', '${p.link}', '${p.tags.join(',')}')" 
                             class="text-blue-400 hover:text-blue-300 p-2">
                         <i class="fa-solid fa-pen-to-square"></i>
@@ -139,22 +139,25 @@ async function loadAdminMessages() {
         const messages = await res.json();
         
         if (messages.length === 0) {
-            container.innerHTML = `<p class="text-white/30 text-center italic py-10" style="font-family: 'Space Grotesk', sans-serif;">No messages found in your inbox.</p>`;
+            container.innerHTML = `<p class="text-white/30 text-center italic py-10">No messages found in your inbox.</p>`;
             return;
         }
 
         container.innerHTML = messages.map(msg => {
             const originalDate = new Date(msg.date).toLocaleString();
+            
+            // ترتيب النص ليظهر كأنه مكتوب يدوياً عند فك التشفير في جيميل
             const emailBody = `Hi ${msg.name},\n\n[اكتبي ردك هنا]\n\n--- Original Message ---\nFrom: ${msg.email}\nSent: ${originalDate}\nSubject: ${msg.subject}\n\n${msg.message}`;
+            
             const encodedSubject = encodeURIComponent(`Re: ${msg.subject}`);
             const encodedBody = encodeURIComponent(emailBody);
             const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${msg.email}&su=${encodedSubject}&body=${encodedBody}`;
             
             return `
-                <div class="message-item admin-card p-6 rounded-2xl relative group mb-4 border border-white/10" style="font-family: 'Space Grotesk', sans-serif;">
+                <div class="message-item admin-card p-6 rounded-2xl relative group">
                     <div class="flex justify-between items-start mb-4 border-b border-white/10 pb-4">
                         <div>
-                            <h4 class="text-red-400 font-bold text-lg" style="font-family: 'Bricolage Grotesque', sans-serif;">${msg.name}</h4>
+                            <h4 class="text-red-400 font-bold text-lg">${msg.name}</h4>
                             <p class="text-white/50 text-xs tracking-widest uppercase">${msg.email}</p>
                         </div>
                         <span class="text-[10px] text-white/30 font-mono bg-white/5 px-3 py-1 rounded-full">
