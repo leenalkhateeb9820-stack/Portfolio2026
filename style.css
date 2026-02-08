@@ -31,15 +31,23 @@ h1, h2, h3, h4, h5, h6, .section-title, .main-title, .logo-text, nav ul li a, .s
     letter-spacing: -0.04em !important;
 }
 
+h1.main-title {
+    font-size: clamp(2.5rem, 8vw, 5rem) !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+}
+
 h1.main-title span {
-    font-family: 'Bricolage Grotesque', sans-serif !important;
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
 }
 
 .fa-solid, .fa-brands, .fas, .fab, .fa, [class*="fa-"] {
     font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
 }
 
-p, .description, span:not(.fa-solid):not(.fa-brands):not([class*="fa-"]), li, a:not(nav ul li a), button, input, textarea {
+p, .description, span:not(.fa-solid):not(.fa-brands):not([class*="fa-"]):not(.section-title), li, a:not(nav ul li a), button, input, textarea {
     font-family: 'Space Grotesk', sans-serif !important;
 }
 
@@ -57,11 +65,6 @@ p, .description, span:not(.fa-solid):not(.fa-brands):not([class*="fa-"]), li, a:
 
 .light .glass-card p, .light #projects-grid p {
     color: #9f1239 !important;
-}
-
-h1.main-title {
-    font-size: clamp(2.5rem, 8vw, 5rem) !important;
-    line-height: 1.05 !important;
 }
 
 nav { background-color: var(--nav-bg) !important; }
