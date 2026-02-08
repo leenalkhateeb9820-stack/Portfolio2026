@@ -33,8 +33,8 @@ body {
     background: var(--main-bg);
     color: var(--text-main);
     transition: all 0.3s ease;
-    min-width: 1200px; /* ضمان ثبات العناصر وعدم تداخلها عند تصغير النافذة */
-    overflow-x: auto;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
@@ -131,5 +131,16 @@ nav ul li a,
     font-size: clamp(2.5rem, 8vw, 5rem);
     line-height: 1.1;
     font-weight: 800;
-    white-space: nowrap;
 }
+@media (min-width: 1024px) {
+    .main-title {
+        white-space: nowrap;
+    }
+}
+@media (max-width: 768px) {
+    section {
+        padding-top: 60px !important;
+        padding-bottom: 60px !important;
+    }
+}
+
