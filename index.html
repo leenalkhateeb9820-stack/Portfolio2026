@@ -10,22 +10,25 @@
 </head>
 <body class="min-w-[1200px]">
 
-<nav class="flex justify-between items-center px-24 py-6 sticky top-0 z-50 flex-nowrap">
+<nav class="flex justify-between items-center px-24 py-6 sticky top-0 z-50 flex-nowrap bg-[var(--nav-bg)]">
     <div class="logo-text text-2xl tracking-tighter uppercase font-extrabold flex-shrink-0">
         LEEN <span class="cream-text">.</span> DEV
     </div>
+    
     <ul class="flex items-center gap-10 text-[11px] uppercase tracking-widest font-bold flex-nowrap">
         <li><a href="#" class="hover:opacity-70 transition">Experience</a></li>
         <li><a href="#skills" class="hover:opacity-70 transition">Stack</a></li>
         <li><a href="#projects" class="hover:opacity-70 transition">Projects</a></li>
         <li><a href="#contact" class="hover:opacity-70 transition">Contact</a></li>
+        
         <li class="flex items-center border-l border-white/10 pl-6">
-            <button id="theme-toggle" class="text-lg cream-text p-2 transition-transform hover:scale-110">
+            <button id="theme-toggle" class="text-lg cream-text p-2 transition-transform hover:scale-110 cursor-pointer">
                 <i class="fa-solid fa-moon" id="theme-icon"></i>
             </button>
         </li>
+        
         <li>
-            <a href="#" class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-[10px] flex items-center gold-text font-bold">
+            <a href="/admin" class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-[10px] flex items-center gold-text font-bold hover:bg-white/10 transition-all cursor-pointer">
                 <i class="fa-solid fa-lock mr-2 cream-text"></i> ADMIN
             </a>
         </li>
@@ -184,4 +187,5 @@
 </script>
 </body>
 </html>
+
 
