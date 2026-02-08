@@ -5,14 +5,19 @@
     --burgundy-dark: #2d0505;
     --main-bg: linear-gradient(135deg, #2d0505 0%, #4d0013 100%);
     --card-bg: rgba(255, 255, 255, 0.05);
+    --nav-bg: rgba(45, 5, 5, 0.85);
+    --text-main: #fefee3;
 }
 
 .light {
     --main-bg: linear-gradient(135deg, #fff5f5 0%, #fefee3 100%);
     --burgundy-dark: #fefee3;
-    --cream: #4c0519;
+    --cream: #4c0519; /* لون غامق للوضع الفاتح */
+    --gold: #b48a04;  /* ذهبي أغمق قليلاً للوضوح */
     --cream-muted: rgba(76, 5, 25, 0.7);
     --card-bg: rgba(76, 5, 25, 0.05);
+    --nav-bg: rgba(255, 245, 245, 0.85);
+    --text-main: #4c0519;
 }
 
 * {
@@ -24,7 +29,7 @@
 body {
     font-family: 'Bricolage Grotesque', sans-serif !important;
     background: var(--main-bg);
-    color: #fefee3;
+    color: var(--text-main);
     overflow-x: hidden;
     transition: all 0.3s ease;
 }
@@ -35,9 +40,10 @@ h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
 
 /* إصلاح الناف بار ليبقى واضحاً عند السكرول */
 nav {
-    background: rgba(45, 5, 5, 0.85);
+    background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(238, 186, 11, 0.1);
+    transition: background 0.3s ease;
 }
 
 .logo-text, 
@@ -47,21 +53,21 @@ nav ul li a,
 .gold-text, 
 .social-icon, 
 .btn-gold-bg {
-    color: #eeba0b !important;
+    color: var(--gold) !important;
 }
 
 .btn-gold-bg {
-    background-color: #eeba0b !important;
-    color: #2d0505 !important;
+    background-color: var(--gold) !important;
+    color: var(--burgundy-dark) !important;
     font-weight: 800 !important;
 }
 
 .btn-gold-border {
-    border: 2px solid #eeba0b !important;
+    border: 2px solid var(--gold) !important;
     background: transparent !important;
 }
 
-.cream-text { color: #fefee3 !important; }
+.cream-text { color: var(--cream) !important; }
 .muted-text { color: var(--cream-muted) !important; }
 
 h1.main-title {
@@ -84,7 +90,7 @@ h1.main-title {
 }
 
 .skill-bar-fill { 
-    background: #eeba0b; 
+    background: var(--gold); 
     height: 100%; 
     border-radius: 2px; 
 }
@@ -109,8 +115,8 @@ h1.main-title {
 .copyright-2026 {
     text-align: center;
     padding: 40px 0;
-    color: #fefee3;
-    opacity: 0.2;
+    color: var(--text-main);
+    opacity: 0.3;
     font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
