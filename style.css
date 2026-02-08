@@ -1,4 +1,4 @@
-/* 1. المتغيرات الأساسية ودعم الوضعين (Dark & Light) */
+/* 1. المتغيرات الأساسية (تبقى كما هي) */
 :root {
     --gold: #eeba0b;
     --cream: #fefee3;
@@ -13,15 +13,14 @@
 .light {
     --main-bg: linear-gradient(135deg, #fff5f5 0%, #fefee3 100%);
     --burgundy-dark: #fefee3;
-    --cream: #4c0519; /* لون غامق للنصوص في الوضع الفاتح */
-    --gold: #b48a04;  /* ذهبي أغمق قليلاً للوضوح على الخلفية البيضاء */
+    --cream: #4c0519; 
+    --gold: #b48a04;  
     --cream-muted: rgba(76, 5, 25, 0.7);
     --card-bg: rgba(76, 5, 25, 0.05);
     --nav-bg: rgba(255, 245, 245, 0.85);
     --text-main: #4c0519;
 }
 
-/* 2. الإعدادات العامة والخطوط */
 * {
     margin: 0;
     padding: 0;
@@ -33,12 +32,9 @@ body {
     background: var(--main-bg);
     color: var(--text-main);
     transition: all 0.3s ease;
-    min-width: 1200px; /* ضمان ثبات العناصر وعدم تداخلها عند تصغير النافذة */
-    overflow-x: auto;
-}
-
-h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
-    font-family: 'Bricolage Grotesque', sans-serif !important;
+    /* التعديل هنا: جعل الموقع مرن */
+    width: 100%;
+    overflow-x: hidden; 
 }
 
 /* 3. الهيدر والناف بار */
@@ -46,90 +42,93 @@ nav {
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(238, 186, 11, 0.1);
-    white-space: nowrap;
     transition: background 0.3s ease;
 }
 
-.logo-text, 
-nav ul li a, 
-.sub-heading, 
-.section-title, 
-.gold-text, 
-.btn-gold-bg {
-    color: var(--gold) !important;
-}
-
-/* 4. الأزرار */
-.btn-gold-bg {
-    background-color: var(--gold) !important;
-    color: var(--burgundy-dark) !important;
-    font-weight: 800 !important;
-    display: inline-block;
-    text-align: center;
-}
-
-.btn-gold-border {
-    border: 2px solid var(--gold) !important;
-    background: transparent !important;
-}
-
+/* 4. الأزرار والعناوين */
+.gold-text { color: var(--gold) !important; }
 .cream-text { color: var(--cream) !important; }
 .muted-text { color: var(--cream-muted) !important; }
 
-/* 5. الكروت والمهارات */
+.main-title {
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    line-height: 1.1;
+    font-weight: 800;
+    /* التعديل هنا: السماح للنص بالنزول لسطر جديد في الموبايل فقط عبر الميديا كويري */
+}
+
+/* 5. الكروت */
 .glass-card {
     background: var(--card-bg);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(238, 186, 11, 0.2);
     border-radius: 2rem;
-    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.skill-bar-bg { 
-    background: rgba(254, 254, 227, 0.1); 
-    height: 4px; 
-    border-radius: 2px; 
+/* --- إضافة الميديا كويري للموبايل --- */
+
+@media (max-width: 1024px) {
+    /* إلغاء العرض الثابت في كل مكان */
+    body, nav {
+        min-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* تعديل الهوامش للأقسام (Padding) */
+    header, section, footer {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+
+    /* العنوان الرئيسي: السماح له بالنزول لسطر جديد وتصغير حجمه قليلاً */
+    .main-title {
+        white-space: normal !important; 
+        font-size: 3rem !important;
+    }
+
+    /* تعديل كروت المشاريع (تظهر تحت بعضها) */
+    #projects-grid .glass-card {
+        flex-direction: column !important;
+        padding: 30px !important;
+        text-align: center;
+        gap: 30px !important;
+    }
+
+    #projects-grid img {
+        width: 100% !important;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* تعديل شبكة المهارات (تصبح كرتين بدلاً من 4 في السطر) */
+    section#skills .grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+
+    /* الفوتر: العناصر تحت بعضها */
+    footer .grid {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+        gap: 50px !important;
+    }
+
+    footer .space-y-8 > div {
+        justify-content: center;
+    }
 }
 
-.skill-bar-fill { 
-    background: var(--gold); 
-    height: 100%; 
-    border-radius: 2px; 
+@media (max-width: 640px) {
+    /* شاشات الموبايل الصغيرة جداً */
+    section#skills .grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .main-title {
+        font-size: 2.2rem !important;
+    }
 }
 
-/* 6. تأثيرات الظهور (Scroll Animations) */
-.reveal { 
-    opacity: 0; 
-    transform: translateY(30px); 
-    transition: 0.8s ease-out; 
-}
-
-.reveal.active { 
-    opacity: 1; 
-    transform: translateY(0); 
-}
-
-/* 7. الفوتر والتقسيم */
-.footer-divider {
-    border-top: 1px solid rgba(254, 254, 227, 0.1);
-    margin: 80px auto 0;
-    width: 90%;
-}
-
-.copyright-2026 {
-    text-align: center;
-    padding: 40px 0;
-    color: var(--text-main);
-    opacity: 0.3;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-/* منع الكلمات من التقطع في العناوين الكبيرة */
-.main-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    line-height: 1.1;
-    font-weight: 800;
-    white-space: nowrap;
-}
+/* باقي التنسيقات (Scroll Reveal etc.) تبقى كما هي */
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
