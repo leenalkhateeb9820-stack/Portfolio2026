@@ -17,42 +17,38 @@
     --text-muted: #9f1239;
 }
 
+body, p, span, li, a, button, input, textarea { 
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 300;
+}
+
+h1, h2, h3, .section-title, [class*="text-6xl"], [class*="text-7xl"], [class*="text-4xl"] { 
+    font-family: 'Bricolage Grotesque', sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+}
+
+h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+    line-height: 1.1 !important;
+}
+
+h4, .whitespace-nowrap, nav a, .font-bold { 
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-weight: 500 !important;
+}
+
 body { 
     background: var(--main-bg);
-    font-family: 'Space Grotesk', sans-serif !important;
     color: var(--text-main);
     overflow-x: hidden;
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-nav { 
-    background-color: var(--nav-bg) !important; 
-    font-family: 'Space Grotesk', sans-serif !important;
-}
+nav { background-color: var(--nav-bg) !important; }
 
-h1, h2, h3, .section-title { 
-    font-family: 'Bricolage Grotesque', sans-serif !important;
-    font-weight: 800 !important;
-    color: var(--text-main) !important; 
-    letter-spacing: -0.03em;
-}
-
-h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
-    line-height: 1.1;
-}
-
-h4, .text-white, .whitespace-nowrap, nav a { 
-    font-family: 'Space Grotesk', sans-serif !important;
-    font-weight: 500 !important;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-p, span, .text-red-100\/60, .text-white\/50, .text-red-100, li { 
-    font-family: 'Space Grotesk', sans-serif !important;
+p, .text-muted, .text-white\/50 { 
     color: var(--text-muted) !important; 
-    font-weight: 300 !important;
     line-height: 1.6;
 }
 
@@ -95,24 +91,11 @@ p, span, .text-red-100\/60, .text-white\/50, .text-red-100, li {
 input:focus, textarea:focus {
     background: rgba(255, 255, 255, 0.1);
     border-color: #dc2626 !important;
-    box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
     outline: none;
-    transform: scale(1.01);
-    transition: all 0.3s ease;
 }
 
 button[type="submit"] {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-button[type="submit"]:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.4);
-    background-color: #b91c1c;
-}
-
-button[type="submit"]:active {
-    transform: scale(0.95);
 }
 
 #theme-toggle {
@@ -120,30 +103,9 @@ button[type="submit"]:active {
     transition: all 0.3s ease;
 }
 
-.light body {
-    background: linear-gradient(135deg, #fff5f5 0%, #ffe4e6 100%) !important;
-    color: #4c0519 !important;
-}
-
-.light nav {
-    background-color: rgba(255, 241, 242, 0.9) !important;
-    border-bottom: 1px solid rgba(190, 18, 60, 0.1);
-}
-
-.light .glass-card {
-    background: rgba(255, 255, 255, 0.4) !important;
-    border: 1px solid rgba(251, 113, 133, 0.2) !important;
-    box-shadow: 0 10px 30px rgba(251, 113, 133, 0.05);
-}
-
-.light h1, .light h2, .light h3, .light h4, .light .section-title {
-    color: #881337 !important;
-}
-
-.light p, .light span:not(.text-red-500) {
-    color: #9f1239 !important;
-}
-
-.light #theme-toggle {
-    color: #be123c;
-}
+.light body { background: linear-gradient(135deg, #fff5f5 0%, #ffe4e6 100%) !important; color: #4c0519 !important; }
+.light nav { background-color: rgba(255, 241, 242, 0.9) !important; border-bottom: 1px solid rgba(190, 18, 60, 0.1); }
+.light .glass-card { background: rgba(255, 255, 255, 0.4) !important; border: 1px solid rgba(251, 113, 133, 0.2) !important; }
+.light h1, .light h2, .light h3, .light h4, .light .section-title { color: #881337 !important; }
+.light p, .light span:not(.text-red-500) { color: #9f1239 !important; }
+.light #theme-toggle { color: #be123c; }
