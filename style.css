@@ -33,10 +33,10 @@ h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
     font-family: 'Bricolage Grotesque', sans-serif !important;
 }
 
-/* إصلاح الناف بار عند السكرول */
+/* إصلاح الناف بار ليبقى واضحاً عند السكرول */
 nav {
-    background: rgba(45, 5, 5, 0.8);
-    backdrop-filter: blur(10px);
+    background: rgba(45, 5, 5, 0.85);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(238, 186, 11, 0.1);
 }
 
@@ -77,6 +77,18 @@ h1.main-title {
     border-radius: 2rem;
 }
 
+.skill-bar-bg { 
+    background: rgba(254, 254, 227, 0.1); 
+    height: 4px; 
+    border-radius: 2px; 
+}
+
+.skill-bar-fill { 
+    background: #eeba0b; 
+    height: 100%; 
+    border-radius: 2px; 
+}
+
 .reveal { 
     opacity: 0; 
     transform: translateY(30px); 
@@ -91,14 +103,15 @@ h1.main-title {
 .footer-divider {
     border-top: 1px solid rgba(254, 254, 227, 0.1);
     margin: 80px auto 0;
-    width: 80%;
+    width: 90%;
 }
 
 .copyright-2026 {
     text-align: center;
-    padding: 30px 0;
+    padding: 40px 0;
     color: #fefee3;
-    opacity: 0.3;
-    font-size: 13px;
-    letter-spacing: 2px;
+    opacity: 0.2;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 }
