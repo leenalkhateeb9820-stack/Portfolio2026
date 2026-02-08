@@ -155,4 +155,28 @@ document.addEventListener('DOMContentLoaded', () => {
     handleContactForm();
     handleThemeToggle();
 });
+function initTheme() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const html = document.documentElement;
 
+    if (!themeToggle) return;
+
+    if (localStorage.getItem('theme') === 'light') {
+        html.classList.add('light');
+        if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('light');
+        const isLight = html.classList.contains('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        
+        if (themeIcon) {
+            if (isLight) themeIcon.classList.replace('fa-moon', 'fa-sun');
+            else themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', initTheme);
