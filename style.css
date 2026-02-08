@@ -24,13 +24,20 @@
 body {
     font-family: 'Bricolage Grotesque', sans-serif !important;
     background: var(--main-bg);
-    color: var(--cream);
+    color: #fefee3;
     overflow-x: hidden;
     transition: all 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
     font-family: 'Bricolage Grotesque', sans-serif !important;
+}
+
+/* إصلاح الناف بار عند السكرول */
+nav {
+    background: rgba(45, 5, 5, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(238, 186, 11, 0.1);
 }
 
 .logo-text, 
@@ -40,22 +47,21 @@ nav ul li a,
 .gold-text, 
 .social-icon, 
 .btn-gold-bg {
-    color: var(--gold) !important;
-    font-style: normal !important;
+    color: #eeba0b !important;
 }
 
 .btn-gold-bg {
-    background-color: var(--gold) !important;
-    color: var(--burgundy-dark) !important;
+    background-color: #eeba0b !important;
+    color: #2d0505 !important;
     font-weight: 800 !important;
 }
 
 .btn-gold-border {
-    border: 2px solid var(--gold) !important;
+    border: 2px solid #eeba0b !important;
     background: transparent !important;
 }
 
-.cream-text { color: var(--cream) !important; }
+.cream-text { color: #fefee3 !important; }
 .muted-text { color: var(--cream-muted) !important; }
 
 h1.main-title {
@@ -71,18 +77,6 @@ h1.main-title {
     border-radius: 2rem;
 }
 
-.skill-bar-bg { 
-    background: rgba(254, 254, 227, 0.1); 
-    height: 4px; 
-    border-radius: 2px; 
-}
-
-.skill-bar-fill { 
-    background: var(--gold); 
-    height: 100%; 
-    border-radius: 2px; 
-}
-
 .reveal { 
     opacity: 0; 
     transform: translateY(30px); 
@@ -94,17 +88,17 @@ h1.main-title {
     transform: translateY(0); 
 }
 
-/* أضيفي هذا في نهاية ملف style.css */
-.footer-line {
+.footer-divider {
     border-top: 1px solid rgba(254, 254, 227, 0.1);
-    margin-top: 80px;
-    padding-top: 30px;
-    text-align: center;
+    margin: 80px auto 0;
+    width: 80%;
 }
 
-.copyright-text {
-    color: var(--cream);
+.copyright-2026 {
+    text-align: center;
+    padding: 30px 0;
+    color: #fefee3;
     opacity: 0.3;
     font-size: 13px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
