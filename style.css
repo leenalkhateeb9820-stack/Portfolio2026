@@ -1,146 +1,73 @@
-/* 1. المتغيرات الأساسية ودعم الوضعين (Dark & Light) */
 :root {
-    --gold: #eeba0b;
-    --cream: #fefee3;
-    --cream-muted: rgba(254, 254, 227, 0.6);
-    --burgundy-dark: #2d0505;
-    --main-bg: linear-gradient(135deg, #2d0505 0%, #4d0013 100%);
-    --card-bg: rgba(255, 255, 255, 0.05);
-    --nav-bg: rgba(45, 5, 5, 0.85);
-    --text-main: #fefee3;
+    --burgundy-light: #800020;
+    --burgundy-dark: #4d0013;
+    --text-cream: #fff5f5;
 }
 
-.light {
-    --main-bg: linear-gradient(135deg, #fff5f5 0%, #fefee3 100%);
-    --burgundy-dark: #fefee3;
-    --cream: #4c0519; /* لون غامق للنصوص في الوضع الفاتح */
-    --gold: #b48a04;  /* ذهبي أغمق قليلاً للوضوح على الخلفية البيضاء */
-    --cream-muted: rgba(76, 5, 25, 0.7);
-    --card-bg: rgba(76, 5, 25, 0.05);
-    --nav-bg: rgba(255, 245, 245, 0.85);
-    --text-main: #4c0519;
-}
-
-/* 2. الإعدادات العامة والخطوط */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Bricolage Grotesque', sans-serif !important;
-    background: var(--main-bg);
-    color: var(--text-main);
-    transition: all 0.3s ease;
-    max-width: 100%;
+body { 
+    background: linear-gradient(135deg, #2d0505 0%, #4d0013 100%);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--text-cream);
     overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
-    font-family: 'Bricolage Grotesque', sans-serif !important;
-}
+.section-title { font-family: 'Playfair Display', serif; }
 
-/* 3. الهيدر والناف بار */
-nav {
-    background: var(--nav-bg);
+.glass-card { 
+    background: rgba(255, 255, 255, 0.05); 
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(238, 186, 11, 0.1);
-    white-space: nowrap;
-    transition: background 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
 }
 
-.logo-text, 
-nav ul li a, 
-.sub-heading, 
-.section-title, 
-.gold-text, 
-.btn-gold-bg {
-    color: var(--gold) !important;
+.project-glow {
+    border: 2px solid rgba(234, 179, 8, 0.4);
+    box-shadow: 0 0 30px rgba(234, 179, 8, 0.1);
+    background: linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(124, 45, 18, 0.3));
 }
 
-/* 4. الأزرار */
-.btn-gold-bg {
-    background-color: var(--gold) !important;
-    color: var(--burgundy-dark) !important;
-    font-weight: 800 !important;
-    display: inline-block;
-    text-align: center;
+.project-glow:hover {
+    border-color: rgba(234, 179, 8, 0.7);
+    box-shadow: 0 0 50px rgba(234, 179, 8, 0.2);
+    transform: translateY(-10px);
 }
 
-.btn-gold-border {
-    border: 2px solid var(--gold) !important;
-    background: transparent !important;
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0d0d0d; }
+::-webkit-scrollbar-thumb { background: #7f1d1d; border-radius: 10px; }
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
 }
 
-.cream-text { color: var(--cream) !important; }
-.muted-text { color: var(--cream-muted) !important; }
-
-/* 5. الكروت والمهارات */
-.glass-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(238, 186, 11, 0.2);
-    border-radius: 2rem;
-    transition: transform 0.3s ease, background 0.3s ease;
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.skill-bar-bg { 
-    background: rgba(254, 254, 227, 0.1); 
-    height: 4px; 
-    border-radius: 2px; 
+::selection { background: #dc2626; color: white; }
+
+input:focus, textarea:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
+    outline: none;
+    transform: scale(1.01);
+    transition: all 0.3s ease;
 }
 
-.skill-bar-fill { 
-    background: var(--gold); 
-    height: 100%; 
-    border-radius: 2px; 
+button[type="submit"] {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* 6. تأثيرات الظهور (Scroll Animations) */
-.reveal { 
-    opacity: 0; 
-    transform: translateY(30px); 
-    transition: 0.8s ease-out; 
+button[type="submit"]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.4);
+    background-color: #b91c1c;
 }
 
-.reveal.active { 
-    opacity: 1; 
-    transform: translateY(0); 
+button[type="submit"]:active {
+    transform: scale(0.95);
 }
-
-/* 7. الفوتر والتقسيم */
-.footer-divider {
-    border-top: 1px solid rgba(254, 254, 227, 0.1);
-    margin: 80px auto 0;
-    width: 90%;
-}
-
-.copyright-2026 {
-    text-align: center;
-    padding: 40px 0;
-    color: var(--text-main);
-    opacity: 0.3;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-/* منع الكلمات من التقطع في العناوين الكبيرة */
-.main-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
-    line-height: 1.1;
-    font-weight: 800;
-}
-@media (min-width: 1024px) {
-    .main-title {
-        white-space: nowrap;
-    }
-}
-@media (max-width: 768px) {
-    section {
-        padding-top: 60px !important;
-        padding-bottom: 60px !important;
-    }
-}
-
