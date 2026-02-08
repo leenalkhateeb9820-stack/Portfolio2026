@@ -93,3 +93,18 @@ h1.main-title {
     opacity: 1; 
     transform: translateY(0); 
 }
+
+/* أضيفي هذا في نهاية ملف style.css */
+.footer-line {
+    border-top: 1px solid rgba(254, 254, 227, 0.1);
+    margin-top: 80px;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.copyright-text {
+    color: var(--cream);
+    opacity: 0.3;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
