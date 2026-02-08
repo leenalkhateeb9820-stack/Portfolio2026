@@ -31,8 +31,8 @@ body {
     background: var(--main-bg);
     color: var(--text-main);
     transition: all 0.3s ease;
-    min-width: 1200px; 
-    overflow-x: auto;
+    overflow-x: hidden; 
+    width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
@@ -43,7 +43,6 @@ nav {
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(238, 186, 11, 0.1);
-    white-space: nowrap;
     transition: background 0.3s ease;
 }
 
@@ -114,14 +113,109 @@ nav ul li a,
     padding: 40px 0;
     color: var(--text-main);
     opacity: 0.3;
-    font-size: 12px;
+    font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
 .main-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(2rem, 8vw, 5rem);
     line-height: 1.1;
     font-weight: 800;
-    white-space: nowrap;
+}
+
+
+@media (max-width: 1024px) {
+    header, section, footer {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+    nav {
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    header {
+        height: auto !important;
+        padding-top: 120px !important;
+        padding-bottom: 60px !important;
+        text-align: center;
+    }
+
+    .main-title {
+        white-space: normal !important; 
+        font-size: 2.8rem !important;
+    }
+
+    header div.flex {
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    footer .grid-cols-2 {
+        grid-template-columns: 1fr !important;
+        gap: 3rem !important;
+    }
+
+    footer {
+        padding-top: 60px !important;
+        padding-bottom: 40px !important;
+        text-align: center;
+    }
+
+    footer .space-y-8 div {
+        justify-content: center;
+    }
+
+    #projects-grid .glass-card {
+        flex-direction: column !important;
+        min-width: unset !important;
+        padding: 1.5rem !important;
+        text-align: center;
+    }
+
+    #projects-grid .glass-card .flex-1 {
+        order: 2;
+    }
+
+    #projects-grid .glass-card .flex-shrink-0 {
+        order: 1;
+        margin-bottom: 1.5rem;
+    }
+
+    #projects-grid .glass-card img {
+        width: 150px !important;
+        margin: 0 auto;
+    }
+
+    #skills .grid-cols-4 {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+    }
+
+    nav {
+        padding: 1rem !important;
+    }
+    nav ul {
+        gap: 1rem !important;
+    }
+    nav ul li a {
+        font-size: 9px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    #skills .grid-cols-4 {
+        grid-template-columns: 1fr !important;
+    }
+    .main-title {
+        font-size: 2.2rem !important;
+    }
 }
