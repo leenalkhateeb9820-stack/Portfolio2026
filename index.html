@@ -4,167 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leen | Full Stack Developer</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Space Grotesk', 'sans-serif'],
-                        display: ['Bricolage Grotesque', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="selection:bg-yellow-400 selection:text-black font-sans">
+<body>
 
-<nav class="flex justify-between items-center px-6 md:px-24 py-8 sticky top-0 z-50 bg-[#2d0505]/90 backdrop-blur-md">
-    <div class="logo-text text-2xl tracking-tighter uppercase flex-shrink-0 text-white light:text-[#4c0519]">
-        LEEN<span class="text-[#FFD700]">.</span>DEV
+<nav class="flex justify-between items-center px-6 md:px-24 py-8 sticky top-0 z-50">
+    <div class="logo-text text-2xl tracking-tighter uppercase font-extrabold">
+        LEEN <span class="cream-text">.</span> DEV
     </div>
-    <ul class="hidden md:flex items-center gap-6 lg:gap-10 text-[11px] uppercase tracking-[0.2em] text-white light:text-[#4c0519]">
-        <li><a href="#" class="hover:text-[#FFD700] transition">Experience</a></li>
-        <li><a href="#skills" class="hover:text-[#FFD700] transition">Stack</a></li>
-        <li><a href="#projects" class="hover:text-[#FFD700] transition">Projects</a></li>
-        <li><a href="#contact" class="hover:text-[#FFD700] transition">Contact</a></li>
-        
+    <ul class="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-widest">
+        <li><a href="#" class="hover:opacity-70 transition">Experience</a></li>
+        <li><a href="#skills" class="hover:opacity-70 transition">Stack</a></li>
+        <li><a href="#projects" class="hover:opacity-70 transition">Projects</a></li>
+        <li><a href="#contact" class="hover:opacity-70 transition">Contact</a></li>
         <li class="flex items-center border-l border-white/10 pl-6">
-            <button id="theme-toggle" class="text-lg hover:text-[#FFD700] transition-all p-2">
+            <button id="theme-toggle" class="text-lg cream-text p-2 transition-transform hover:scale-110">
                 <i class="fa-solid fa-moon" id="theme-icon"></i>
             </button>
         </li>
-
-        <li class="flex-shrink-0">
-            <a href="admin.html" target="_blank" class="whitespace-nowrap bg-white/5 border border-white/10 px-4 py-2 rounded-xl hover:bg-[#FFD700] hover:text-black transition-all text-[9px] group flex items-center">
-                <i class="fa-solid fa-lock mr-2 text-[#FFD700] group-hover:text-black transition-colors"></i> Admin
+        <li>
+            <a href="#" class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-[10px] flex items-center gold-text">
+                <i class="fa-solid fa-lock mr-2 cream-text"></i> ADMIN
             </a>
         </li>
     </ul>
 </nav>
 
-    <header class="reveal h-[80vh] flex flex-col justify-center px-10 md:px-32 relative">
-        <h2 class="sub-heading tracking-[0.3em] uppercase text-sm mb-4 font-bold" style="color: #FFD700;">Certified Full Stack Developer</h2>
-        <h1 class="main-title text-6xl md:text-8xl leading-none tracking-tighter mb-6 font-display text-white">
-            Building the 
-            <br>
-            <svg class="hand-drawn-arrow" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10,10 Q50,40 90,10" stroke-width="3" fill="none" stroke-linecap="round" />
-                <path d="M82,5 L90,10 L82,18" stroke-width="3" fill="none" stroke-linecap="round" />
-            </svg>
-            <span class="section-title">Future Web.</span>
-        </h1>
-        <p class="description max-w-xl text-white/60 light:text-[#9f1239] text-lg leading-relaxed mb-10 font-sans">
-            From database architecture to pixel-perfect front-end execution. I specialize in scalable applications and seamless user experiences.
-        </p>
-        <div class="flex gap-6">
-            <a href="#projects" class="bg-[#FFD700] hover:scale-105 text-black px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-yellow-900/20">View Projects</a>
-            <a href="#contact" class="border border-[#FFD700]/30 hover:bg-white/5 px-10 py-4 rounded-full font-bold transition-all text-white light:text-[#4c0519]">Let's Talk</a>
-        </div>
-    </header>
+<header class="reveal h-[80vh] flex flex-col justify-center px-10 md:px-32 relative">
+    <h2 class="sub-heading uppercase text-sm mb-4 font-bold tracking-[0.3em]">Certified Full Stack Developer</h2>
+    <h1 class="main-title text-white">
+        <span class="cream-text">Building the</span> 
+        <br>
+        <svg class="hand-drawn-arrow" viewBox="0 0 100 50">
+            <path class="arrow-body" d="M10,10 Q50,40 90,10 L85,5 M90,10 L82,18" />
+        </svg>
+        <span class="section-title">Future Web.</span>
+    </h1>
+    <p class="muted-text max-w-xl text-lg mt-6 mb-10 leading-relaxed">
+        From database architecture to pixel-perfect front-end execution. I specialize in scalable applications and seamless user experiences.
+    </p>
+    <div class="flex gap-6">
+        <a href="#projects" class="btn-gold-bg px-10 py-4 rounded-full transition-all hover:brightness-110">View Projects</a>
+        <a href="#contact" class="btn-gold-border px-10 py-4 rounded-full transition-all hover:bg-white/5">
+            <span class="cream-text">Let's Talk</span>
+        </a>
+    </div>
+</header>
 
-    <section id="skills" class="reveal py-32 px-10 md:px-32">
-        <h3 class="text-center section-title text-5xl mb-20 font-display text-white light:text-[#4c0519]">My Technical <span class="text-[#FFD700]">Arsenal</span></h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="glass-card p-8 rounded-3xl">
-                <i class="fa-solid fa-layer-group text-3xl mb-6"></i>
-                <h4 class="text-xl mb-4 text-white light:text-[#4c0519]">Frontend</h4>
-                <p class="text-sm text-white/50 light:text-[#9f1239] mb-4 font-sans">React.js, Tailwind CSS, JavaScript (ES6+).</p>
-                <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-[#FFD700] w-[95%] rounded-full"></div></div>
-            </div>
-            <div class="glass-card p-8 rounded-3xl">
-                <i class="fa-solid fa-gears text-3xl mb-6"></i>
-                <h4 class="text-xl mb-4 text-white light:text-[#4c0519]">Backend</h4>
-                <p class="text-sm text-white/50 light:text-[#9f1239] mb-4 font-sans">Node.js, Express, RESTful APIs.</p>
-                <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-[#FFD700] w-[90%] rounded-full"></div></div>
-            </div>
-            <div class="glass-card p-8 rounded-3xl">
-                <i class="fa-solid fa-database text-3xl mb-6"></i>
-                <h4 class="text-xl mb-4 text-white light:text-[#4c0519]">Database</h4>
-                <p class="text-sm text-white/50 light:text-[#9f1239] mb-4 font-sans">MongoDB, SQL, Firebase.</p>
-                <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-[#FFD700] w-[85%] rounded-full"></div></div>
-            </div>
-            <div class="glass-card p-8 rounded-3xl">
-                <i class="fa-solid fa-box-open text-3xl mb-6"></i>
-                <h4 class="text-xl mb-4 text-white light:text-[#4c0519]">Libraries</h4>
-                <p class="text-sm text-white/50 light:text-[#9f1239] mb-4 font-sans">Axios, Redux, Framer Motion.</p>
-                <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-[#FFD700] w-[92%] rounded-full"></div></div>
-            </div>
+<section id="skills" class="reveal py-32 px-10 md:px-32">
+    <h3 class="text-center text-5xl mb-20">
+        <span class="cream-text">My Technical</span> <span class="gold-text">Arsenal</span>
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="glass-card p-8">
+            <i class="fa-solid fa-layer-group text-3xl mb-6 gold-text"></i>
+            <h4 class="text-xl mb-4 cream-text">Frontend</h4>
+            <p class="muted-text text-sm mb-4">React.js, Tailwind CSS, JavaScript (ES6+), Responsive Design.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill w-[95%]"></div></div>
         </div>
-    </section>
+        <div class="glass-card p-8">
+            <i class="fa-solid fa-gears text-3xl mb-6 gold-text"></i>
+            <h4 class="text-xl mb-4 cream-text">Backend</h4>
+            <p class="muted-text text-sm mb-4">Node.js, Express, RESTful APIs, System Design.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill w-[90%]"></div></div>
+        </div>
+        <div class="glass-card p-8">
+            <i class="fa-solid fa-database text-3xl mb-6 gold-text"></i>
+            <h4 class="text-xl mb-4 cream-text">Database</h4>
+            <p class="muted-text text-sm mb-4">MongoDB, SQL, Firebase, Data Modeling.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill w-[85%]"></div></div>
+        </div>
+        <div class="glass-card p-8">
+            <i class="fa-solid fa-box-open text-3xl mb-6 gold-text"></i>
+            <h4 class="text-xl mb-4 cream-text">Libraries</h4>
+            <p class="muted-text text-sm mb-4">Axios, Redux, Framer Motion, External APIs Integration.</p>
+            <div class="skill-bar-bg"><div class="skill-bar-fill w-[92%]"></div></div>
+        </div>
+    </div>
+</section>
 
-    <section id="projects" class="py-32 px-10 md:px-32 relative">
-        <div class="max-w-6xl mx-auto">
-            <div class="mb-24">
-                <h3 class="text-5xl text-white light:text-[#4c0519] tracking-tighter">Featured <span class="text-[#FFD700] italic">Work</span></h3>
-            </div>
-            <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+<section id="projects" class="py-32 px-10 md:px-32">
+    <div class="mb-24">
+        <h3 class="text-5xl tracking-tighter">
+            <span class="cream-text">Featured</span> <span class="gold-text italic-fix">Work</span>
+        </h3>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+        <div class="glass-card p-10">
+            <h4 class="text-2xl mb-4 cream-text">Croissant & Co.</h4>
+            <p class="muted-text mb-8">A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.</p>
+            <p class="gold-text mb-6">E-Commerce Solution</p>
+            <a href="#" class="gold-text flex items-center gap-2 font-bold">
+                Explore Project <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer id="contact" class="reveal py-32 px-10 md:px-32 border-t border-white/5">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
+        <div>
+            <h2 class="text-6xl mb-8 tracking-tighter">
+                <span class="cream-text">Let's</span> <span class="gold-text italic-fix">Connect</span>
+            </h2>
+            <p class="muted-text mb-12 max-w-sm">I'm always open to discussing new projects or creative ideas.</p>
+            <div class="space-y-8">
+                <div class="flex items-center gap-6">
+                    <i class="fa-solid fa-envelope text-xl gold-text social-icon"></i>
+                    <a href="mailto:leenalkhateeb9820@gmail.com" class="cream-text text-lg">leenalkhateeb9820@gmail.com</a>
                 </div>
-        </div>
-    </section>
-
-    <footer id="contact" class="reveal py-32 px-10 md:px-32 border-t border-white/5">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div>
-                <h2 class="text-6xl text-white light:text-[#4c0519] mb-8 tracking-tighter">Let's <span class="text-[#FFD700] italic">Connect</span></h2>
-                <div class="space-y-8">
-                    <div class="flex items-center gap-6 group">
-                        <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-[#FFD700] border border-white/10 group-hover:bg-[#FFD700] group-hover:text-black transition-all">
-                            <i class="fa-solid fa-envelope text-xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-[9px] uppercase tracking-[0.4em] text-[#FFD700] font-bold">Email Me</p>
-                            <a href="mailto:leenalkhateeb9820@gmail.com" class="text-lg font-bold text-white light:text-[#4c0519]">leenalkhateeb9820@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-6 group">
-                        <div class="w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center text-[#FFD700] border border-white/10 group-hover:bg-[#FFD700] group-hover:text-black transition-all">
-                            <i class="fa-brands fa-github text-2xl"></i>
-                        </div>
-                        <div>
-                            <p class="text-[9px] uppercase tracking-[0.4em] text-[#FFD700] font-bold">Source Code</p>
-                            <a href="#" class="text-lg font-bold text-white light:text-[#4c0519]">github.com/leen-stack</a>
-                        </div>
-                    </div>
+                <div class="flex items-center gap-6">
+                    <i class="fa-brands fa-github text-xl gold-text social-icon"></i>
+                    <a href="#" class="cream-text text-lg">github.com/leen-stack</a>
+                </div>
+                <div class="flex items-center gap-6">
+                    <i class="fa-brands fa-linkedin text-xl gold-text social-icon"></i>
+                    <a href="#" class="cream-text text-lg">linkedin.com/in/leen-dev</a>
                 </div>
             </div>
-            <div class="glass-card p-10 rounded-[3.5rem] border-2 border-[#FFD700]/20">
-                <form id="contactForm" class="space-y-6">
-                    <input type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white focus:border-[#FFD700]/50 outline-none transition-all">
-                    <input type="email" placeholder="Your Email" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white focus:border-[#FFD700]/50 outline-none transition-all">
-                    <textarea placeholder="Message" rows="4" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white focus:border-[#FFD700]/50 outline-none transition-all"></textarea>
-                    <button class="w-full bg-[#FFD700] text-black font-black py-5 rounded-2xl uppercase tracking-widest text-[10px]">Send Inquiry</button>
-                </form>
-            </div>
         </div>
-    </footer>
+        <div class="glass-card p-10">
+            <form class="space-y-6">
+                <input type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b]">
+                <button type="submit" class="btn-gold-bg w-full py-5 rounded-2xl uppercase tracking-widest text-xs">Send Inquiry</button>
+            </form>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = document.getElementById('theme-icon');
-        const htmlElement = document.documentElement;
-
-        themeToggle.addEventListener('click', () => {
-            htmlElement.classList.toggle('light');
-            themeIcon.classList.toggle('fa-moon');
-            themeIcon.classList.toggle('fa-sun');
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+        html.classList.toggle('light');
+        themeIcon.classList.toggle('fa-moon');
+        themeIcon.classList.toggle('fa-sun');
+    });
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
         });
-    </script>
-    <script src="main.js"></script>
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
