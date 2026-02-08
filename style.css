@@ -69,16 +69,16 @@ h1.main-title {
     backdrop-filter: blur(12px);
     border: 1px solid rgba(238, 186, 11, 0.2);
     border-radius: 2rem;
-    overflow: hidden;
 }
 
 .skill-tag {
-    background: rgba(254, 254, 227, 0.05);
-    border: 1px solid rgba(254, 254, 227, 0.1);
-    color: var(--cream-muted);
-    padding: 4px 12px;
-    border-radius: 8px;
-    font-size: 10px;
+    background: rgba(238, 186, 11, 0.1);
+    border: 1px solid rgba(238, 186, 11, 0.2);
+    color: var(--gold);
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
@@ -103,4 +103,13 @@ h1.main-title {
 .reveal.active { 
     opacity: 1; 
     transform: translateY(0); 
+}
+
+footer .copyright {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(254, 254, 227, 0.05);
+    text-align: center;
+    font-size: 12px;
+    color: var(--cream-muted);
 }
