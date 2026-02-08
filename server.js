@@ -113,23 +113,21 @@ app.post('/api/contact', async (req, res) => {
 
         res.json({ success: true });
 
-        // داخل app.post('/api/contact')
-const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,
-    subject: `Portfolio: ${subject}`,
-    html: `
-        <div style="direction: rtl; font-family: 'Arial', sans-serif; background-color: #2d0505; color: #fff5f5; padding: 20px; border-radius: 15px;">
-            <h2 style="color: #e63946; border-bottom: 1px solid #4d0013; padding-bottom: 10px;">رسالة جديدة من الموقع</h2>
-            <p><strong>الاسم:</strong> ${name}</p>
-            <p><strong>الإيميل:</strong> ${email}</p>
-            <p><strong>الموضوع:</strong> ${subject}</p>
-            <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin-top: 10px; border-right: 4px solid #e63946;">
-                ${message}
-            </div>
-        </div>
-    `
-};
+        const mailOptions = {
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_USER,
+            subject: `Portfolio: ${subject}`,
+            html: `
+                <div style="direction: rtl; font-family: Arial, sans-serif;">
+                    <h2>رسالة جديدة من الموقع</h2>
+                    <p><strong>الاسم:</strong> ${name}</p>
+                    <p><strong>الإيميل:</strong> ${email}</p>
+                    <p><strong>الموضوع:</strong> ${subject}</p>
+                    <p><strong>الرسالة:</strong></p>
+                    <p style="background: #f4f4f4; padding: 10px; border-radius: 5px;">${message}</p>
+                </div>
+            `
+        };
 
         transporter.sendMail(mailOptions).catch(err => console.error(err));
 
@@ -164,5 +162,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-
