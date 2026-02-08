@@ -87,23 +87,39 @@
             <span style="color: #fefee3;">Featured</span> 
             <span style="color: #eeba0b;">Work</span>
         </h3>
-        <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-24">
-            <div class="glass-card overflow-hidden">
-                <div class="h-64 bg-white/5">
-                    <img src="croissant.webp" alt="Croissant" class="w-full h-full object-cover opacity-50">
-                </div>
-                <div class="p-10">
-                    <h4 class="text-2xl mb-4 font-bold" style="color: #eeba0b;">Croissant & Co.</h4>
+        
+        <div id="projects-grid" class="flex flex-col gap-12">
+            
+            <div class="glass-card overflow-hidden flex flex-col md:flex-row items-center p-8 md:p-12 gap-8">
+                
+                <div class="flex-1 order-2 md:order-1">
+                    <p class="mb-4 font-bold uppercase text-xs tracking-widest" style="color: #eeba0b; opacity: 0.8;">
+                        E-Commerce Solution
+                    </p>
                     
-                    <p class="mb-6" style="color: #fefee3;">A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.</p>
+                    <h4 class="text-4xl mb-6 font-bold" style="color: #eeba0b;">Croissant & Co.</h4>
                     
-                    <p class="mb-6 font-bold uppercase text-xs tracking-widest" style="color: #eeba0b;">E-Commerce Solution</p>
+                    <p class="mb-8 text-lg leading-relaxed" style="color: #fefee3;">
+                        A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.
+                    </p>
                     
-                    <a href="#" class="flex items-center gap-2 font-bold uppercase tracking-widest text-xs transition-transform hover:translate-x-2" style="color: #eeba0b;">
+                    <div class="flex gap-3 mb-10 flex-wrap">
+                        <span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider" style="background: rgba(238, 186, 11, 0.1); color: #eeba0b; border: 1px solid rgba(238, 186, 11, 0.2);">Full Stack</span>
+                        <span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider" style="background: rgba(238, 186, 11, 0.1); color: #eeba0b; border: 1px solid rgba(238, 186, 11, 0.2);">Tailwind CSS</span>
+                        <span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider" style="background: rgba(238, 186, 11, 0.1); color: #eeba0b; border: 1px solid rgba(238, 186, 11, 0.2);">UX Design</span>
+                    </div>
+                    
+                    <a href="#" class="flex items-center gap-2 font-bold uppercase tracking-widest text-sm transition-transform hover:translate-x-2" style="color: #eeba0b;">
                         Explore Project <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
+
+                <div class="flex-shrink-0 order-1 md:order-2">
+                    <img src="croissant.webp" alt="Croissant" class="w-48 md:w-64 h-auto object-contain transform hover:scale-110 transition-transform duration-500">
+                </div>
+
             </div>
+            
         </div>
     </div>
 </section>
@@ -162,4 +178,5 @@
 </script>
 </body>
 </html>
+
 
