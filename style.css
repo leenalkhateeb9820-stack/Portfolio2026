@@ -25,25 +25,29 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3, h4, h5, h6, .section-title, .main-title, .logo-text {
+h1, h2, h3, h4, h5, h6, .section-title, .main-title, .logo-text, nav ul li a, .sub-heading {
     font-family: 'Bricolage Grotesque', sans-serif !important;
     font-weight: 800 !important;
     letter-spacing: -0.04em !important;
+}
+
+h1.main-title span {
+    font-family: 'Bricolage Grotesque', sans-serif !important;
 }
 
 .fa-solid, .fa-brands, .fas, .fab, .fa, [class*="fa-"] {
     font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
 }
 
-p, .description, span:not(.fa-solid):not(.fa-brands):not([class*="fa-"]), li, a, button, input, textarea {
+p, .description, span:not(.fa-solid):not(.fa-brands):not([class*="fa-"]), li, a:not(nav ul li a), button, input, textarea {
     font-family: 'Space Grotesk', sans-serif !important;
 }
 
-.light h1, .light h2, .light h3, .light h4, .light .section-title, .light .main-title, .light .logo-text {
+.light h1, .light h2, .light h3, .light h4, .light .section-title, .light .main-title, .light .logo-text, .light nav ul li a, .light .sub-heading {
     color: #4c0519 !important;
 }
 
-.light p, .light li, .light a, .light .description, .light span:not(.text-red-500):not(.text-orange-500) {
+.light p, .light li, .light a:not(nav ul li a), .light .description, .light span:not(.text-red-500):not(.text-orange-500) {
     color: #9f1239 !important;
 }
 
