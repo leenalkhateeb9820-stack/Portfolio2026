@@ -11,11 +11,11 @@
 </head>
 <body>
 
-<nav class="flex justify-between items-center px-6 md:px-24 py-8 sticky top-0 z-50">
+<nav class="flex justify-between items-center px-6 md:px-24 py-6 sticky top-0 z-50">
     <div class="logo-text text-2xl tracking-tighter uppercase font-extrabold">
         LEEN <span class="cream-text">.</span> DEV
     </div>
-    <ul class="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-widest">
+    <ul class="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-widest font-bold">
         <li><a href="#" class="hover:opacity-70 transition">Experience</a></li>
         <li><a href="#skills" class="hover:opacity-70 transition">Stack</a></li>
         <li><a href="#projects" class="hover:opacity-70 transition">Projects</a></li>
@@ -44,10 +44,8 @@
         From database architecture to pixel-perfect front-end execution. I specialize in scalable applications and seamless user experiences.
     </p>
     <div class="flex gap-6">
-        <a href="#projects" class="btn-gold-bg px-10 py-4 rounded-full transition-all hover:brightness-110">View Projects</a>
-        <a href="#contact" class="btn-gold-border px-10 py-4 rounded-full transition-all hover:bg-white/5 font-bold">
-            <span class="cream-text">Let's Talk</span>
-        </a>
+        <a href="#projects" class="btn-gold-bg px-10 py-4 rounded-full transition-all">View Projects</a>
+        <a href="#contact" class="btn-gold-border px-10 py-4 rounded-full font-bold cream-text">Let's Talk</a>
     </div>
 </header>
 
@@ -58,25 +56,25 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-layer-group text-3xl mb-6 gold-text"></i>
-            <h4 class="text-xl mb-4 cream-text">Frontend</h4>
+            <h4 class="text-xl mb-4 cream-text font-bold">Frontend</h4>
             <p class="muted-text text-sm mb-4">React.js, Tailwind CSS, JavaScript (ES6+), Responsive Design.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[95%]"></div></div>
         </div>
         <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-gears text-3xl mb-6 gold-text"></i>
-            <h4 class="text-xl mb-4 cream-text">Backend</h4>
+            <h4 class="text-xl mb-4 cream-text font-bold">Backend</h4>
             <p class="muted-text text-sm mb-4">Node.js, Express, RESTful APIs, System Design.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[90%]"></div></div>
         </div>
         <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-database text-3xl mb-6 gold-text"></i>
-            <h4 class="text-xl mb-4 cream-text">Database</h4>
+            <h4 class="text-xl mb-4 cream-text font-bold">Database</h4>
             <p class="muted-text text-sm mb-4">MongoDB, SQL, Firebase, Data Modeling.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[85%]"></div></div>
         </div>
         <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-box-open text-3xl mb-6 gold-text"></i>
-            <h4 class="text-xl mb-4 cream-text">Libraries</h4>
+            <h4 class="text-xl mb-4 cream-text font-bold">Libraries</h4>
             <p class="muted-text text-sm mb-4">Axios, Redux, Framer Motion, External APIs Integration.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[92%]"></div></div>
         </div>
@@ -88,14 +86,14 @@
         <h3 class="text-5xl mb-24 font-bold"><span class="cream-text">Featured</span> <span class="gold-text">Work</span></h3>
         <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-24">
             
-            <div class="glass-card overflow-hidden group border-white/10">
+            <div class="glass-card overflow-hidden group">
                 <div class="h-64 bg-white/5 overflow-hidden">
-                    <img src="croissant.webp" alt="Croissant & Co" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500">
+                    <img src="project-image.jpg" alt="Croissant & Co" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="p-10">
                     <h4 class="text-2xl mb-4 gold-text font-bold">Croissant & Co.</h4>
-                    <p class="cream-text opacity-80 mb-6">A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.</p>
-                    <p class="gold-text mb-6 font-bold uppercase text-xs tracking-[0.2em] opacity-90">E-Commerce Solution</p>
+                    <p class="cream-text mb-6 opacity-90">A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.</p>
+                    <p class="gold-text mb-6 font-bold uppercase text-xs tracking-[0.2em]">E-Commerce Solution</p>
                     <a href="#" class="gold-text flex items-center gap-2 font-bold uppercase tracking-widest text-xs group-hover:gap-4 transition-all">
                         Explore Project <i class="fa-solid fa-arrow-right"></i>
                     </a>
@@ -114,27 +112,31 @@
             <div class="space-y-8">
                 <div class="flex items-center gap-6">
                     <i class="fa-solid fa-envelope text-xl gold-text"></i>
-                    <a href="mailto:leenalkhateeb9820@gmail.com" class="cream-text text-lg hover:gold-text transition-colors">leenalkhateeb9820@gmail.com</a>
+                    <a href="mailto:leenalkhateeb9820@gmail.com" class="cream-text text-lg hover:gold-text transition-all">leenalkhateeb9820@gmail.com</a>
                 </div>
                 <div class="flex items-center gap-6">
                     <i class="fa-brands fa-github text-xl gold-text"></i>
-                    <a href="#" class="cream-text text-lg hover:gold-text transition-colors">github.com/leen-stack</a>
+                    <a href="#" class="cream-text text-lg hover:gold-text transition-all">github.com/leen-stack</a>
+                </div>
+                <div class="flex items-center gap-6">
+                    <i class="fa-brands fa-linkedin text-xl gold-text"></i>
+                    <a href="#" class="cream-text text-lg hover:gold-text transition-all">linkedin.com/in/leen-dev</a>
                 </div>
             </div>
         </div>
-
         <div class="glass-card p-10">
             <form id="contactForm" class="space-y-6">
                 <input type="text" placeholder="Your Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text">
                 <input type="email" placeholder="Your Email" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text">
-                <textarea placeholder="Tell me about your project" rows="4" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text"></textarea>
+                <textarea placeholder="Message" rows="4" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text"></textarea>
                 <button type="submit" class="btn-gold-bg w-full py-5 rounded-2xl uppercase tracking-widest text-[10px] font-black">Send Inquiry</button>
             </form>
         </div>
     </div>
 
-    <div class="footer-line">
-        <p class="copyright-text">© 2026 LEEN DEV. ALL RIGHTS RESERVED.</p>
+    <div class="footer-divider"></div>
+    <div class="copyright-2026">
+        © 2026 LEEN DEV. ALL RIGHTS RESERVED.
     </div>
 </footer>
 
@@ -154,7 +156,5 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-<script src="main.js"></script>
 </body>
 </html>
-
