@@ -56,25 +56,25 @@
         <span class="cream-text">My Technical</span> <span class="gold-text">Arsenal</span>
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-layer-group text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Frontend</h4>
             <p class="muted-text text-sm mb-4">React.js, Tailwind CSS, JavaScript (ES6+), Responsive Design.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[95%]"></div></div>
         </div>
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-gears text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Backend</h4>
             <p class="muted-text text-sm mb-4">Node.js, Express, RESTful APIs, System Design.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[90%]"></div></div>
         </div>
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-database text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Database</h4>
             <p class="muted-text text-sm mb-4">MongoDB, SQL, Firebase, Data Modeling.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[85%]"></div></div>
         </div>
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-box-open text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Libraries</h4>
             <p class="muted-text text-sm mb-4">Axios, Redux, Framer Motion, External APIs Integration.</p>
@@ -84,25 +84,25 @@
 </section>
 
 <section id="projects" class="py-32 px-10 md:px-32">
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-7xl mx-auto">
         <h3 class="text-5xl mb-24 font-bold"><span class="cream-text">Featured</span> <span class="gold-text">Work</span></h3>
-        <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
-            <div class="glass-card group flex flex-col h-full">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="project-image.jpg" alt="Croissant & Co" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500">
+            <div class="glass-card group overflow-hidden flex flex-col">
+                <div class="h-72 overflow-hidden">
+                    <img src="project-image.jpg" alt="Croissant & Co" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
                 </div>
-                <div class="p-8 flex flex-col flex-grow">
-                    <div class="flex gap-2 mb-4">
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Node.js</span>
+                <div class="p-10 flex flex-col flex-grow">
+                    <div class="flex gap-3 mb-6">
+                        <span class="skill-tag">Full Stack</span>
+                        <span class="skill-tag">E-commerce</span>
                     </div>
-                    <h4 class="text-2xl mb-3 cream-text">Croissant & Co.</h4>
-                    <p class="muted-text text-sm mb-6 flex-grow">
+                    <h4 class="text-3xl font-bold cream-text mb-4">Croissant & Co.</h4>
+                    <p class="muted-text text-lg mb-8 leading-relaxed">
                         A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.
                     </p>
-                    <p class="gold-text font-bold text-[10px] tracking-widest uppercase mb-6">E-Commerce Solution</p>
-                    <a href="#" class="gold-text flex items-center gap-2 font-bold uppercase text-xs">
+                    <p class="gold-text font-bold text-xs tracking-widest uppercase mb-8">E-Commerce Solution</p>
+                    <a href="#" class="gold-text flex items-center gap-3 font-bold uppercase tracking-widest text-sm mt-auto">
                         Explore Project <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
@@ -126,16 +126,23 @@
                     <i class="fa-brands fa-github text-xl gold-text social-icon"></i>
                     <a href="#" class="cream-text text-lg transition-colors">github.com/leen-stack</a>
                 </div>
+                <div class="flex items-center gap-6">
+                    <i class="fa-brands fa-linkedin text-xl gold-text social-icon"></i>
+                    <a href="#" class="cream-text text-lg transition-colors">linkedin.com/in/leen-dev</a>
+                </div>
             </div>
         </div>
         <div class="glass-card p-10">
             <form id="contactForm" class="space-y-6">
                 <input type="text" placeholder="Your Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text">
                 <input type="email" placeholder="Your Email" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text">
-                <textarea placeholder="Message" rows="4" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text"></textarea>
+                <textarea placeholder="Tell me about your project" rows="4" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text"></textarea>
                 <button type="submit" class="btn-gold-bg w-full py-5 rounded-2xl uppercase tracking-widest text-[10px] font-black">Send Inquiry</button>
             </form>
         </div>
+    </div>
+    <div class="copyright">
+        &copy; 2026 LEEN DEV. All rights reserved.
     </div>
 </footer>
 
@@ -147,8 +154,11 @@
         themeIcon.classList.toggle('fa-moon');
         themeIcon.classList.toggle('fa-sun');
     });
+
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) entry.target.classList.add('active'); 
+        });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
