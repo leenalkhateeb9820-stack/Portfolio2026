@@ -10,11 +10,11 @@
 }
 
 .light {
-    --main-bg: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    --nav-bg: rgba(255, 255, 255, 0.9);
-    --card-bg: rgba(0, 0, 0, 0.05);
-    --text-main: #1e293b;
-    --text-muted: rgba(30, 41, 59, 0.7);
+    --main-bg: linear-gradient(135deg, #fff5f5 0%, #ffe4e6 100%);
+    --nav-bg: rgba(255, 241, 242, 0.9);
+    --card-bg: rgba(255, 255, 255, 0.4);
+    --text-main: #4c0519;
+    --text-muted: #9f1239;
 }
 
 body { 
@@ -94,25 +94,31 @@ button[type="submit"]:active {
     color: var(--text-main);
     transition: all 0.3s ease;
 }
+
 .light body {
-    background: #f1f5f9 !important;
-    color: #1e293b !important;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe4e6 100%) !important;
+    color: #4c0519 !important;
 }
 
 .light nav {
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    background-color: rgba(255, 241, 242, 0.9) !important;
+    border-bottom: 1px solid rgba(190, 18, 60, 0.1);
 }
 
 .light .glass-card {
-    background: rgba(0, 0, 0, 0.05) !important;
-    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(251, 113, 133, 0.2) !important;
+    box-shadow: 0 10px 30px rgba(251, 113, 133, 0.05);
 }
 
 .light h1, .light h2, .light h3, .light h4, .light .section-title {
-    color: #0f172a !important;
+    color: #881337 !important;
 }
 
 .light p, .light span:not(.text-red-500) {
-    color: #475569 !important;
+    color: #9f1239 !important;
+}
+
+.light #theme-toggle {
+    color: #be123c;
 }
