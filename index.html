@@ -55,7 +55,8 @@
     <h3 class="text-5xl mb-24 font-bold text-left">
         <span class="cream-text">My Technical</span> <span class="gold-text">Arsenal</span>
     </h3>
-    <div class="grid grid-cols-4 gap-8"> <div class="glass-card p-8 transition-transform hover:-translate-y-2">
+    <div class="grid grid-cols-4 gap-8"> 
+        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-layer-group text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text font-bold">Frontend</h4>
             <p class="muted-text text-sm mb-4">React.js, Tailwind CSS, JavaScript (ES6+), Responsive Design.</p>
@@ -83,35 +84,14 @@
 </section>
 
 <section id="projects" class="py-32 px-32">
-    <div class="max-w-4xl"> <h3 class="text-5xl mb-24 font-bold text-left">
+    <div class="max-w-4xl"> 
+        <h3 class="text-5xl mb-24 font-bold text-left">
             <span class="cream-text">Featured</span> 
             <span class="gold-text">Work</span>
         </h3>
         
         <div id="projects-grid" class="flex flex-col gap-12">
-            <div class="glass-card overflow-hidden flex flex-row items-center p-8 gap-10 min-w-[900px]">
-                <div class="flex-1">
-                    <p class="mb-4 font-bold uppercase text-xs tracking-widest gold-text opacity-80">
-                        E-Commerce Solution
-                    </p>
-                    <h4 class="text-4xl mb-6 font-bold gold-text">Croissant & Co.</h4>
-                    <p class="mb-8 text-lg leading-relaxed cream-text">
-                        A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.
-                    </p>
-                    <div class="flex gap-3 mb-10 flex-nowrap">
-                        <span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 gold-text">Full Stack</span>
-                        <span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 gold-text">Tailwind CSS</span>
-                        <span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 gold-text">UX Design</span>
-                    </div>
-                    <a href="#" class="flex items-center gap-2 font-bold uppercase tracking-widest text-sm transition-transform hover:translate-x-2 gold-text">
-                        Explore Project <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="flex-shrink-0">
-                    <img src="croissant.webp" alt="Croissant" class="w-64 h-auto object-contain transform hover:scale-110 transition-transform duration-500">
-                </div>
             </div>
-        </div>
     </div>
 </section>
 
@@ -184,9 +164,36 @@
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // كود تحميل المشاريع في الصفحة الرئيسية بالتنسيق الجديد
+    async function fetchProjects() {
+        const grid = document.getElementById('projects-grid');
+        try {
+            const response = await fetch('https://leen-portfolio2026.onrender.com/api/projects');
+            const projects = await response.json();
+            grid.innerHTML = projects.map(p => `
+                <div class="glass-card overflow-hidden flex flex-row items-center p-8 gap-10 min-w-[900px]">
+                    <div class="flex-1">
+                        <p class="mb-4 font-bold uppercase text-xs tracking-widest gold-text opacity-80">${p.type}</p>
+                        <h4 class="text-4xl mb-6 font-bold gold-text">${p.title}</h4>
+                        <p class="mb-8 text-lg leading-relaxed cream-text">${p.description}</p>
+                        <div class="flex gap-3 mb-10 flex-nowrap">
+                            ${p.tags.map(tag => `<span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 gold-text">${tag}</span>`).join('')}
+                        </div>
+                        <a href="${p.link}" class="flex items-center gap-2 font-bold uppercase tracking-widest text-sm transition-transform hover:translate-x-2 gold-text">
+                            Explore Project <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <img src="${p.image}" alt="${p.title}" class="w-64 h-auto object-contain transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+            `).join('');
+        } catch (err) {
+            console.error("Error fetching projects:", err);
+        }
+    }
+    fetchProjects();
 </script>
 </body>
 </html>
-
-
-
