@@ -56,25 +56,25 @@
         <span class="cream-text">My Technical</span> <span class="gold-text">Arsenal</span>
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
+        <div class="glass-card p-8">
             <i class="fa-solid fa-layer-group text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Frontend</h4>
             <p class="muted-text text-sm mb-4">React.js, Tailwind CSS, JavaScript (ES6+), Responsive Design.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[95%]"></div></div>
         </div>
-        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
+        <div class="glass-card p-8">
             <i class="fa-solid fa-gears text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Backend</h4>
             <p class="muted-text text-sm mb-4">Node.js, Express, RESTful APIs, System Design.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[90%]"></div></div>
         </div>
-        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
+        <div class="glass-card p-8">
             <i class="fa-solid fa-database text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Database</h4>
             <p class="muted-text text-sm mb-4">MongoDB, SQL, Firebase, Data Modeling.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[85%]"></div></div>
         </div>
-        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
+        <div class="glass-card p-8">
             <i class="fa-solid fa-box-open text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Libraries</h4>
             <p class="muted-text text-sm mb-4">Axios, Redux, Framer Motion, External APIs Integration.</p>
@@ -86,19 +86,28 @@
 <section id="projects" class="py-32 px-10 md:px-32">
     <div class="max-w-6xl mx-auto">
         <h3 class="text-5xl mb-24 font-bold"><span class="cream-text">Featured</span> <span class="gold-text">Work</span></h3>
-        <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-24">
-            <div class="glass-card overflow-hidden group">
-                <div class="h-64 bg-white/5 overflow-hidden">
-                    <img src="project-image.jpg" alt="Croissant & Co" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500">
+        
+        <div class="project-card group">
+            <div class="max-w-xl">
+                <p class="gold-text font-bold text-xs tracking-widest mb-4 uppercase">E-Commerce Solution</p>
+                <h4 class="text-4xl font-extrabold cream-text mb-6">Croissant & Co.</h4>
+                <p class="muted-text text-lg mb-8 leading-relaxed">
+                    A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.
+                </p>
+                
+                <div class="flex gap-3 mb-10">
+                    <span class="tag">Full Stack</span>
+                    <span class="tag">Tailwind CSS</span>
+                    <span class="tag">UX Design</span>
                 </div>
-                <div class="p-10">
-                    <h4 class="text-2xl mb-4 cream-text">Croissant & Co.</h4>
-                    <p class="muted-text mb-6">A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.</p>
-                    <p class="gold-text mb-6 font-bold uppercase text-xs tracking-[0.2em]">E-Commerce Solution</p>
-                    <a href="#" class="gold-text flex items-center gap-2 font-bold uppercase tracking-widest text-xs group-hover:gap-4 transition-all">
-                        Explore Project <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
+
+                <a href="#" class="gold-text flex items-center gap-3 font-bold uppercase tracking-widest text-sm hover:gap-5 transition-all">
+                    Explore Project <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div class="hidden lg:block relative">
+                <img src="project-image.png" alt="Croissant Character" class="w-80 h-auto transform group-hover:scale-105 transition-transform duration-500">
             </div>
         </div>
     </div>
@@ -111,15 +120,15 @@
             <p class="muted-text mb-12 max-w-sm">I'm always open to discussing new projects or creative ideas.</p>
             <div class="space-y-8">
                 <div class="flex items-center gap-6">
-                    <i class="fa-solid fa-envelope text-xl gold-text social-icon"></i>
+                    <i class="fa-solid fa-envelope text-xl gold-text"></i>
                     <a href="mailto:leenalkhateeb9820@gmail.com" class="cream-text text-lg hover:gold-text transition-colors">leenalkhateeb9820@gmail.com</a>
                 </div>
                 <div class="flex items-center gap-6">
-                    <i class="fa-brands fa-github text-xl gold-text social-icon"></i>
+                    <i class="fa-brands fa-github text-xl gold-text"></i>
                     <a href="#" class="cream-text text-lg hover:gold-text transition-colors">github.com/leen-stack</a>
                 </div>
                 <div class="flex items-center gap-6">
-                    <i class="fa-brands fa-linkedin text-xl gold-text social-icon"></i>
+                    <i class="fa-brands fa-linkedin text-xl gold-text"></i>
                     <a href="#" class="cream-text text-lg hover:gold-text transition-colors">linkedin.com/in/leen-dev</a>
                 </div>
             </div>
@@ -129,7 +138,7 @@
                 <input type="text" placeholder="Your Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text">
                 <input type="email" placeholder="Your Email" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text">
                 <textarea placeholder="Tell me about your project" rows="4" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text"></textarea>
-                <button type="submit" class="btn-gold-bg w-full py-5 rounded-2xl uppercase tracking-widest text-[10px] font-black transition-transform active:scale-95">Send Inquiry</button>
+                <button type="submit" class="btn-gold-bg w-full py-5 rounded-2xl uppercase tracking-widest text-[10px] font-black">Send Inquiry</button>
             </form>
         </div>
     </div>
@@ -151,6 +160,5 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
-<script src="main.js"></script>
 </body>
 </html>
