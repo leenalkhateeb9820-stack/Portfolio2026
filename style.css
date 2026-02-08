@@ -44,30 +44,6 @@ nav ul li a,
     font-style: normal !important;
 }
 
-.hand-drawn-arrow {
-    position: absolute;
-    width: 90px;
-    height: auto;
-    right: -100px;
-    top: 10px;
-    pointer-events: none;
-    z-index: 10;
-    transform: rotate(10deg);
-}
-
-.hand-drawn-arrow path {
-    stroke: var(--gold);
-    stroke-width: 3;
-    fill: var(--cream);
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-    animation: draw 1.5s forwards;
-}
-
-@keyframes draw { 
-    to { stroke-dashoffset: 0; } 
-}
-
 .btn-gold-bg {
     background-color: var(--gold) !important;
     color: var(--burgundy-dark) !important;
@@ -86,8 +62,6 @@ h1.main-title {
     font-size: clamp(2.5rem, 8vw, 5rem);
     line-height: 1.1;
     font-weight: 800;
-    position: relative;
-    display: inline-block;
 }
 
 .glass-card {
