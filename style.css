@@ -18,7 +18,7 @@
 }
 
 body {
-    font-family: 'Courier Prime', monospace !important;
+    font-family: 'Space Grotesk', sans-serif !important;
     background: var(--main-bg);
     color: var(--text-main);
     overflow-x: hidden;
@@ -38,7 +38,7 @@ h1.main-title {
 }
 
 h1.main-title span {
-    font-family: 'Edu QLD Beginner', cursive !important
+    font-family: 'Edu QLD Beginner', cursive !important;
     font-weight: 700 !important;
     font-style: normal !important;
     word-spacing: -0.2em !important;
@@ -46,11 +46,12 @@ h1.main-title span {
 }
 
 .fa-solid, .fa-brands, .fas, .fab, .fa, [class*="fa-"] {
-    font-family: 'Courier Prime', monospace !important;
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+    font-weight: 900 !important;
 }
 
 p, .description, span:not(.fa-solid):not(.fa-brands):not([class*="fa-"]):not(.section-title), li, a:not(nav ul li a), button, input, textarea {
-    font-family: 'Courier Prime', monospace !important;
+    font-family: 'Space Grotesk', sans-serif !important;
 }
 
 .light h1, .light h2, .light h3, .light h4, .light .section-title, .light .main-title, .light .logo-text, .light nav ul li a, .light .sub-heading {
@@ -87,8 +88,3 @@ nav { background-color: var(--nav-bg) !important; }
     opacity: 1;
     transform: translateY(0);
 }
-
-
-
-
-
