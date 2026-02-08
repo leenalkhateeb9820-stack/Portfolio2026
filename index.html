@@ -26,7 +26,7 @@
             </button>
         </li>
         <li>
-            <a href="#" class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-[10px] flex items-center gold-text">
+            <a href="#" class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl text-[10px] flex items-center gold-text font-bold">
                 <i class="fa-solid fa-lock mr-2 cream-text"></i> ADMIN
             </a>
         </li>
@@ -35,16 +35,11 @@
 
 <header class="reveal h-[80vh] flex flex-col justify-center px-10 md:px-32">
     <h2 class="sub-heading uppercase text-sm mb-4 font-bold tracking-[0.3em]">Certified Full Stack Developer</h2>
-    <div class="relative inline-block w-fit">
-        <h1 class="main-title text-white">
-            <span class="cream-text">Building the</span> 
-            <br>
-            <span class="section-title">Future Web.</span>
-        </h1>
-        <svg class="hand-drawn-arrow" viewBox="0 0 100 100">
-            <path d="M20,10 C60,10 90,40 80,80 L80,90 M70,80 L80,90 L90,80" />
-        </svg>
-    </div>
+    <h1 class="main-title text-white">
+        <span class="cream-text">Building the</span> 
+        <br>
+        <span class="section-title gold-text">Future Web.</span>
+    </h1>
     <p class="muted-text max-w-xl text-lg mt-6 mb-10 leading-relaxed">
         From database architecture to pixel-perfect front-end execution. I specialize in scalable applications and seamless user experiences.
     </p>
@@ -57,29 +52,29 @@
 </header>
 
 <section id="skills" class="reveal py-32 px-10 md:px-32">
-    <h3 class="text-center text-5xl mb-20">
+    <h3 class="text-center text-5xl mb-20 font-bold">
         <span class="cream-text">My Technical</span> <span class="gold-text">Arsenal</span>
     </h3>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-layer-group text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Frontend</h4>
             <p class="muted-text text-sm mb-4">React.js, Tailwind CSS, JavaScript (ES6+), Responsive Design.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[95%]"></div></div>
         </div>
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-gears text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Backend</h4>
             <p class="muted-text text-sm mb-4">Node.js, Express, RESTful APIs, System Design.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[90%]"></div></div>
         </div>
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-database text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Database</h4>
             <p class="muted-text text-sm mb-4">MongoDB, SQL, Firebase, Data Modeling.</p>
             <div class="skill-bar-bg"><div class="skill-bar-fill w-[85%]"></div></div>
         </div>
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-box-open text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text">Libraries</h4>
             <p class="muted-text text-sm mb-4">Axios, Redux, Framer Motion, External APIs Integration.</p>
@@ -90,17 +85,17 @@
 
 <section id="projects" class="py-32 px-10 md:px-32">
     <div class="max-w-6xl mx-auto">
-        <h3 class="text-5xl mb-24"><span class="cream-text">Featured</span> <span class="gold-text">Work</span></h3>
+        <h3 class="text-5xl mb-24 font-bold"><span class="cream-text">Featured</span> <span class="gold-text">Work</span></h3>
         <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-24">
-            <div class="glass-card overflow-hidden">
-                <div class="h-64 bg-white/5">
-                    <img src="project-image.jpg" alt="Croissant" class="w-full h-full object-cover opacity-50">
+            <div class="glass-card overflow-hidden group">
+                <div class="h-64 bg-white/5 overflow-hidden">
+                    <img src="project-image.jpg" alt="Croissant & Co" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-500">
                 </div>
                 <div class="p-10">
                     <h4 class="text-2xl mb-4 cream-text">Croissant & Co.</h4>
                     <p class="muted-text mb-6">A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.</p>
-                    <p class="gold-text mb-6 font-bold uppercase text-xs tracking-widest">E-Commerce Solution</p>
-                    <a href="#" class="gold-text flex items-center gap-2 font-bold uppercase tracking-widest text-xs transition-transform hover:translate-x-2">
+                    <p class="gold-text mb-6 font-bold uppercase text-xs tracking-[0.2em]">E-Commerce Solution</p>
+                    <a href="#" class="gold-text flex items-center gap-2 font-bold uppercase tracking-widest text-xs group-hover:gap-4 transition-all">
                         Explore Project <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
@@ -112,20 +107,20 @@
 <footer id="contact" class="reveal py-32 px-10 md:px-32 border-t border-white/5">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
         <div>
-            <h2 class="text-6xl mb-8 tracking-tighter"><span class="cream-text">Let's</span> <span class="gold-text">Connect</span></h2>
+            <h2 class="text-6xl mb-8 tracking-tighter font-bold"><span class="cream-text">Let's</span> <span class="gold-text">Connect</span></h2>
             <p class="muted-text mb-12 max-w-sm">I'm always open to discussing new projects or creative ideas.</p>
             <div class="space-y-8">
                 <div class="flex items-center gap-6">
                     <i class="fa-solid fa-envelope text-xl gold-text social-icon"></i>
-                    <a href="mailto:leenalkhateeb9820@gmail.com" class="cream-text text-lg transition-opacity hover:opacity-70">leenalkhateeb9820@gmail.com</a>
+                    <a href="mailto:leenalkhateeb9820@gmail.com" class="cream-text text-lg hover:gold-text transition-colors">leenalkhateeb9820@gmail.com</a>
                 </div>
                 <div class="flex items-center gap-6">
                     <i class="fa-brands fa-github text-xl gold-text social-icon"></i>
-                    <a href="#" class="cream-text text-lg transition-opacity hover:opacity-70">github.com/leen-stack</a>
+                    <a href="#" class="cream-text text-lg hover:gold-text transition-colors">github.com/leen-stack</a>
                 </div>
                 <div class="flex items-center gap-6">
                     <i class="fa-brands fa-linkedin text-xl gold-text social-icon"></i>
-                    <a href="#" class="cream-text text-lg transition-opacity hover:opacity-70">linkedin.com/in/leen-dev</a>
+                    <a href="#" class="cream-text text-lg hover:gold-text transition-colors">linkedin.com/in/leen-dev</a>
                 </div>
             </div>
         </div>
