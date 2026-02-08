@@ -39,38 +39,38 @@ async function renderProjects() {
         allProjects = staticProjects;
     }
 
-container.innerHTML = allProjects.map(p => `
-    <div class="reveal relative group flex items-center justify-center w-full mb-12">
-        <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[300px] flex flex-col justify-center">
-            
-            <div class="relative z-20 pr-32 md:pr-40 text-left"> 
-                <span class="${p.colorClass || 'text-red-500'} font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">${p.type}</span>
+    container.innerHTML = allProjects.map(p => `
+        <div class="reveal relative group flex items-center justify-center w-full mb-12">
+            <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[300px] flex flex-col justify-center">
                 
-                <h4 class="text-xl md:text-3xl font-extrabold text-white dark:text-white light:text-[#4c0519] mb-3 leading-tight whitespace-nowrap md:whitespace-normal overflow-hidden overflow-ellipsis">
-                    ${p.title}
-                </h4>
-                
-                <p class="text-white/70 light:text-[#9f1239] text-[11px] md:text-xs leading-relaxed mb-4">${p.description}</p>
-                
-                <div class="flex flex-wrap gap-2 mb-6">
-                    ${p.tags ? p.tags.map(tag => `
-                        <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-md text-[9px] text-white/50 light:text-[#9f1239]/70 font-bold uppercase tracking-wider">
-                            ${tag}
-                        </span>
-                    `).join('') : ''}
+                <div class="relative z-20 pr-32 md:pr-40 text-left"> 
+                    <span class="${p.colorClass || 'text-white'} font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">${p.type}</span>
+                    
+                    <h4 class="text-xl md:text-3xl font-extrabold text-white mb-3 leading-tight whitespace-nowrap md:whitespace-normal overflow-hidden overflow-ellipsis">
+                        ${p.title}
+                    </h4>
+                    
+                    <p class="text-white/70 text-[11px] md:text-xs leading-relaxed mb-4">${p.description}</p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        ${p.tags ? p.tags.map(tag => `
+                            <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-md text-[9px] text-white/50 font-bold uppercase tracking-wider">
+                                ${tag}
+                            </span>
+                        `).join('') : ''}
+                    </div>
+
+                    <a href="${p.link}" target="_blank" class="${p.colorClass || 'text-white'} font-bold text-[10px] uppercase tracking-widest group/link inline-flex items-center">
+                        Explore Project <i class="fa-solid fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
+                    </a>
                 </div>
 
-                <a href="${p.link}" target="_blank" class="${p.colorClass || 'text-white'} font-bold text-[10px] uppercase tracking-widest group/link inline-flex items-center">
-                    Explore Project <i class="fa-solid fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
-                </a>
-            </div>
-
-            <div class="absolute right-0 bottom-0 w-44 h-44 md:w-60 md:h-60 z-10 pointer-events-none transition-transform duration-700 group-hover:scale-105 translate-x-4 translate-y-4">
-                <img src="${p.image}" alt="${p.title}" class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
+                <div class="absolute right-0 bottom-0 w-44 h-44 md:w-60 md:h-60 z-10 pointer-events-none transition-transform duration-700 group-hover:scale-105 translate-x-4 translate-y-4">
+                    <img src="${p.image}" alt="${p.title}" class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
+                </div>
             </div>
         </div>
-    </div>
-`).join('');
+    `).join('');
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -81,6 +81,7 @@ container.innerHTML = allProjects.map(p => `
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
+// Contact Form Submission Logic
 async function handleContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
@@ -124,60 +125,7 @@ async function handleContactForm() {
     });
 }
 
-function handleThemeToggle() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const htmlElement = document.documentElement;
-
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        htmlElement.classList.add('light');
-        if(themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    if (themeToggle) {
-        themeToggle.onclick = function() {
-            htmlElement.classList.toggle('light');
-            
-            if (htmlElement.classList.contains('light')) {
-                localStorage.setItem('theme', 'light');
-                if(themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                localStorage.setItem('theme', 'dark');
-                if(themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
-            }
-        };
-    }
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
-    handleThemeToggle();
 });
-function initTheme() {
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const html = document.documentElement;
-
-    if (!themeToggle) return;
-
-    if (localStorage.getItem('theme') === 'light') {
-        html.classList.add('light');
-        if (themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    themeToggle.addEventListener('click', () => {
-        html.classList.toggle('light');
-        const isLight = html.classList.contains('light');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        
-        if (themeIcon) {
-            if (isLight) themeIcon.classList.replace('fa-moon', 'fa-sun');
-            else themeIcon.classList.replace('fa-sun', 'fa-moon');
-        }
-    });
-}
-
-document.addEventListener('DOMContentLoaded', initTheme);
-
