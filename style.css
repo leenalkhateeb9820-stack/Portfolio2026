@@ -26,121 +26,89 @@
     box-sizing: border-box;
 }
 
+html {
+    /* هذا يمنع ظهور شريط التمرير العرضي المزعج ويسمح بالتحكم بالمقياس */
+    overflow-x: hidden;
+    width: 100%;
+}
+
 body {
     font-family: 'Bricolage Grotesque', sans-serif !important;
     background: var(--main-bg);
     color: var(--text-main);
-    transition: all 0.3s ease;
-   
-    min-width: 1100px; 
-    overflow-x: auto;
+    transition: background 0.3s ease;
+    /* تحديد عرض ثابت داخلي لضمان عدم تحرك العناصر */
+    width: 1440px; 
+    transform-origin: top left;
+    min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6, p, a, span, li, button, input, textarea {
-    font-family: 'Bricolage Grotesque', sans-serif !important;
-}
-
+/* --- الهيدر والناف بار --- */
 nav {
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(238, 186, 11, 0.1);
-    transition: background 0.3s ease;
+    width: 1440px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-title {
+    font-size: 5rem;
+    line-height: 1.1;
+    font-weight: 800;
     white-space: nowrap;
 }
 
-.logo-text, 
-nav ul li a, 
-.sub-heading, 
-.section-title, 
-.gold-text, 
-.btn-gold-bg {
-    color: var(--gold) !important;
+/* --- المشاريع (تثبيت الشكل الأفقي) --- */
+#projects-grid .glass-card {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    min-height: 400px;
 }
-
-.btn-gold-bg {
-    background-color: var(--gold) !important;
-    color: var(--burgundy-dark) !important;
-    font-weight: 800 !important;
-    display: inline-block;
-    text-align: center;
-}
-
-.btn-gold-border {
-    border: 2px solid var(--gold) !important;
-    background: transparent !important;
-}
-
-.cream-text { color: var(--cream) !important; }
-.muted-text { color: var(--cream-muted) !important; }
 
 .glass-card {
     background: var(--card-bg);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(238, 186, 11, 0.2);
     border-radius: 2rem;
-    transition: transform 0.3s ease, background 0.3s ease;
 }
 
+/* ألوان النصوص */
+.gold-text { color: var(--gold) !important; }
+.cream-text { color: var(--cream) !important; }
+.muted-text { color: var(--cream-muted) !important; }
 
-#projects-grid .glass-card {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important; 
-    min-width: 900px !important;
-    max-height: 450px; 
-    overflow: hidden;
+.btn-gold-bg {
+    background-color: var(--gold) !important;
+    color: var(--burgundy-dark) !important;
+    font-weight: 800 !important;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
 }
 
-.skill-bar-bg { 
-    background: rgba(254, 254, 227, 0.1); 
-    height: 4px; 
-    border-radius: 2px; 
+.btn-gold-border {
+    border: 2px solid var(--gold) !important;
+    padding: 1rem 2.5rem;
+    border-radius: 9999px;
+    color: var(--cream) !important;
 }
 
-.skill-bar-fill { 
-    background: var(--gold); 
-    height: 100%; 
-    border-radius: 2px; 
-}
+.skill-bar-bg { background: rgba(254, 254, 227, 0.1); height: 4px; border-radius: 2px; }
+.skill-bar-fill { background: var(--gold); height: 100%; border-radius: 2px; }
 
-.reveal { 
-    opacity: 0; 
-    transform: translateY(30px); 
-    transition: 0.8s ease-out; 
-}
-
-.reveal.active { 
-    opacity: 1; 
-    transform: translateY(0); 
-}
-
-.footer-divider {
-    border-top: 1px solid rgba(254, 254, 227, 0.1);
-    margin: 80px auto 0;
-    width: 90%;
-}
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
 .copyright-2026 {
     text-align: center;
     padding: 40px 0;
-    color: var(--text-main);
     opacity: 0.3;
     font-size: 10px;
     letter-spacing: 3px;
     text-transform: uppercase;
-}
-
-.main-title {
-    font-size: clamp(2.5rem, 5vw, 5rem);
-    line-height: 1.1;
-    font-weight: 800;
-    white-space: nowrap;
-}
-
-@media (max-width: 1024px) {
-    header, section, footer {
-        padding-left: 8% !important;
-        padding-right: 8% !important;
-    }
 }
