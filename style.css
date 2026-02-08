@@ -26,49 +26,45 @@
     box-sizing: border-box;
 }
 
-html {
-    /* هذا يمنع ظهور شريط التمرير العرضي المزعج ويسمح بالتحكم بالمقياس */
-    overflow-x: hidden;
-    width: 100%;
-}
-
 body {
     font-family: 'Bricolage Grotesque', sans-serif !important;
     background: var(--main-bg);
     color: var(--text-main);
-    transition: background 0.3s ease;
-    /* تحديد عرض ثابت داخلي لضمان عدم تحرك العناصر */
-    width: 1440px; 
-    transform-origin: top left;
-    min-height: 100vh;
+    transition: all 0.3s ease;
+    /* تثبيت العرض تماماً لمنع التداخل */
+    min-width: 1100px; 
+    width: 1100px;
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 
-/* --- الهيدر والناف بار --- */
 nav {
+    width: 1100px;
     background: var(--nav-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(238, 186, 11, 0.1);
-    width: 1440px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    white-space: nowrap;
 }
 
 .main-title {
-    font-size: 5rem;
+    font-size: 4.5rem;
     line-height: 1.1;
     font-weight: 800;
     white-space: nowrap;
 }
 
-/* --- المشاريع (تثبيت الشكل الأفقي) --- */
-#projects-grid .glass-card {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    flex-wrap: nowrap !important;
-    width: 100% !important;
-    min-height: 400px;
+.btn-gold-bg {
+    background-color: var(--gold) !important;
+    color: var(--burgundy-dark) !important;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-gold-border {
+    border: 2px solid var(--gold) !important;
+    background: transparent !important;
+    text-decoration: none;
 }
 
 .glass-card {
@@ -76,26 +72,17 @@ nav {
     backdrop-filter: blur(12px);
     border: 1px solid rgba(238, 186, 11, 0.2);
     border-radius: 2rem;
+    transition: transform 0.3s ease;
 }
 
-/* ألوان النصوص */
-.gold-text { color: var(--gold) !important; }
-.cream-text { color: var(--cream) !important; }
-.muted-text { color: var(--cream-muted) !important; }
-
-.btn-gold-bg {
-    background-color: var(--gold) !important;
-    color: var(--burgundy-dark) !important;
-    font-weight: 800 !important;
-    padding: 1rem 2.5rem;
-    border-radius: 9999px;
-}
-
-.btn-gold-border {
-    border: 2px solid var(--gold) !important;
-    padding: 1rem 2.5rem;
-    border-radius: 9999px;
-    color: var(--cream) !important;
+/* حل مشكلة التداخل في كرت المشروع */
+#projects-grid .glass-card {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important; /* يمنع نزول الصورة تحت النص */
+    min-height: 400px;
+    padding: 40px;
 }
 
 .skill-bar-bg { background: rgba(254, 254, 227, 0.1); height: 4px; border-radius: 2px; }
@@ -103,6 +90,12 @@ nav {
 
 .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
 .reveal.active { opacity: 1; transform: translateY(0); }
+
+.footer-divider {
+    border-top: 1px solid rgba(254, 254, 227, 0.1);
+    margin: 80px auto 0;
+    width: 90%;
+}
 
 .copyright-2026 {
     text-align: center;
