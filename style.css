@@ -40,7 +40,8 @@ h1.main-title {
 h1.main-title span {
     font-family: 'Courier Prime', monospace !important;
     font-weight: 400 !important;
-    font-style: italic !important;
+    font-style: normal !important;
+    display: inline !important;
 }
 
 .fa-solid, .fa-brands, .fas, .fab, .fa, [class*="fa-"] {
@@ -85,5 +86,6 @@ nav { background-color: var(--nav-bg) !important; }
     opacity: 1;
     transform: translateY(0);
 }
+
 
 
