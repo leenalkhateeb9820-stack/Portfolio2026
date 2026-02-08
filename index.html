@@ -2,20 +2,19 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leen | Full Stack Developer</title>
+    <meta name="viewport" content="width=1200"> <title>Leen | Full Stack Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="min-w-[1200px]">
 
-<nav class="flex justify-between items-center px-6 md:px-24 py-6 sticky top-0 z-50">
-    <div class="logo-text text-2xl tracking-tighter uppercase font-extrabold">
+<nav class="flex justify-between items-center px-24 py-6 sticky top-0 z-50 flex-nowrap">
+    <div class="logo-text text-2xl tracking-tighter uppercase font-extrabold flex-shrink-0">
         LEEN <span class="cream-text">.</span> DEV
     </div>
-    <ul class="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-widest font-bold">
+    <ul class="flex items-center gap-10 text-[11px] uppercase tracking-widest font-bold flex-nowrap">
         <li><a href="#" class="hover:opacity-70 transition">Experience</a></li>
         <li><a href="#skills" class="hover:opacity-70 transition">Stack</a></li>
         <li><a href="#projects" class="hover:opacity-70 transition">Projects</a></li>
@@ -33,9 +32,9 @@
     </ul>
 </nav>
 
-<header class="reveal h-[80vh] flex flex-col justify-center px-10 md:px-32">
+<header class="reveal h-[80vh] flex flex-col justify-center px-32">
     <h2 class="sub-heading uppercase text-sm mb-4 font-bold tracking-[0.3em]">Certified Full Stack Developer</h2>
-    <h1 class="main-title">
+    <h1 class="main-title text-7xl font-bold leading-tight">
         <span class="cream-text">Building the</span> 
         <br>
         <span class="section-title gold-text">Future Web.</span>
@@ -49,12 +48,11 @@
     </div>
 </header>
 
-<section id="skills" class="reveal py-32 px-10 md:px-32">
-    <h3 class="text-center text-5xl mb-20 font-bold">
+<section id="skills" class="reveal py-32 px-32">
+    <h3 class="text-5xl mb-24 font-bold text-left">
         <span class="cream-text">My Technical</span> <span class="gold-text">Arsenal</span>
     </h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="glass-card p-8 transition-transform hover:-translate-y-2">
+    <div class="grid grid-cols-4 gap-8"> <div class="glass-card p-8 transition-transform hover:-translate-y-2">
             <i class="fa-solid fa-layer-group text-3xl mb-6 gold-text"></i>
             <h4 class="text-xl mb-4 cream-text font-bold">Frontend</h4>
             <p class="muted-text text-sm mb-4">React.js, Tailwind CSS, JavaScript (ES6+), Responsive Design.</p>
@@ -81,60 +79,47 @@
     </div>
 </section>
 
-<section id="projects" class="py-32 px-10 md:px-32">
-    <div class="max-w-4xl mx-auto">
-        <h3 class="text-5xl mb-24 font-bold">
+<section id="projects" class="py-32 px-32">
+    <div class="max-w-4xl"> <h3 class="text-5xl mb-24 font-bold text-left">
             <span class="cream-text">Featured</span> 
             <span class="gold-text">Work</span>
         </h3>
         
         <div id="projects-grid" class="flex flex-col gap-12">
-            <div class="glass-card overflow-hidden flex flex-col md:flex-row items-center p-6 md:p-8 gap-6">
-                
-                <div class="flex-1 order-2 md:order-1">
+            <div class="glass-card overflow-hidden flex flex-row items-center p-8 gap-10 min-w-[900px]">
+                <div class="flex-1">
                     <p class="mb-4 font-bold uppercase text-xs tracking-widest gold-text opacity-80">
                         E-Commerce Solution
                     </p>
-                    
                     <h4 class="text-4xl mb-6 font-bold gold-text">Croissant & Co.</h4>
-                    
                     <p class="mb-8 text-lg leading-relaxed cream-text">
                         A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.
                     </p>
-                    
-                    <div class="flex gap-3 mb-10 flex-wrap">
+                    <div class="flex gap-3 mb-10 flex-nowrap">
                         <span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 gold-text">Full Stack</span>
                         <span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 gold-text">Tailwind CSS</span>
                         <span class="px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider bg-white/5 border border-white/10 gold-text">UX Design</span>
                     </div>
-                    
                     <a href="#" class="flex items-center gap-2 font-bold uppercase tracking-widest text-sm transition-transform hover:translate-x-2 gold-text">
                         Explore Project <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
-
-                <div class="flex-shrink-0 order-1 md:order-2">
-                    <img src="croissant.webp" alt="Croissant" class="w-48 md:w-64 h-auto object-contain transform hover:scale-110 transition-transform duration-500">
+                <div class="flex-shrink-0">
+                    <img src="croissant.webp" alt="Croissant" class="w-64 h-auto object-contain transform hover:scale-110 transition-transform duration-500">
                 </div>
-
             </div>
         </div>
     </div>
 </section>
 
-<footer id="contact" class="reveal py-32 px-10 md:px-32 border-t border-white/5">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
+<footer id="contact" class="reveal py-32 px-32 border-t border-white/5">
+    <div class="grid grid-cols-2 gap-24">
         <div>
             <h2 class="text-6xl mb-8 tracking-tighter font-bold"><span class="cream-text">Let's</span> <span class="gold-text">Connect</span></h2>
-            <p class="muted-text mb-12 max-w-sm">I'm always open to discussing new projects or creative ideas.</p>
             <div class="space-y-8">
                 <div class="flex items-center gap-6">
                     <i class="fa-solid fa-envelope text-xl gold-text"></i>
                     <a href="mailto:leenalkhateeb9820@gmail.com" class="cream-text text-lg hover:gold-text transition-all">leenalkhateeb9820@gmail.com</a>
-                </div>
-                <div class="flex items-center gap-6">
-                    <i class="fa-brands fa-github text-xl gold-text"></i>
-                    <a href="#" class="cream-text text-lg hover:gold-text transition-all">github.com/leen-stack</a>
                 </div>
                 <div class="flex items-center gap-6">
                     <i class="fa-brands fa-linkedin text-xl gold-text"></i>
@@ -145,17 +130,13 @@
         <div class="glass-card p-10">
             <form id="contactForm" class="space-y-6">
                 <input type="text" placeholder="Your Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-[#eeba0b] cream-text">
-                <input type="email" placeholder="Your Email" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-[#eeba0b] cream-text">
                 <textarea placeholder="Message" rows="4" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-[#eeba0b] cream-text"></textarea>
                 <button type="submit" class="btn-gold-bg w-full py-5 rounded-2xl uppercase tracking-widest text-[10px] font-black">Send Inquiry</button>
             </form>
         </div>
     </div>
-
     <div class="footer-divider"></div>
-    <div class="copyright-2026">
-        © 2026 LEEN DEV. ALL RIGHTS RESERVED.
-    </div>
+    <div class="copyright-2026">© 2026 LEEN DEV. ALL RIGHTS RESERVED.</div>
 </footer>
 
 <script>
@@ -168,12 +149,9 @@
     });
 
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { 
-            if (entry.isIntersecting) entry.target.classList.add('active'); 
-        });
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
-
