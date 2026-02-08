@@ -94,3 +94,25 @@ button[type="submit"]:active {
     color: var(--text-main);
     transition: all 0.3s ease;
 }
+.light body {
+    background: #f1f5f9 !important;
+    color: #1e293b !important;
+}
+
+.light nav {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.light .glass-card {
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.light h1, .light h2, .light h3, .light h4, .light .section-title {
+    color: #0f172a !important;
+}
+
+.light p, .light span:not(.text-red-500) {
+    color: #475569 !important;
+}
