@@ -25,19 +25,34 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3, .section-title, .main-title, .logo-text, 
-[class*="text-4xl"], [class*="text-5xl"], [class*="text-6xl"], [class*="text-8xl"], [class*="text-9xl"] {
+h1, h2, h3, h4, h5, h6, .section-title, .main-title, .logo-text {
     font-family: 'Bricolage Grotesque', sans-serif !important;
     font-weight: 800 !important;
     letter-spacing: -0.04em !important;
 }
 
-.fa-solid, .fa-brands, .fas, .fab, .fa {
+.fa-solid, .fa-brands, .fas, .fab, .fa, [class*="fa-"] {
     font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
 }
 
-p, .description, span:not(.fa-solid):not(.fa-brands), li, a, button, input, textarea {
+p, .description, span:not(.fa-solid):not(.fa-brands):not([class*="fa-"]), li, a, button, input, textarea {
     font-family: 'Space Grotesk', sans-serif !important;
+}
+
+.light h1, .light h2, .light h3, .light h4, .light .section-title, .light .main-title, .light .logo-text {
+    color: #4c0519 !important;
+}
+
+.light p, .light li, .light a, .light .description, .light span:not(.text-red-500):not(.text-orange-500) {
+    color: #9f1239 !important;
+}
+
+.light .glass-card h4, .light #projects-grid h4 {
+    color: #4c0519 !important;
+}
+
+.light .glass-card p, .light #projects-grid p {
+    color: #9f1239 !important;
 }
 
 h1.main-title {
@@ -63,9 +78,3 @@ nav { background-color: var(--nav-bg) !important; }
     opacity: 1;
     transform: translateY(0);
 }
-
-.light body { background: var(--main-bg) !important; color: var(--text-main) !important; }
-.light nav { background-color: var(--nav-bg) !important; }
-.light .glass-card { background: var(--card-bg) !important; }
-.light h1, .light h2, .light h3, .light .section-title { color: #881337 !important; }
-.light p, .light span:not(.text-red-500) { color: #9f1239 !important; }
