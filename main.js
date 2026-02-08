@@ -81,7 +81,6 @@ async function renderProjects() {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
-// Contact Form Submission Logic
 async function handleContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
@@ -125,7 +124,32 @@ async function handleContactForm() {
     });
 }
 
+function handleThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const htmlElement = document.documentElement;
+
+    if (!themeToggle || !themeIcon) return;
+
+    if (localStorage.getItem('theme') === 'light') {
+        htmlElement.classList.add('light');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+        htmlElement.classList.toggle('light');
+        if (htmlElement.classList.contains('light')) {
+            localStorage.setItem('theme', 'light');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            localStorage.setItem('theme', 'dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
+    handleThemeToggle();
 });
