@@ -17,8 +17,12 @@
     --text-muted: #9f1239;
 }
 
-body, p, span:not(.fa-solid):not(.fa-brands):not(.fa):not(.fas):not(.fab), li, a, button, input, textarea {
+body {
     font-family: 'Space Grotesk', sans-serif !important;
+    background: var(--main-bg);
+    color: var(--text-main);
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, .section-title, .main-title, .logo-text, 
@@ -32,22 +36,13 @@ h1, h2, h3, .section-title, .main-title, .logo-text,
     font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
 }
 
+p, .description, span:not(.fa-solid):not(.fa-brands), li, a, button, input, textarea {
+    font-family: 'Space Grotesk', sans-serif !important;
+}
+
 h1.main-title {
     font-size: clamp(2.5rem, 8vw, 5rem) !important;
     line-height: 1.05 !important;
-}
-
-p, .description {
-    font-weight: 300 !important;
-    line-height: 1.7 !important;
-    color: var(--text-muted) !important;
-}
-
-body { 
-    background: var(--main-bg);
-    color: var(--text-main);
-    overflow-x: hidden;
-    transition: background 0.3s ease, color 0.3s ease;
 }
 
 nav { background-color: var(--nav-bg) !important; }
@@ -56,24 +51,7 @@ nav { background-color: var(--nav-bg) !important; }
     background: var(--card-bg); 
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.4s ease;
 }
-
-.project-glow {
-    border: 2px solid rgba(234, 179, 8, 0.4);
-    box-shadow: 0 0 30px rgba(234, 179, 8, 0.1);
-    background: linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(124, 45, 18, 0.3));
-}
-
-.project-glow:hover {
-    border-color: rgba(234, 179, 8, 0.7);
-    box-shadow: 0 0 50px rgba(234, 179, 8, 0.2);
-    transform: translateY(-10px);
-}
-
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #0d0d0d; }
-::-webkit-scrollbar-thumb { background: #7f1d1d; border-radius: 10px; }
 
 .reveal {
     opacity: 0;
@@ -84,14 +62,6 @@ nav { background-color: var(--nav-bg) !important; }
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-::selection { background: #dc2626; color: white; }
-
-input:focus, textarea:focus {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #dc2626 !important;
-    outline: none;
 }
 
 .light body { background: var(--main-bg) !important; color: var(--text-main) !important; }
