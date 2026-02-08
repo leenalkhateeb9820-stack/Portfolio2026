@@ -33,22 +33,24 @@
     </ul>
 </nav>
 
-<header class="reveal h-[80vh] flex flex-col justify-center px-10 md:px-32 relative">
+<header class="reveal h-[80vh] flex flex-col justify-center px-10 md:px-32">
     <h2 class="sub-heading uppercase text-sm mb-4 font-bold tracking-[0.3em]">Certified Full Stack Developer</h2>
-    <h1 class="main-title text-white">
-        <span class="cream-text">Building the</span> 
-        <br>
-        <svg class="hand-drawn-arrow" viewBox="0 0 100 50">
-            <path class="arrow-body" d="M10,10 Q50,40 90,10 L85,5 M90,10 L82,18" />
+    <div class="relative inline-block w-fit">
+        <h1 class="main-title text-white">
+            <span class="cream-text">Building the</span> 
+            <br>
+            <span class="section-title">Future Web.</span>
+        </h1>
+        <svg class="hand-drawn-arrow" viewBox="0 0 100 100">
+            <path d="M20,10 C60,10 90,40 80,80 L80,90 M70,80 L80,90 L90,80" />
         </svg>
-        <span class="section-title">Future Web.</span>
-    </h1>
+    </div>
     <p class="muted-text max-w-xl text-lg mt-6 mb-10 leading-relaxed">
         From database architecture to pixel-perfect front-end execution. I specialize in scalable applications and seamless user experiences.
     </p>
     <div class="flex gap-6">
         <a href="#projects" class="btn-gold-bg px-10 py-4 rounded-full transition-all hover:brightness-110">View Projects</a>
-        <a href="#contact" class="btn-gold-border px-10 py-4 rounded-full transition-all hover:bg-white/5">
+        <a href="#contact" class="btn-gold-border px-10 py-4 rounded-full transition-all hover:bg-white/5 font-bold">
             <span class="cream-text">Let's Talk</span>
         </a>
     </div>
@@ -87,19 +89,22 @@
 </section>
 
 <section id="projects" class="py-32 px-10 md:px-32">
-    <div class="mb-24">
-        <h3 class="text-5xl tracking-tighter">
-            <span class="cream-text">Featured</span> <span class="gold-text italic-fix">Work</span>
-        </h3>
-    </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
-        <div class="glass-card p-10">
-            <h4 class="text-2xl mb-4 cream-text">Croissant & Co.</h4>
-            <p class="muted-text mb-8">A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.</p>
-            <p class="gold-text mb-6">E-Commerce Solution</p>
-            <a href="#" class="gold-text flex items-center gap-2 font-bold">
-                Explore Project <i class="fa-solid fa-arrow-right"></i>
-            </a>
+    <div class="max-w-6xl mx-auto">
+        <h3 class="text-5xl mb-24"><span class="cream-text">Featured</span> <span class="gold-text">Work</span></h3>
+        <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+            <div class="glass-card overflow-hidden">
+                <div class="h-64 bg-white/5">
+                    <img src="project-image.jpg" alt="Croissant" class="w-full h-full object-cover opacity-50">
+                </div>
+                <div class="p-10">
+                    <h4 class="text-2xl mb-4 cream-text">Croissant & Co.</h4>
+                    <p class="muted-text mb-6">A comprehensive digital bakery experience where I engineered a seamless ordering system and high-conversion UI.</p>
+                    <p class="gold-text mb-6 font-bold uppercase text-xs tracking-widest">E-Commerce Solution</p>
+                    <a href="#" class="gold-text flex items-center gap-2 font-bold uppercase tracking-widest text-xs transition-transform hover:translate-x-2">
+                        Explore Project <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -107,29 +112,29 @@
 <footer id="contact" class="reveal py-32 px-10 md:px-32 border-t border-white/5">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24">
         <div>
-            <h2 class="text-6xl mb-8 tracking-tighter">
-                <span class="cream-text">Let's</span> <span class="gold-text italic-fix">Connect</span>
-            </h2>
+            <h2 class="text-6xl mb-8 tracking-tighter"><span class="cream-text">Let's</span> <span class="gold-text">Connect</span></h2>
             <p class="muted-text mb-12 max-w-sm">I'm always open to discussing new projects or creative ideas.</p>
             <div class="space-y-8">
                 <div class="flex items-center gap-6">
                     <i class="fa-solid fa-envelope text-xl gold-text social-icon"></i>
-                    <a href="mailto:leenalkhateeb9820@gmail.com" class="cream-text text-lg">leenalkhateeb9820@gmail.com</a>
+                    <a href="mailto:leenalkhateeb9820@gmail.com" class="cream-text text-lg transition-opacity hover:opacity-70">leenalkhateeb9820@gmail.com</a>
                 </div>
                 <div class="flex items-center gap-6">
                     <i class="fa-brands fa-github text-xl gold-text social-icon"></i>
-                    <a href="#" class="cream-text text-lg">github.com/leen-stack</a>
+                    <a href="#" class="cream-text text-lg transition-opacity hover:opacity-70">github.com/leen-stack</a>
                 </div>
                 <div class="flex items-center gap-6">
                     <i class="fa-brands fa-linkedin text-xl gold-text social-icon"></i>
-                    <a href="#" class="cream-text text-lg">linkedin.com/in/leen-dev</a>
+                    <a href="#" class="cream-text text-lg transition-opacity hover:opacity-70">linkedin.com/in/leen-dev</a>
                 </div>
             </div>
         </div>
         <div class="glass-card p-10">
-            <form class="space-y-6">
-                <input type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b]">
-                <button type="submit" class="btn-gold-bg w-full py-5 rounded-2xl uppercase tracking-widest text-xs">Send Inquiry</button>
+            <form id="contactForm" class="space-y-6">
+                <input type="text" placeholder="Your Name" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text">
+                <input type="email" placeholder="Your Email" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text">
+                <textarea placeholder="Tell me about your project" rows="4" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-[#eeba0b] cream-text"></textarea>
+                <button type="submit" class="btn-gold-bg w-full py-5 rounded-2xl uppercase tracking-widest text-[10px] font-black transition-transform active:scale-95">Send Inquiry</button>
             </form>
         </div>
     </div>
@@ -138,18 +143,19 @@
 <script>
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
-    const html = document.documentElement;
     themeToggle.addEventListener('click', () => {
-        html.classList.toggle('light');
+        document.documentElement.classList.toggle('light');
         themeIcon.classList.toggle('fa-moon');
         themeIcon.classList.toggle('fa-sun');
     });
+
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) entry.target.classList.add('active'); 
         });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+<script src="main.js"></script>
 </body>
 </html>
