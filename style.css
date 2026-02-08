@@ -64,6 +64,31 @@ h1.main-title {
     font-weight: 800;
 }
 
+/* تنسيق الكارد المطور ليشبه الصورة */
+.project-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(238, 186, 11, 0.1);
+    border-radius: 3rem;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.tag {
+    background: rgba(254, 254, 227, 0.05);
+    border: 1px solid rgba(254, 254, 227, 0.1);
+    color: var(--cream-muted);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
 .glass-card {
     background: var(--card-bg);
     backdrop-filter: blur(12px);
