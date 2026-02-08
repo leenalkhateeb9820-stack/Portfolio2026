@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leen | Full Stack Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Space+Grotesk:wght@300;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="selection:bg-red-600 selection:text-white">
 
 <nav class="flex justify-between items-center px-6 md:px-24 py-8 sticky top-0 z-50 bg-[#2d0505]/90 backdrop-blur-md">
-    <div class="text-2xl font-extrabold tracking-tighter uppercase flex-shrink-0">LEEN<span class="text-red-500">.</span>DEV</div>
-    <ul class="hidden md:flex items-center gap-6 lg:gap-10 text-[11px] uppercase tracking-[0.2em] font-bold">
+    <div class="logo-text text-2xl tracking-tighter uppercase flex-shrink-0">LEEN<span class="text-red-500">.</span>DEV</div>
+    <ul class="hidden md:flex items-center gap-6 lg:gap-10 text-[11px] uppercase tracking-[0.2em]">
         <li><a href="#" class="hover:text-red-400 transition">Experience</a></li>
         <li><a href="#skills" class="hover:text-red-400 transition">Stack</a></li>
         <li><a href="#projects" class="hover:text-red-400 transition">Projects</a></li>
@@ -33,12 +33,12 @@
     </ul>
 </nav>
 
-    <header class="reveal h-[90vh] flex flex-col justify-center px-10 md:px-32">
-        <h2 class="text-red-500 font-bold tracking-[0.3em] uppercase text-sm mb-4">Certified Full Stack Developer</h2>
-        <h1 class="text-6xl md:text-9xl font-extrabold leading-none tracking-tighter mb-6">
+    <header class="reveal h-[80vh] flex flex-col justify-center px-10 md:px-32">
+        <h2 class="sub-heading text-red-500 tracking-[0.3em] uppercase text-sm mb-4">Certified Full Stack Developer</h2>
+        <h1 class="main-title text-6xl md:text-8xl leading-none tracking-tighter mb-6">
             Building the <br> <span class="section-title italic font-light text-red-100">Future Web.</span>
         </h1>
-        <p class="max-w-xl text-red-100/60 text-lg leading-relaxed mb-10">
+        <p class="description max-w-xl text-red-100/60 text-lg leading-relaxed mb-10">
             From database architecture to pixel-perfect front-end execution. I specialize in scalable applications and seamless user experiences.
         </p>
         <div class="flex gap-6">
@@ -52,25 +52,25 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div class="glass-card p-8 rounded-3xl">
                 <i class="fa-solid fa-layer-group text-3xl text-red-500 mb-6"></i>
-                <h4 class="text-xl font-bold mb-4">Frontend</h4>
+                <h4 class="text-xl mb-4">Frontend</h4>
                 <p class="text-sm text-red-100/50 mb-4 font-light">React.js, Tailwind CSS, JavaScript (ES6+), Responsive Design.</p>
                 <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-red-600 w-[95%] rounded-full"></div></div>
             </div>
             <div class="glass-card p-8 rounded-3xl">
                 <i class="fa-solid fa-gears text-3xl text-red-500 mb-6"></i>
-                <h4 class="text-xl font-bold mb-4">Backend</h4>
+                <h4 class="text-xl mb-4">Backend</h4>
                 <p class="text-sm text-red-100/50 mb-4 font-light">Node.js, Express, RESTful APIs, System Design.</p>
                 <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-red-600 w-[90%] rounded-full"></div></div>
             </div>
             <div class="glass-card p-8 rounded-3xl">
                 <i class="fa-solid fa-database text-3xl text-red-500 mb-6"></i>
-                <h4 class="text-xl font-bold mb-4">Database</h4>
+                <h4 class="text-xl mb-4">Database</h4>
                 <p class="text-sm text-red-100/50 mb-4 font-light">MongoDB, SQL, Firebase, Data Modeling.</p>
                 <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-red-600 w-[85%] rounded-full"></div></div>
             </div>
             <div class="glass-card p-8 rounded-3xl">
                 <i class="fa-solid fa-box-open text-3xl text-red-500 mb-6"></i>
-                <h4 class="text-xl font-bold mb-4">Libraries</h4>
+                <h4 class="text-xl mb-4">Libraries</h4>
                 <p class="text-sm text-red-100/50 mb-4 font-light">Axios, Redux, Framer Motion, External APIs Integration.</p>
                 <div class="h-1 w-full bg-white/10 rounded-full"><div class="h-full bg-red-600 w-[92%] rounded-full"></div></div>
             </div>
@@ -80,7 +80,7 @@
     <section id="projects" class="py-32 px-10 md:px-32 relative overflow-visible">
         <div class="max-w-6xl mx-auto">
             <div class="mb-24">
-                <h3 class="text-5xl font-black text-white tracking-tighter">Featured <span class="text-orange-500 italic">Work</span></h3>
+                <h3 class="text-5xl text-white tracking-tighter">Featured <span class="text-orange-500 italic">Work</span></h3>
             </div>
             <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-stretch">
             </div>
@@ -90,7 +90,7 @@
     <footer id="contact" class="reveal py-32 px-10 md:px-32 border-t border-white/5 relative overflow-visible">
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div class="flex flex-col justify-center">
-                <h2 class="text-6xl font-black text-white mb-8 tracking-tighter">Let's <span class="text-red-600 italic">Connect</span></h2>
+                <h2 class="text-6xl text-white mb-8 tracking-tighter">Let's <span class="text-red-600 italic">Connect</span></h2>
                 <p class="text-white/50 mb-12 max-w-sm leading-relaxed text-sm tracking-wide">I'm always open to discussing new projects or creative ideas.</p>
                 <div class="space-y-8">
                     <div class="flex items-center gap-6 group">
@@ -132,46 +132,6 @@
         }, { rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Contact Form Logic
-        document.getElementById('contactForm')?.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const btn = document.getElementById('sendBtn');
-            const status = document.getElementById('formStatus');
-            
-            btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner animate-spin ml-2"></i>';
-            btn.disabled = true;
-
-            const formData = {
-                name: document.getElementById('contact-name').value,
-                email: document.getElementById('contact-email').value,
-                subject: document.getElementById('contact-subject').value,
-                message: document.getElementById('contact-message').value
-            };
-
-            try {
-                const response = await fetch('https://leen-portfolio2026.onrender.com/api/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(formData)
-                });
-
-                if (response.ok) {
-                    status.innerText = "✅ Message sent and saved to dashboard!";
-                    status.className = "text-center text-[10px] font-bold uppercase tracking-widest mt-4 text-green-500";
-                    document.getElementById('contactForm').reset();
-                } else {
-                    throw new Error();
-                }
-            } catch (err) {
-                status.innerText = "❌ Connection error. Try again.";
-                status.className = "text-center text-[10px] font-bold uppercase tracking-widest mt-4 text-red-500";
-            } finally {
-                btn.innerHTML = 'Send Inquiry <i class="fa-solid fa-paper-plane ml-2"></i>';
-                btn.disabled = false;
-            }
-        });
-
-        // Dark/Light Mode Toggle Logic
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const htmlElement = document.documentElement;
@@ -195,11 +155,3 @@
     <script src="main.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
