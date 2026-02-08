@@ -38,7 +38,7 @@ h1.main-title {
 }
 
 h1.main-title span {
-    font-family: 'Courier Prime', monospace !important;
+    font-family: 'Edu QLD Beginner', cursive !important
     font-weight: 700 !important;
     font-style: normal !important;
     word-spacing: -0.2em !important;
@@ -87,6 +87,7 @@ nav { background-color: var(--nav-bg) !important; }
     opacity: 1;
     transform: translateY(0);
 }
+
 
 
 
