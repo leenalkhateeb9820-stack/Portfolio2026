@@ -129,23 +129,25 @@ function handleThemeToggle() {
     const themeIcon = document.getElementById('theme-icon');
     const htmlElement = document.documentElement;
 
-    if (!themeToggle || !themeIcon) return;
-
-    if (localStorage.getItem('theme') === 'light') {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
         htmlElement.classList.add('light');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
+        if(themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
     }
 
-    themeToggle.addEventListener('click', () => {
-        htmlElement.classList.toggle('light');
-        if (htmlElement.classList.contains('light')) {
-            localStorage.setItem('theme', 'light');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-        } else {
-            localStorage.setItem('theme', 'dark');
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-        }
-    });
+    if (themeToggle) {
+        themeToggle.onclick = function() {
+            htmlElement.classList.toggle('light');
+            
+            if (htmlElement.classList.contains('light')) {
+                localStorage.setItem('theme', 'light');
+                if(themeIcon) themeIcon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                if(themeIcon) themeIcon.classList.replace('fa-sun', 'fa-moon');
+            }
+        };
+    }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -153,3 +155,4 @@ document.addEventListener('DOMContentLoaded', () => {
     handleContactForm();
     handleThemeToggle();
 });
+
