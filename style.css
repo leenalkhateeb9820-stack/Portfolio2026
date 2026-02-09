@@ -2,16 +2,19 @@
     --burgundy-light: #800020;
     --burgundy-dark: #4d0013;
     --text-cream: #fff5f5;
+    --gold: #eeba0b;
+    --cream-light: #fefee3;
+    --bricolage: 'Bricolage Grotesque', sans-serif;
 }
 
 body { 
     background: linear-gradient(135deg, #2d0505 0%, #4d0013 100%);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Bricolage Grotesque', sans-serif;
     color: var(--text-cream);
     overflow-x: hidden;
 }
 
-.section-title { font-family: 'Playfair Display', serif; }
+.section-title { font-family: 'Bricolage Grotesque', sans-serif; }
 
 .glass-card { 
     background: rgba(255, 255, 255, 0.05); 
@@ -70,4 +73,55 @@ button[type="submit"]:hover {
 
 button[type="submit"]:active {
     transform: scale(0.95);
+}
+/* ===== Gold Elements (Dark Mode) ===== */
+nav a:hover,
+.section-title span,
+#projects h3 span,
+footer h2 span,
+button[type="submit"],
+.fa-arrow-right,
+.fa-paper-plane,
+footer i,
+#projects-grid a,
+header h2,
+header .section-title,
+header a[href="#projects"],
+header a[href="#contact"] {
+    color: var(--gold);
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+button[type="submit"]:hover {
+    color: #fefee3;
+}
+
+header a[href="#projects"] {
+    background-color: var(--gold) !important;
+    color: #2d0505 !important;
+}
+
+header a[href="#contact"] {
+    border-color: var(--gold) !important;
+}
+.gold-text {
+    color: var(--gold) !important;
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+.soft-cream {
+    color: var(--cream-light);
+    opacity: 0.65;
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+.light {
+    background: #fefee3;
+    color: #2d0505;
+}
+
+.light .gold-text {
+    color: #b48a04 !important;
+}
+
+.light .soft-cream {
+    color: #2d0505;
+    opacity: 0.7;
 }
