@@ -67,24 +67,31 @@ input:focus, textarea:focus {
 }
 
 button[type="submit"] {
-    transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-}
-
-button[type="submit"]:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(238,186,11,0.3);
     background-color: var(--gold) !important;
-    color: #2d0505 !important;
+    color: #2d0505 !important;           
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
-
-button[type="submit"]:active { transform: scale(0.95); }
 
 button[type="submit"] i.fa-paper-plane {
     font-family: "Font Awesome 6 Free" !important;
     font-weight: 900;
-    color: #2d0505 !important;
+    color: #2d0505 !important; 
 }
 
+button[type="submit"]:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(238, 186, 11, 0.4);
+    background-color: var(--gold) !important; 
+    opacity: 0.9; 
+}
+
+button[type="submit"]:active { 
+    transform: scale(0.95); 
+}
 nav a:hover,
 .section-title span,
 #projects h3 span,
@@ -123,13 +130,23 @@ header a[href="#contact"] { border-color: var(--gold) !important; }
 
 .light .gold-text { color: #b48a04 !important; }
 .light .soft-cream { color: #2d0505; opacity: 0.7; }
-i.fa-solid, i.fa-brands, i.fa-regular {
+
+.fa-solid, .fas {
     font-family: "Font Awesome 6 Free" !important;
     font-weight: 900 !important;
-    display: inline-block !important;
 }
-footer .fa-brands, footer .fa-solid {
-    font-family: "Font Awesome 6 Brands" !important; 
+
+.fa-brands, .fab {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
+}
+
+i[class*="fa-"] {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
 }
 #skills .bg-gold {
     background-color: var(--gold) !important;
@@ -139,3 +156,4 @@ footer .fa-brands, footer .fa-solid {
 #skills .bg-white\/10 {
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
+
