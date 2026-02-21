@@ -7,46 +7,39 @@
     --bricolage: 'Bricolage Grotesque', sans-serif;
 }
 
-body { 
+body {
     background: linear-gradient(135deg, #2d0505 0%, #4d0013 100%);
     font-family: var(--bricolage);
     color: var(--text-cream);
     overflow-x: hidden;
 }
 
-.section-title { 
-    font-family: var(--bricolage); 
+.section-title {
+    font-family: var(--bricolage);
 }
 
-.glass-card { 
-    background: rgba(255, 255, 255, 0.05); 
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.4s ease;
 }
 
 .project-glow {
-    border: 2px solid rgba(238, 186, 11, 0.3);
-    box-shadow: 0 0 30px rgba(238, 186, 11, 0.15);
-    background: linear-gradient(
-        to bottom right, 
-        rgba(255,255,255,0.1), 
-        rgba(77, 0, 19, 0.4)
-    );
+    border: 2px solid rgba(238, 186, 11, 0.4);
+    box-shadow: 0 0 30px rgba(238, 186, 11, 0.1);
+    background: linear-gradient(to bottom right, rgba(255,255,255,0.1), rgba(77,0,19,0.3));
 }
 
 .project-glow:hover {
-    border-color: rgba(238, 186, 11, 0.6);
-    box-shadow: 0 0 50px rgba(238, 186, 11, 0.25);
+    border-color: rgba(238, 186, 11, 0.7);
+    box-shadow: 0 0 50px rgba(238, 186, 11, 0.2);
     transform: translateY(-10px);
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #1a0005; }
-::-webkit-scrollbar-thumb { 
-    background: var(--gold); 
-    border-radius: 10px; 
-}
+::-webkit-scrollbar-track { background: #0d0d0d; }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
 
 .reveal {
     opacity: 0;
@@ -59,36 +52,34 @@ body {
     transform: translateY(0);
 }
 
-::selection { 
-    background: var(--gold); 
-    color: #2d0505; 
+::selection {
+    background: var(--gold);
+    color: #2d0505;
 }
 
-input:focus, 
-textarea:focus {
-    background: rgba(255, 255, 255, 0.1);
+input:focus, textarea:focus {
+    background: rgba(255,255,255,0.1);
     border-color: var(--gold) !important;
-    box-shadow: 0 0 15px rgba(238, 186, 11, 0.25);
+    box-shadow: 0 0 15px rgba(238,186,11,0.25);
     outline: none;
     transform: scale(1.01);
     transition: all 0.3s ease;
 }
 
 button[type="submit"] {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
 }
 
 button[type="submit"]:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(238, 186, 11, 0.3);
+    box-shadow: 0 10px 20px rgba(238,186,11,0.3);
     background-color: var(--gold);
     color: #2d0505;
 }
 
-button[type="submit"]:active {
-    transform: scale(0.95);
-}
+button[type="submit"]:active { transform: scale(0.95); }
 
+/* Gold & Cream Texts */
 nav a:hover,
 .section-title span,
 #projects h3 span,
@@ -107,31 +98,13 @@ header a[href="#projects"] {
     color: #2d0505 !important;
 }
 
-header a[href="#contact"] {
-    border-color: var(--gold) !important;
-}
+header a[href="#contact"] { border-color: var(--gold) !important; }
 
-.gold-text {
-    color: var(--gold) !important;
-    font-family: var(--bricolage);
-}
+.gold-text { color: var(--gold) !important; font-family: var(--bricolage); }
 
-.soft-cream {
-    color: var(--cream-light);
-    opacity: 0.65;
-    font-family: var(--bricolage);
-}
+.soft-cream { color: var(--cream-light); opacity: 0.65; font-family: var(--bricolage); }
 
-.light {
-    background: var(--cream-light);
-    color: #2d0505;
-}
+.light { background: var(--cream-light); color: #2d0505; }
 
-.light .gold-text {
-    color: #b48a04 !important;
-}
-
-.light .soft-cream {
-    color: #2d0505;
-    opacity: 0.7;
-}
+.light .gold-text { color: #b48a04 !important; }
+.light .soft-cream { color: #2d0505; opacity: 0.7; }
