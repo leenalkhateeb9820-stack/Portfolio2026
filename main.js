@@ -99,12 +99,13 @@ async function handleContactForm() {
         btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner animate-spin ml-2"></i>';
         btn.disabled = true;
 
-        const formData = {
-            name: document.getElementById('contact-name').value,
-            email: document.getElementById('contact-email').value,
-            subject: document.getElementById('contact-subject').value,
-            message: document.getElementById('contact-message').value
-        };
+       
+    const formData = {
+    name: contactForm.querySelector('[name="name"]').value,
+    email: contactForm.querySelector('[name="email"]').value,
+    subject: "New Portfolio Inquiry", 
+    message: contactForm.querySelector('[name="message"]').value
+    };
 
         try {
             const response = await fetch('https://leen-portfolio2026.onrender.com/api/contact', {
@@ -134,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
 
 
