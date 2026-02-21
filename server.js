@@ -111,52 +111,54 @@ app.delete('/api/projects/:id', async (req, res) => {
 app.post('/api/contact', async (req, res) => {
     try {
         const { name, email, message } = req.body;
-        const businessSubject = `Inquiry: ${name} | Leen Alkhateeb`;
+        
+        const cleanSubject = `Inquiry — ${name}`;
 
-        // 1. التخزين فوراً في قاعدة البيانات
         const newMessage = new Message({ 
             name, 
             email, 
-            subject: businessSubject, 
+            subject: cleanSubject, 
             message 
         });
         await newMessage.save();
 
-        // 2. رد فوراً على المتصفح بنجاح (عشان تطلع علامة الصح وما يعلق)
         res.status(200).json({ success: true });
 
-        // 3. محاولة إرسال الإيميل في الخلفية (بدون await عشان ما نعطل الموقع)
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
             replyTo: email,
-            subject: businessSubject,
+            subject: cleanSubject,
             html: `
-                <div style="direction: rtl; font-family: sans-serif; padding: 25px; border: 1px solid #eeba0b; border-radius: 15px; background-color: #ffffff; max-width: 600px; margin: auto;">
-                    <h2 style="color: #4d0013; border-bottom: 2px solid #eeba0b; padding-bottom: 10px;">New Business Inquiry</h2>
-                    <p>وصلتك رسالة جديدة من: <strong>${name}</strong></p>
-                    <p>البريد الإلكتروني: <strong>${email}</strong></p>
+                <div style="direction: rtl; font-family: sans-serif; padding: 25px; border-right: 5px solid #4d0013; background-color: #ffffff; max-width: 600px; margin: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h2 style="color: #4d0013; margin-top: 0;">رسالة جديدة من الموقع</h2>
+                    <p style="font-size: 16px; color: #333;"><strong>المرسل:</strong> ${name}</p>
+                    <p style="font-size: 16px; color: #333;"><strong>البريد الإلكتروني:</strong> ${email}</p>
                     <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                    <p style="font-weight: bold; color: #4d0013;">محتوى الرسالة:</p>
-                    <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; border-right: 5px solid #4d0013; color: #444; line-height: 1.6; font-style: italic;">
+                    <p style="font-weight: bold; color: #4d0013;">نص الرسالة:</p>
+                    <div style="background: #f9f9f9; padding: 20px; border-radius: 12px; color: #444; line-height: 1.8; font-style: italic;">
                         "${message}"
                     </div>
+                    <p style="margin-top: 25px; font-size: 12px; color: #888; text-align: center;">
+                        يمكنك الرد مباشرة بالضغط على <b>Reply</b>.
+                    </p>
                 </div>
             `
         };
 
-        transporter.sendMail(mailOptions).catch(err => {
-            console.error("❌ Email failed but DB saved:", err.message);
+        transporter.sendMail(mailOptions).then(() => {
+            console.log("✅ Email sent successfully to:", process.env.EMAIL_USER);
+        }).catch(err => {
+            console.error("❌ Email failed behind the scenes:", err.message);
         });
 
     } catch (err) {
-        console.error("❌ Database Error:", err);
+        console.error("❌ Critical Error:", err);
         if (!res.headersSent) {
             res.status(500).json({ success: false, error: err.message });
         }
     }
-});
-// --- نهاية قسم التواصل المصحح ---
+});// --- نهاية قسم التواصل المصحح ---
 
 app.get('/api/messages', async (req, res) => {
     try {
@@ -184,4 +186,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
