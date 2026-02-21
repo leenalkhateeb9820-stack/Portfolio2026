@@ -116,6 +116,8 @@ app.post('/api/contact', async (req, res) => {
         const newMessage = new Message({ name, email, subject, message });
         await newMessage.save();
 
+        res.json({ success: true }); 
+
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
@@ -135,10 +137,10 @@ app.post('/api/contact', async (req, res) => {
             `
         };
 
-        await transporter.sendMail(mailOptions);
-        res.json({ success: true }); 
+        transporter.sendMail(mailOptions).catch(err => console.error("Email Error:", err));
 
     } catch (err) {
+        console.error("Database Error:", err);
         if (!res.headersSent) {
             res.status(500).json({ success: false, error: err.message });
         }
@@ -169,5 +171,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
 
