@@ -45,9 +45,7 @@ async function renderProjects() {
             <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[300px] flex flex-col justify-center">
                 
                 <div class="relative z-20 pr-32 md:pr-40 text-left"> 
-                    <span class="${p.colorClass || 'gold-text'} font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">
-                        ${p.type}
-                    </span>
+                    <span class="gold-text font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">
                     
                     <h4 class="text-xl md:text-3xl font-extrabold gold-text mb-3 leading-tight whitespace-nowrap md:whitespace-normal overflow-hidden overflow-ellipsis">
                         ${p.title}
@@ -134,4 +132,5 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
