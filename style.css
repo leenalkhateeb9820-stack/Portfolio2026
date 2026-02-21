@@ -74,6 +74,7 @@ button[type="submit"] {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    opacity: 1 !important;
 }
 
 button[type="submit"] i.fa-paper-plane {
@@ -114,14 +115,10 @@ header a[href="#contact"] { border-color: var(--gold) !important; }
 
 .gold-text { 
     color: var(--gold) !important; 
-    font-family: var(--bricolage); 
 }
 
-.gold-text.fa-solid, 
-.gold-text.fa-brands, 
-.gold-text i { 
-    font-family: "Font Awesome 6 Free" !important; 
-    font-weight: 900; 
+.gold-text:not(i):not(span) {
+    font-family: var(--bricolage);
 }
 
 .soft-cream { color: var(--cream-light); opacity: 0.65; font-family: var(--bricolage); }
@@ -133,18 +130,14 @@ header a[href="#contact"] { border-color: var(--gold) !important; }
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 
-.fa-brands, .fab {
-    font-family: "Font Awesome 6 Brands" !important;
-    display: inline-block !important;
-    font-style: normal !important;
-    font-weight: 400 !important;
-}
-
 .fa-solid, .fas {
     font-family: "Font Awesome 6 Free" !important;
-    display: inline-block !important;
-    font-style: normal !important;
     font-weight: 900 !important;
+}
+
+.fa-brands, .fab {
+    font-family: "Font Awesome 6 Brands" !important;
+    font-weight: 400 !important;
 }
 #skills .bg-gold {
     background-color: var(--gold) !important;
@@ -154,6 +147,7 @@ header a[href="#contact"] { border-color: var(--gold) !important; }
 #skills .bg-white\/10 {
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
+
 
 
 
