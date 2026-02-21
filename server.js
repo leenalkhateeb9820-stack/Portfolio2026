@@ -104,6 +104,7 @@ app.delete('/api/projects/:id', async (req, res) => {
     }
 });
 
+
 app.post('/api/contact', async (req, res) => {
     try {
         const { name, email, subject, message } = req.body;
@@ -111,25 +112,27 @@ app.post('/api/contact', async (req, res) => {
         const newMessage = new Message({ name, email, subject, message });
         await newMessage.save();
 
-        res.json({ success: true });
-
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
-            subject: `Portfolio: ${subject}`,
+            replyTo: email,
+            subject: `New Portfolio Inquiry: ${subject}`,
             html: `
-                <div style="direction: rtl; font-family: Arial, sans-serif;">
-                    <h2>رسالة جديدة من الموقع</h2>
-                    <p><strong>الاسم:</strong> ${name}</p>
-                    <p><strong>الإيميل:</strong> ${email}</p>
-                    <p><strong>الموضوع:</strong> ${subject}</p>
-                    <p><strong>الرسالة:</strong></p>
-                    <p style="background: #f4f4f4; padding: 10px; border-radius: 5px;">${message}</p>
+                <div style="font-family: sans-serif; padding: 20px; color: #333; line-height: 1.6;">
+                    <h2 style="color: #4d0013;">You have a new message from ${name}</h2>
+                    <p><strong>From:</strong> ${name} (${email})</p>
+                    <p><strong>Subject:</strong> ${subject}</p>
+                    <hr style="border: none; border-top: 1px solid #eee;">
+                    <p><strong>Message:</strong></p>
+                    <p style="background: #f9f9f9; padding: 15px; border-left: 4px solid #eeba0b;">${message}</p>
+                    <hr style="border: none; border-top: 1px solid #eee;">
+                    <p style="font-size: 12px; color: #888;">Tip: Simply click "Reply" to answer this person directly.</p>
                 </div>
             `
         };
 
-        transporter.sendMail(mailOptions).catch(err => console.error(err));
+        await transporter.sendMail(mailOptions);
+        res.json({ success: true }); 
 
     } catch (err) {
         if (!res.headersSent) {
@@ -162,3 +165,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
