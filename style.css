@@ -158,6 +158,16 @@ h2.soft-cream, h3.soft-cream {
     color: var(--gold) !important;
 }
 
+footer a {
+    text-decoration: none;
+    position: relative;
+    opacity: 1 !important; 
+}
+
+footer a:hover {
+    text-shadow: 0 0 10px rgba(238, 186, 11, 0.4); 
+}
 section .mb-24 {
     text-align: left;
 }
+
