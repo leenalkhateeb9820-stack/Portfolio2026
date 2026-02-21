@@ -148,6 +148,16 @@ header a[href="#contact"] { border-color: var(--gold) !important; }
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
 
+h2.soft-cream, h3.soft-cream {
+    opacity: 1 !important;
+    font-weight: 900;
+}
 
+.section-title span, h3 span.gold-text.italic, h2 span.gold-text.italic {
+    font-style: italic;
+    color: var(--gold) !important;
+}
 
-
+section .mb-24 {
+    text-align: left;
+}
