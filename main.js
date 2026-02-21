@@ -40,18 +40,20 @@ async function renderProjects() {
         allProjects = staticProjects;
     }
 
-    container.innerHTML = allProjects.map(p => `
+container.innerHTML = allProjects.map(p => `
         <div class="reveal relative group flex items-center justify-center w-full mb-12">
             <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[300px] flex flex-col justify-center">
                 
                 <div class="relative z-20 pr-32 md:pr-40 text-left"> 
                     <span class="gold-text font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">
+                        ${p.type}
+                    </span>
                     
-                    <h4 class="text-xl md:text-3xl font-extrabold gold-text mb-3 leading-tight whitespace-nowrap md:whitespace-normal overflow-hidden overflow-ellipsis">
+                    <h4 class="text-xl md:text-3xl font-extrabold gold-text mb-3 leading-tight whitespace-nowrap md:whitespace-normal overflow-hidden overflow-ellipsis uppercase">
                         ${p.title}
                     </h4>
                     
-                    <p class="soft-cream text-[11px] md:text-xs leading-relaxed mb-4">
+                    <p class="soft-cream text-[11px] md:text-xs leading-relaxed mb-4 normal-case">
                         ${p.description}
                     </p>
                     
@@ -132,5 +134,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
 
