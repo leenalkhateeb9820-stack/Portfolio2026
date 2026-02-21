@@ -108,12 +108,12 @@ app.delete('/api/projects/:id', async (req, res) => {
     }
 });
 
-// --- بداية قسم التواصل المصحح ---
 app.post('/api/contact', async (req, res) => {
     try {
         const { name, email, message } = req.body;
         const businessSubject = `Inquiry: ${name} | Leen Alkhateeb`;
 
+        // 1. التخزين فوراً في قاعدة البيانات
         const newMessage = new Message({ 
             name, 
             email, 
@@ -122,6 +122,10 @@ app.post('/api/contact', async (req, res) => {
         });
         await newMessage.save();
 
+        // 2. رد فوراً على المتصفح بنجاح (عشان تطلع علامة الصح وما يعلق)
+        res.status(200).json({ success: true });
+
+        // 3. محاولة إرسال الإيميل في الخلفية (بدون await عشان ما نعطل الموقع)
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
@@ -137,18 +141,16 @@ app.post('/api/contact', async (req, res) => {
                     <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; border-right: 5px solid #4d0013; color: #444; line-height: 1.6; font-style: italic;">
                         "${message}"
                     </div>
-                    <p style="margin-top: 30px; font-size: 12px; color: #888; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
-                        اضغطي على <b>Reply</b> للرد مباشرة على العميل.
-                    </p>
                 </div>
             `
         };
 
-        await transporter.sendMail(mailOptions);
-        res.status(200).json({ success: true });
+        transporter.sendMail(mailOptions).catch(err => {
+            console.error("❌ Email failed but DB saved:", err.message);
+        });
 
     } catch (err) {
-        console.error("Error in contact API:", err);
+        console.error("❌ Database Error:", err);
         if (!res.headersSent) {
             res.status(500).json({ success: false, error: err.message });
         }
@@ -182,3 +184,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
