@@ -111,31 +111,51 @@ app.delete('/api/projects/:id', async (req, res) => {
 
 app.post('/api/contact', async (req, res) => {
     try {
-        const { name, email, subject, message } = req.body;
+        const { name, email, message } = req.body;
         
-        const newMessage = new Message({ name, email, subject, message });
-        await newMessage.save();
+        const businessSubject = `Inquiry: ${name} | Leen Alkhateeb`;
 
-        res.json({ success: true }); 
+        const newMessage = new Message({ 
+            name, 
+            email, 
+            subject: businessSubject, 
+            message 
+        });
+        await newMessage.save();
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
             replyTo: email,
-            subject: `New Portfolio Inquiry: ${subject}`,
+            subject: businessSubject,
             html: `
-                <div style="font-family: sans-serif; padding: 20px; color: #333; line-height: 1.6;">
-                    <h2 style="color: #4d0013;">You have a new message from ${name}</h2>
-                    <p><strong>From:</strong> ${name} (${email})</p>
-                    <p><strong>Subject:</strong> ${subject}</p>
-                    <hr style="border: none; border-top: 1px solid #eee;">
-                    <p><strong>Message:</strong></p>
-                    <p style="background: #f9f9f9; padding: 15px; border-left: 4px solid #eeba0b;">${message}</p>
-                    <hr style="border: none; border-top: 1px solid #eee;">
-                    <p style="font-size: 12px; color: #888;">Tip: Simply click "Reply" to answer this person directly.</p>
+                <div style="direction: rtl; font-family: 'Segoe UI', Tahoma, sans-serif; padding: 25px; border: 1px solid #eeba0b; border-radius: 15px; background-color: #ffffff; max-width: 600px; margin: auto;">
+                    <h2 style="color: #4d0013; border-bottom: 2px solid #eeba0b; padding-bottom: 10px;">New Business Inquiry</h2>
+                    <p style="font-size: 15px; color: #333;">وصلتك رسالة جديدة من: <strong>${name}</strong></p>
+                    <p style="font-size: 15px; color: #333;">البريد الإلكتروني: <strong>${email}</strong></p>
+                    <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+                    <p style="font-weight: bold; color: #4d0013;">محتوى الرسالة:</p>
+                    <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; border-right: 5px solid #4d0013; color: #444; line-height: 1.6; font-style: italic;">
+                        "${message}"
+                    </div>
+                    <p style="margin-top: 30px; font-size: 12px; color: #888; text-align: center; border-top: 1px solid #eee; padding-top: 10px;">
+                        اضغطي على <b>Reply</b> للرد مباشرة على العميل.
+                    </p>
                 </div>
             `
         };
+
+        await transporter.sendMail(mailOptions);
+
+        res.status(200).json({ success: true });
+
+    } catch (err) {
+        console.error("Error in contact API:", err);
+        if (!res.headersSent) {
+            res.status(500).json({ success: false, error: err.message });
+        }
+    }
+});
 
         transporter.sendMail(mailOptions).catch(err => console.error("Email Error:", err));
 
@@ -171,6 +191,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
