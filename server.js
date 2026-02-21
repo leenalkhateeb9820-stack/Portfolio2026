@@ -108,11 +108,10 @@ app.delete('/api/projects/:id', async (req, res) => {
     }
 });
 
-
+// --- بداية قسم التواصل المصحح ---
 app.post('/api/contact', async (req, res) => {
     try {
         const { name, email, message } = req.body;
-        
         const businessSubject = `Inquiry: ${name} | Leen Alkhateeb`;
 
         const newMessage = new Message({ 
@@ -129,10 +128,10 @@ app.post('/api/contact', async (req, res) => {
             replyTo: email,
             subject: businessSubject,
             html: `
-                <div style="direction: rtl; font-family: 'Segoe UI', Tahoma, sans-serif; padding: 25px; border: 1px solid #eeba0b; border-radius: 15px; background-color: #ffffff; max-width: 600px; margin: auto;">
+                <div style="direction: rtl; font-family: sans-serif; padding: 25px; border: 1px solid #eeba0b; border-radius: 15px; background-color: #ffffff; max-width: 600px; margin: auto;">
                     <h2 style="color: #4d0013; border-bottom: 2px solid #eeba0b; padding-bottom: 10px;">New Business Inquiry</h2>
-                    <p style="font-size: 15px; color: #333;">وصلتك رسالة جديدة من: <strong>${name}</strong></p>
-                    <p style="font-size: 15px; color: #333;">البريد الإلكتروني: <strong>${email}</strong></p>
+                    <p>وصلتك رسالة جديدة من: <strong>${name}</strong></p>
+                    <p>البريد الإلكتروني: <strong>${email}</strong></p>
                     <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
                     <p style="font-weight: bold; color: #4d0013;">محتوى الرسالة:</p>
                     <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; border-right: 5px solid #4d0013; color: #444; line-height: 1.6; font-style: italic;">
@@ -146,7 +145,6 @@ app.post('/api/contact', async (req, res) => {
         };
 
         await transporter.sendMail(mailOptions);
-
         res.status(200).json({ success: true });
 
     } catch (err) {
@@ -156,16 +154,7 @@ app.post('/api/contact', async (req, res) => {
         }
     }
 });
-
-        transporter.sendMail(mailOptions).catch(err => console.error("Email Error:", err));
-
-    } catch (err) {
-        console.error("Database Error:", err);
-        if (!res.headersSent) {
-            res.status(500).json({ success: false, error: err.message });
-        }
-    }
-});
+// --- نهاية قسم التواصل المصحح ---
 
 app.get('/api/messages', async (req, res) => {
     try {
@@ -184,14 +173,12 @@ app.delete('/api/messages/:id', async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
+
 app.get('/ping', (req, res) => {
     res.status(200).send('Server is alive!');
 });
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-
-
-
