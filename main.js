@@ -6,7 +6,7 @@ const staticProjects = [
         tags: ["Full Stack", "Tailwind CSS", "UX Design"],
         link: "https://croissant-co-bakery.onrender.com",
         image: "croissant.webp",
-        colorClass: "gold-text", // تم التغيير ليكون ذهبي
+        colorClass: "gold-text", 
         glowClass: "project-glow"
     }
 ];
@@ -15,7 +15,6 @@ async function renderProjects() {
     const container = document.getElementById('projects-grid');
     if (!container) return;
 
-    // حالة التحميل (Skeleton)
     container.innerHTML = `
         <div class="flex items-center justify-center w-full mb-12">
             <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 min-h-[300px] bg-white/5 border border-white/10 flex flex-col justify-center">
@@ -36,9 +35,22 @@ async function renderProjects() {
         } else {
             allProjects = staticProjects;
         }
+        
+        displayProjects(allProjects); 
+
     } catch (err) {
         allProjects = staticProjects;
+        displayProjects(allProjects);
+    } finally {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            preloader.classList.add('preloader-hidden');
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 800);
+        }
     }
+}
 
 container.innerHTML = allProjects.map(p => `
         <div class="reveal relative group flex items-center justify-center w-full mb-12">
@@ -135,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
 
 
