@@ -79,12 +79,8 @@ nav a:hover,
 .section-title span,
 #projects h3 span,
 footer h2 span,
-button[type="submit"],
 .fa-arrow-right,
 .fa-paper-plane,
-footer i,
-#projects-grid a,
-header h2,
 header .section-title,
 header a[href="#projects"],
 header a[href="#contact"] {
@@ -125,3 +121,4 @@ header a[href="#contact"] {
     color: #2d0505;
     opacity: 0.7;
 }
+
