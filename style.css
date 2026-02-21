@@ -131,6 +131,12 @@ header a[href="#contact"] { border-color: var(--gold) !important; }
 .light .gold-text { color: #b48a04 !important; }
 .light .soft-cream { color: #2d0505; opacity: 0.7; }
 
+i[class*="fa-"] {
+    display: inline-block !important;
+    text-rendering: auto !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
 .fa-solid, .fas {
     font-family: "Font Awesome 6 Free" !important;
     font-weight: 900 !important;
@@ -138,15 +144,7 @@ header a[href="#contact"] { border-color: var(--gold) !important; }
 
 .fa-brands, .fab {
     font-family: "Font Awesome 6 Brands" !important;
-    font-weight: 400 !important;
-}
-
-i[class*="fa-"] {
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    line-height: 1;
+    font-weight: 400 !important; /* البراندات دائماً 400 */
 }
 #skills .bg-gold {
     background-color: var(--gold) !important;
@@ -156,4 +154,5 @@ i[class*="fa-"] {
 #skills .bg-white\/10 {
     background-color: rgba(255, 255, 255, 0.2) !important;
 }
+
 
