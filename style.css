@@ -7,6 +7,8 @@
     --bricolage: 'Bricolage Grotesque', sans-serif;
 }
 
+.preloader-hidden { opacity: 0 !important; visibility: hidden !important; }
+
 body {
     background: linear-gradient(135deg, #2d0505 0%, #4d0013 100%);
     font-family: var(--bricolage);
@@ -170,4 +172,5 @@ footer a:hover {
 section .mb-24 {
     text-align: left;
 }
+
 
