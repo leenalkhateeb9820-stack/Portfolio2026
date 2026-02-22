@@ -15,8 +15,9 @@ async function renderProjects() {
     const container = document.getElementById('projects-grid');
     if (!container) return;
 
+    // 1. عرض الـ Skeleton (حالة التحميل داخل الصفحة)
     container.innerHTML = `
-        <div class="flex items-center justify-center w-full mb-12">
+        <div id="skeleton-loader" class="flex items-center justify-center w-full mb-12">
             <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 min-h-[300px] bg-white/5 border border-white/10 flex flex-col justify-center">
                 <div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
                 <div class="h-8 w-48 bg-white/10 rounded mb-4"></div>
@@ -35,13 +36,14 @@ async function renderProjects() {
         } else {
             allProjects = staticProjects;
         }
-        
-        displayProjects(allProjects); 
-
     } catch (err) {
+        console.error("Fetch failed, loading static data.");
         allProjects = staticProjects;
-        displayProjects(allProjects);
     } finally {
+        // 2. رسم المشاريع أولاً
+        displayProjects(allProjects);
+
+        // 3. إخفاء الـ Preloader بعد التأكد من أن المشاريع رُسمت
         const preloader = document.getElementById('preloader');
         if (preloader) {
             preloader.classList.add('preloader-hidden');
@@ -147,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
 
 
