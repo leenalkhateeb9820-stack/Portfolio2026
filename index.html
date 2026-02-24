@@ -51,22 +51,25 @@
     setTimeout(forceHidePreloader, 3000); 
 </script>
     <nav class="flex justify-between items-center px-6 md:px-24 py-6 md:py-8 sticky top-0 z-50 bg-[#2d0505]/95 backdrop-blur-md border-b border-white/5">
-    <div class="text-xl md:text-2xl font-extrabold tracking-tighter uppercase gold-text font-bricolage">
+    
+    <div class="text-xl md:text-2xl font-extrabold tracking-tighter uppercase gold-text font-bricolage shrink-0">
         LEEN<span class="soft-cream font-bricolage">.</span>DEV
     </div>
 
-    <ul class="hidden md:flex gap-10 text-[11px] uppercase tracking-[0.2em] font-bold">
-        <li><a href="#experience" class="gold-text font-bricolage">Experience</a></li>
-        <li><a href="#skills" class="gold-text font-bricolage">Stack</a></li>
-        <li><a href="#projects" class="gold-text font-bricolage">Projects</a></li>
-        <li><a href="#contact" class="gold-text font-bricolage">Contact</a></li>
-    </ul>
+    <div class="flex items-center gap-6 md:gap-10">
+        
+        <ul class="hidden md:flex gap-10 text-[11px] uppercase tracking-[0.2em] font-bold items-center">
+            <li><a href="#experience" class="gold-text font-bricolage hover:opacity-80 transition-opacity">Experience</a></li>
+            <li><a href="#skills" class="gold-text font-bricolage hover:opacity-80 transition-opacity">Stack</a></li>
+            <li><a href="#projects" class="gold-text font-bricolage hover:opacity-80 transition-opacity">Projects</a></li>
+            <li><a href="#contact" class="gold-text font-bricolage hover:opacity-80 transition-opacity">Contact</a></li>
+        </ul>
 
-    <div class="flex items-center">
-        <a href="admin.html" target="_blank" class="bg-white/5 border border-white/10 px-3 py-2 md:px-4 md:py-2 rounded-xl hover:bg-[#eeba0b]/20 transition-all text-[9px] group flex items-center">
+        <a href="admin.html" target="_blank" class="bg-white/5 border border-white/10 px-3 py-2 md:px-4 md:py-2 rounded-xl hover:bg-[#eeba0b]/20 transition-all text-[9px] group flex items-center shrink-0">
             <i class="fa-solid fa-lock md:mr-2 gold-text group-hover:text-[#fff5f5]"></i>
             <span class="soft-cream group-hover:text-white ml-1 md:ml-0">Admin</span>
         </a>
+
     </div>
 </nav>
 
@@ -224,6 +227,7 @@
     <script src="main.js"></script>
 </body>
 </html>
+
 
 
 
