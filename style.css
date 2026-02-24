@@ -173,4 +173,49 @@ section .mb-24 {
     text-align: left;
 }
 
+/* حل مشكلة ظهور الناف بار وزر الآدمن على الموبايل */
+@media (max-width: 768px) {
+    nav {
+        /* إجبار الناف بار على الظهور وتثبيته في الأعلى */
+        display: flex !important; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(45, 5, 5, 0.9); /* نفس لون الثيم الأساسي مع شفافية */
+        backdrop-filter: blur(15px);
+        z-index: 9999; /* لضمان ظهوره فوق كل شيء */
+        padding: 1rem 1.5rem;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(238, 186, 11, 0.1);
+    }
 
+    /* تصغير اللوجو قليلاً ليتناسب مع الموبايل */
+    nav .text-2xl {
+        font-size: 1.25rem;
+    }
+
+    /* التأكد من أن الروابط (بما فيها الآدمن) تظهر بجانب بعضها */
+    nav .flex {
+        gap: 1rem !important;
+    }
+}
+
+/* توحيد صناديق أيقونات التواصل في الفوتر */
+footer .w-14.h-14 {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0; /* يمنع الصندوق من الانضغاط إذا كان النص طويلاً */
+}
+
+/* ضبط حجم أيقونة الإيميل تحديداً لتتساوى بصرياً مع البقية */
+footer .fa-envelope {
+    font-size: 1.5rem !important; /* تكبير بسيط للإيميل */
+    transform: translateY(1px); /* موازنة بصرية للحجم */
+}
+
+footer .fa-github, footer .fa-linkedin-in {
+    font-size: 1.6rem !important;
+}
