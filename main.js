@@ -131,7 +131,7 @@ container.innerHTML = allProjects.map(p => `
     }, { threshold: 0.1 });
     
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-}
+
 
 
 async function handleContactForm() {
@@ -182,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
 
 
