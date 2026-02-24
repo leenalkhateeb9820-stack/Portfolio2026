@@ -15,7 +15,7 @@ async function renderProjects() {
     const container = document.getElementById('projects-grid');
     if (!container) return;
 
-    // 1. عرض الـ Skeleton (حالة التحميل داخل الصفحة)
+    // 1. عرض الـ Skeleton (حالة التحميل المؤقتة)
     container.innerHTML = `
         <div id="skeleton-loader" class="flex items-center justify-center w-full mb-12">
             <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 min-h-[300px] bg-white/5 border border-white/10 flex flex-col justify-center">
@@ -40,10 +40,43 @@ async function renderProjects() {
         console.error("Fetch failed, loading static data.");
         allProjects = staticProjects;
     } finally {
-        // 2. رسم المشاريع أولاً
-        displayProjects(allProjects);
+        // 2. رسم المشاريع مباشرة (دمجنا كود الـ map هنا لحل مشكلة الأقواس)
+        container.innerHTML = allProjects.map(p => `
+            <div class="reveal relative group flex items-center justify-center w-full mb-12">
+                <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[300px] flex flex-col justify-center">
+                    
+                    <div class="relative z-20 pr-32 md:pr-40 text-left"> 
+                        <span class="gold-text font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">${p.type}</span>
+                        <h4 class="text-xl md:text-3xl font-extrabold gold-text mb-3 leading-tight uppercase">${p.title}</h4>
+                        <p class="soft-cream text-[11px] md:text-xs leading-relaxed mb-4 normal-case">${p.description}</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            ${p.tags ? p.tags.map(tag => `
+                                <span class="px-2 py-1 bg-white/5 border border-white/10 rounded-md text-[9px] soft-cream font-bold uppercase tracking-wider">${tag}</span>
+                            `).join('') : ''}
+                        </div>
 
-        // 3. إخفاء الـ Preloader بعد التأكد من أن المشاريع رُسمت
+                        <a href="${p.link}" target="_blank" class="gold-text font-bold text-[10px] uppercase tracking-widest group/link inline-flex items-center">
+                            Explore Project <i class="fa-solid fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
+                        </a>
+                    </div>
+
+                    <div class="absolute right-0 bottom-0 w-44 h-44 md:w-60 md:h-60 z-10 pointer-events-none transition-transform duration-700 group-hover:scale-105 translate-x-4 translate-y-4">
+                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // 3. إعادة تفعيل أنيميشن الظهور
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 4. إخفاء الـ Preloader
         const preloader = document.getElementById('preloader');
         if (preloader) {
             preloader.classList.add('preloader-hidden');
@@ -149,6 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
 
 
