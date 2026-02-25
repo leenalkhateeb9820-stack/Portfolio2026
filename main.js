@@ -57,7 +57,11 @@ async function renderProjects() {
                         </div>
 
                         <a href="${p.link}" target="_blank" class="gold-text font-bold text-[10px] uppercase tracking-widest group/link inline-flex items-center">
-                            Explore Project <i class="fa-solid fa-arrow-right ml-2 transition-transform group-hover/link:translate-x-2"></i>
+                            Explore Project 
+                          <svg class="w-4 h-4 stroke-current fill-none ml-2 transition-transform group-hover/link:translate-x-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                          </svg>
                         </a>
                     </div>
 
@@ -96,7 +100,10 @@ async function handleContactForm() {
         const btn = document.getElementById('sendBtn');
         const status = document.getElementById('formStatus');
         
-        btn.innerHTML = 'Sending... <i class="fa-solid fa-spinner animate-spin ml-2"></i>';
+        btn.innerHTML = `Sending... <svg class="w-4 h-4 animate-spin ml-2 inline-block stroke-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+         </svg>`;
         btn.disabled = true;
 
         const formData = {
@@ -124,7 +131,9 @@ async function handleContactForm() {
             status.innerText = "❌ Connection error. Try again.";
             status.className = "text-center text-[10px] font-bold uppercase tracking-widest mt-4 text-red-500";
         } finally {
-            btn.innerHTML = 'Send Inquiry <i class="fa-solid fa-paper-plane ml-2"></i>';
+            btn.innerHTML = `Send Inquiry <svg class="w-4 h-4 fill-current ml-2 inline-block" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+             <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path>
+             </svg>`;
             btn.disabled = false;
         }
     });
@@ -134,3 +143,4 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
