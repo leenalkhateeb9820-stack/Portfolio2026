@@ -109,39 +109,35 @@
                     <span class="text-gold font-bold text-[10px] tracking-[0.5em] uppercase mb-3 block">Curation Mode</span>
                     <h2 class="text-white text-4xl font-black italic brand-font">Update Portfolio</h2>
                 </header>
- <form id="addProjectForm" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div class="space-y-2">
-        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Project Name</label>
-        <input type="text" id="title" class="w-full p-4 rounded-xl" required>
-    </div>
-    <div class="space-y-2">
-        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Category</label>
-        <input type="text" id="type" class="w-full p-4 rounded-xl" required>
-    </div>
-
-    <div class="space-y-2">
-        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Asset URL (Image)</label>
-        <input type="text" id="image" class="w-full p-4 rounded-xl" required>
-    </div>
-    <div class="space-y-2">
-        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Destination Link</label>
-        <input type="text" id="link" class="w-full p-4 rounded-xl" required>
-    </div>
-
-    <div class="space-y-2 md:col-span-2">
-        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Technologies (Tags - separated by comma)</label>
-        <input type="text" id="tags" class="w-full p-4 rounded-xl" placeholder="React, Node, CSS" required>
-    </div>
-
-    <div class="space-y-2 md:col-span-2">
-        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Project Narrative</label>
-        <textarea id="description" rows="3" class="w-full p-4 rounded-xl resize-none" required></textarea>
-    </div>
-
-    <button type="submit" id="submit-btn" class="md:col-span-2 btn-submit w-full py-5 font-black rounded-xl uppercase tracking-[0.3em] text-xs">
-        Publish Changes <i class="fa-solid fa-plus-circle ml-2"></i>
-    </button>
-</form>
+                <form id="addProjectForm" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Project Name</label>
+                        <input type="text" id="title" class="w-full p-4 rounded-xl" required>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Category</label>
+                        <input type="text" id="type" class="w-full p-4 rounded-xl" required>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Asset URL (Image)</label>
+                        <input type="text" id="image" class="w-full p-4 rounded-xl" required>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Destination Link</label>
+                        <input type="text" id="link" class="w-full p-4 rounded-xl" required>
+                    </div>
+                    <div class="space-y-2 md:col-span-2">
+                        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Technologies (Tags)</label>
+                        <input type="text" id="tags" class="w-full p-4 rounded-xl" placeholder="e.g. React, Node, CSS" required>
+                    </div>
+                    <div class="space-y-2 md:col-span-2">
+                        <label class="text-[10px] font-bold text-gold/60 uppercase tracking-widest">Project Narrative</label>
+                        <textarea id="description" rows="3" class="w-full p-4 rounded-xl resize-none" required></textarea>
+                    </div>
+                    <button type="submit" id="submit-btn" class="md:col-span-2 btn-submit w-full py-5 font-black rounded-xl uppercase tracking-[0.3em] text-xs">
+                        Publish Changes <i class="fa-solid fa-plus-circle ml-2"></i>
+                    </button>
+                </form>
             </div>
             <div id="adminProjectsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20"></div>
         </div>
@@ -151,8 +147,7 @@
                 <h3 class="text-white text-3xl font-bold mb-10 italic brand-font flex items-center gap-4">
                     <i class="fa-solid fa-envelope-open-text text-gold"></i> Inbox
                 </h3>
-                <div id="adminMessagesList" class="space-y-6">
-                    </div>
+                <div id="adminMessagesList" class="space-y-6"></div>
             </div>
         </div>
     </div>
@@ -173,6 +168,3 @@
     <script src="admin.js"></script>
 </body>
 </html>
-
-
-
