@@ -113,6 +113,7 @@ app.delete('/api/projects/:id', async (req, res) => {
 });
 
 app.post('/api/contact', async (req, res) => {
+    console.log("📥 New request received at /api/contact");
     try {
         const { name, email, message } = req.body;
         const cleanSubject = `Inquiry — ${name}`;
@@ -155,6 +156,7 @@ app.post('/api/contact', async (req, res) => {
         });
 
     } catch (err) {
+        console.error("❌ Route error:", err.message);
         if (!res.headersSent) {
             res.status(500).json({ success: false, error: err.message });
         }
@@ -187,4 +189,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
