@@ -19,7 +19,7 @@ async function checkAccess() {
             showLoginError();
         }
     } catch (err) {
-        alert("Server Error! Make sure your backend on Render is running.");
+        alert("Server Error! Ensure the backend is running.");
     }
 }
 
@@ -68,7 +68,7 @@ document.getElementById('addProjectForm').addEventListener('submit', async (e) =
 });
 
 function prepareEdit(id, title, type, desc, image, link, tags) {
-    switchTab('projectsTab');
+    if (typeof switchTab === 'function') switchTab('projectsTab');
     editMode = true;
     editId = id;
     document.getElementById('title').value = title;
@@ -91,7 +91,7 @@ function resetForm() {
     document.getElementById('addProjectForm').reset();
     const submitBtn = document.getElementById('submit-btn');
     if (submitBtn) {
-        submitBtn.innerText = "Commit to Portfolio";
+        submitBtn.innerText = "Publish Changes";
         submitBtn.classList.remove('bg-blue-600');
     }
 }
@@ -145,9 +145,7 @@ async function loadAdminMessages() {
 
         container.innerHTML = messages.map(msg => {
             const originalDate = new Date(msg.date).toLocaleString();
-            
-            // ترتيب النص ليظهر كأنه مكتوب يدوياً عند فك التشفير في جيميل
-            const emailBody = `Hi ${msg.name},\n\n[اكتبي ردك هنا]\n\n--- Original Message ---\nFrom: ${msg.email}\nSent: ${originalDate}\nSubject: ${msg.subject}\n\n${msg.message}`;
+            const emailBody = `Hi ${msg.name},\n\n[Your response here]\n\n--- Original Message ---\nFrom: ${msg.email}\nSent: ${originalDate}\nSubject: ${msg.subject}\n\n${msg.message}`;
             
             const encodedSubject = encodeURIComponent(`Re: ${msg.subject}`);
             const encodedBody = encodeURIComponent(emailBody);
