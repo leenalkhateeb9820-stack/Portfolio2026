@@ -111,6 +111,7 @@ app.post('/api/contact', async (req, res) => {
     try {
         const { name, email, message } = req.body;
         const cleanSubject = `Inquiry — ${name}`;
+        
         const newMessage = new Message({ 
             name, 
             email, 
@@ -118,9 +119,11 @@ app.post('/api/contact', async (req, res) => {
             message 
         });
         await newMessage.save();
+        console.log("💾 Message saved to Database");
 
         res.status(200).json({ success: true });
 
+        console.log("📧 Attempting to send email...");
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
@@ -136,21 +139,15 @@ app.post('/api/contact', async (req, res) => {
                     <div style="background: #f9f9f9; padding: 20px; border-radius: 12px; color: #444; line-height: 1.8; font-style: italic;">
                         "${message}"
                     </div>
-                    <p style="margin-top: 25px; font-size: 12px; color: #888; text-align: center;">
-                        You can reply directly by clicking <b>Reply</b>.
-                    </p>
                 </div>
             `
         };
 
-        await transporter.sendMail(mailOptions).then(() => {
-            console.log("✅ Email sent successfully");
-        }).catch(err => {
-            console.error("❌ Email failed:", err.message);
-        });
+        const info = await transporter.sendMail(mailOptions);
+        console.log("✅ Email sent successfully: " + info.response);
 
     } catch (err) {
-        console.error("❌ Route error:", err.message);
+        console.error("❌ Process failed:", err.message);
         if (!res.headersSent) {
             res.status(500).json({ success: false, error: err.message });
         }
@@ -183,5 +180,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-
