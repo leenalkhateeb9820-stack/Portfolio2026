@@ -6,6 +6,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 
 const app = express();
+
 app.use(express.json());
 app.use(cors({
     origin: '*', 
@@ -111,9 +112,7 @@ app.delete('/api/projects/:id', async (req, res) => {
 app.post('/api/contact', async (req, res) => {
     try {
         const { name, email, message } = req.body;
-        
         const cleanSubject = `Inquiry — ${name}`;
-
         const newMessage = new Message({ 
             name, 
             email, 
@@ -130,35 +129,34 @@ app.post('/api/contact', async (req, res) => {
             replyTo: email,
             subject: cleanSubject,
             html: `
-                <div style="direction: rtl; font-family: sans-serif; padding: 25px; border-right: 5px solid #4d0013; background-color: #ffffff; max-width: 600px; margin: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                    <h2 style="color: #4d0013; margin-top: 0;">رسالة جديدة من الموقع</h2>
-                    <p style="font-size: 16px; color: #333;"><strong>المرسل:</strong> ${name}</p>
-                    <p style="font-size: 16px; color: #333;"><strong>البريد الإلكتروني:</strong> ${email}</p>
+                <div style="direction: ltr; font-family: sans-serif; padding: 25px; border-left: 5px solid #4d0013; background-color: #ffffff; max-width: 600px; margin: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                    <h2 style="color: #4d0013; margin-top: 0;">New Website Inquiry</h2>
+                    <p style="font-size: 16px; color: #333;"><strong>From:</strong> ${name}</p>
+                    <p style="font-size: 16px; color: #333;"><strong>Email:</strong> ${email}</p>
                     <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                    <p style="font-weight: bold; color: #4d0013;">نص الرسالة:</p>
+                    <p style="font-weight: bold; color: #4d0013;">Message Content:</p>
                     <div style="background: #f9f9f9; padding: 20px; border-radius: 12px; color: #444; line-height: 1.8; font-style: italic;">
                         "${message}"
                     </div>
                     <p style="margin-top: 25px; font-size: 12px; color: #888; text-align: center;">
-                        يمكنك الرد مباشرة بالضغط على <b>Reply</b>.
+                        You can reply directly by clicking <b>Reply</b>.
                     </p>
                 </div>
             `
         };
 
         transporter.sendMail(mailOptions).then(() => {
-            console.log("✅ Email sent successfully to:", process.env.EMAIL_USER);
+            console.log("✅ Email sent successfully");
         }).catch(err => {
-            console.error("❌ Email failed behind the scenes:", err.message);
+            console.error("❌ Email failed:", err.message);
         });
 
     } catch (err) {
-        console.error("❌ Critical Error:", err);
         if (!res.headersSent) {
             res.status(500).json({ success: false, error: err.message });
         }
     }
-});// --- نهاية قسم التواصل المصحح ---
+});
 
 app.get('/api/messages', async (req, res) => {
     try {
@@ -186,5 +184,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
-
-
