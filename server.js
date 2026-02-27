@@ -43,15 +43,18 @@ const Message = mongoose.model('Message', messageSchema);
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
-    port: 465,
-    secure: true, 
+    port: 587,
+    secure: false,
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 10000
+    tls: {
+        rejectUnauthorized: false,
+        minVersion: "TLSv1.2"
+    },
+    connectionTimeout: 20000,
+    greetingTimeout: 20000
 });
 
 app.post('/api/verify-password', (req, res) => {
@@ -185,4 +188,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
