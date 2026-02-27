@@ -143,7 +143,7 @@ app.post('/api/contact', async (req, res) => {
             `
         };
 
-        transporter.sendMail(mailOptions).then(() => {
+        await transporter.sendMail(mailOptions).then(() => {
             console.log("✅ Email sent successfully");
         }).catch(err => {
             console.error("❌ Email failed:", err.message);
@@ -183,4 +183,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
