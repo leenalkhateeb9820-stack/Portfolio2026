@@ -42,19 +42,13 @@ const messageSchema = new mongoose.Schema({
 const Message = mongoose.model('Message', messageSchema);
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false,
+    service: 'gmail',
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     },
-    tls: {
-        rejectUnauthorized: false,
-        minVersion: "TLSv1.2"
-    },
-    connectionTimeout: 20000,
-    greetingTimeout: 20000
+    debug: true, 
+    logger: true 
 });
 
 app.post('/api/verify-password', (req, res) => {
@@ -115,50 +109,35 @@ app.delete('/api/projects/:id', async (req, res) => {
 });
 
 app.post('/api/contact', async (req, res) => {
-    console.log("📥 New request received at /api/contact");
+    console.log("📥 New request received");
     try {
         const { name, email, message } = req.body;
-        const cleanSubject = `Inquiry — ${name}`;
         
-        const newMessage = new Message({ 
-            name, 
-            email, 
-            subject: cleanSubject, 
-            message 
-        });
+        const newMessage = new Message({ name, email, subject: `Inquiry — ${name}`, message });
         await newMessage.save();
-        console.log("💾 Message saved to Database");
+        console.log("💾 Message saved");
 
         res.status(200).json({ success: true });
 
-        console.log("📧 Attempting to send email...");
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: process.env.EMAIL_USER,
             replyTo: email,
-            subject: cleanSubject,
-            html: `
-                <div style="direction: ltr; font-family: sans-serif; padding: 25px; border-left: 5px solid #4d0013; background-color: #ffffff; max-width: 600px; margin: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                    <h2 style="color: #4d0013; margin-top: 0;">New Website Inquiry</h2>
-                    <p style="font-size: 16px; color: #333;"><strong>From:</strong> ${name}</p>
-                    <p style="font-size: 16px; color: #333;"><strong>Email:</strong> ${email}</p>
-                    <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                    <p style="font-weight: bold; color: #4d0013;">Message Content:</p>
-                    <div style="background: #f9f9f9; padding: 20px; border-radius: 12px; color: #444; line-height: 1.8; font-style: italic;">
-                        "${message}"
-                    </div>
-                </div>
-            `
+            subject: `Inquiry — ${name}`,
+            text: `From: ${name}\nEmail: ${email}\nMessage: ${message}`
         };
 
-        const info = await transporter.sendMail(mailOptions);
-        console.log("✅ Email sent successfully: " + info.response);
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log("❌ Email Error Details:", error.message);
+            } else {
+                console.log("✅ Email Sent: " + info.response);
+            }
+        });
 
     } catch (err) {
-        console.error("❌ Process failed:", err.message);
-        if (!res.headersSent) {
-            res.status(500).json({ success: false, error: err.message });
-        }
+        console.error("❌ Route Error:", err.message);
+        if (!res.headersSent) res.status(500).json({ success: false });
     }
 });
 
@@ -188,5 +167,6 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
 
