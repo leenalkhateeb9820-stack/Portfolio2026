@@ -42,27 +42,25 @@ const messageSchema = new mongoose.Schema({
 const Message = mongoose.model('Message', messageSchema);
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true, 
+    service: 'gmail',
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
     },
-    tls: {
-        rejectUnauthorized: false 
-    },
-    connectionTimeout: 10000, 
+    pool: true, 
+    maxConnections: 1,
+    maxMessages: Infinity,
+    socketTimeout: 20000,
+    connectionTimeout: 20000
 });
 
-transporter.verify((error, success) => {
+transporter.verify((error) => {
     if (error) {
-        console.log("❌ Email Connection Failed: " + error.message);
+        console.log("❌ Final Attempt Error: " + error.message);
     } else {
-        console.log("✅ Server is ready to send emails!");
+        console.log("✅ SUCCESS! Server is ready to send emails!");
     }
 });
-
 app.post('/api/verify-password', (req, res) => {
     const { password } = req.body;
     const securePassword = process.env.ADMIN_PASSWORD; 
@@ -179,6 +177,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
