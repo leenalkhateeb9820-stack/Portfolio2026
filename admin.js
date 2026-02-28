@@ -145,11 +145,13 @@ async function loadAdminMessages() {
 
         container.innerHTML = messages.map(msg => {
             const originalDate = new Date(msg.date).toLocaleString();
-            const emailBody = `Hi ${msg.name},\n\n[Your response here]\n\n--- Original Message ---\nFrom: ${msg.email}\nSent: ${originalDate}\nSubject: ${msg.subject}\n\n${msg.message}`;
             
-            const encodedSubject = encodeURIComponent(`Re: ${msg.subject}`);
-            const encodedBody = encodeURIComponent(emailBody);
-            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${msg.email}&su=${encodedSubject}&body=${encodedBody}`;
+            // تجهيز النصوص للرد
+            const replySubject = `Re: ${msg.subject}`;
+            const replyBody = `Hi ${msg.name},\n\n[Your response here]\n\n--- Original Message ---\nFrom: ${msg.email}\nSent: ${originalDate}\n\n${msg.message}`;
+
+            // رابط الـ mailto يحل مشكلة الموبايل واللابتوب معاً
+            const mailtoLink = `mailto:${msg.email}?subject=${encodeURIComponent(replySubject)}&body=${encodeURIComponent(replyBody)}`;
             
             return `
                 <div class="message-item admin-card p-6 rounded-2xl relative group">
@@ -169,7 +171,7 @@ async function loadAdminMessages() {
                         <div class="bg-black/20 p-4 rounded-xl text-white/80 leading-relaxed text-sm italic">"${msg.message}"</div>
                     </div>
                     <div class="flex gap-3 justify-end">
-                        <a href="${gmailLink}" target="_blank"
+                        <a href="${mailtoLink}"
                            class="bg-green-600/20 hover:bg-green-600 text-green-400 hover:text-white px-5 py-2 rounded-xl text-[10px] font-bold uppercase transition-all flex items-center gap-2">
                             <i class="fa-solid fa-reply"></i> Send Reply
                         </a>
@@ -192,3 +194,4 @@ async function deleteMessage(id) {
         loadAdminMessages();
     }
 }
+
