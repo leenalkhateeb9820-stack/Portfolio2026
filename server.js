@@ -46,9 +46,15 @@ const transporter = nodemailer.createTransport({
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-    },
-    debug: true, 
-    logger: true 
+    }
+});
+
+transporter.verify(function (error, success) {
+    if (error) {
+        console.log("❌ Transporter verify error: " + error.message);
+    } else {
+        console.log("✅ Server is ready to take our messages");
+    }
 });
 
 app.post('/api/verify-password', (req, res) => {
@@ -167,6 +173,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
