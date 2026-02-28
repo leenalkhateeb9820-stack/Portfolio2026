@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
-const nodemailer = require('nodemailer');
 
 const app = express();
 
@@ -41,26 +40,6 @@ const messageSchema = new mongoose.Schema({
 });
 const Message = mongoose.model('Message', messageSchema);
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    },
-    pool: true, 
-    maxConnections: 1,
-    maxMessages: Infinity,
-    socketTimeout: 20000,
-    connectionTimeout: 20000
-});
-
-transporter.verify((error) => {
-    if (error) {
-        console.log("❌ Final Attempt Error: " + error.message);
-    } else {
-        console.log("✅ SUCCESS! Server is ready to send emails!");
-    }
-});
 app.post('/api/verify-password', (req, res) => {
     const { password } = req.body;
     const securePassword = process.env.ADMIN_PASSWORD; 
@@ -119,35 +98,21 @@ app.delete('/api/projects/:id', async (req, res) => {
 });
 
 app.post('/api/contact', async (req, res) => {
-    console.log("📥 New request received");
+    console.log("📥 New message received");
     try {
         const { name, email, message } = req.body;
-        
-        const newMessage = new Message({ name, email, subject: `Inquiry — ${name}`, message });
-        await newMessage.save();
-        console.log("💾 Message saved");
-
-        res.status(200).json({ success: true });
-
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER,
-            replyTo: email,
-            subject: `Inquiry — ${name}`,
-            text: `From: ${name}\nEmail: ${email}\nMessage: ${message}`
-        };
-
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log("❌ Email Error Details:", error.message);
-            } else {
-                console.log("✅ Email Sent: " + info.response);
-            }
+        const newMessage = new Message({ 
+            name, 
+            email, 
+            subject: `Inquiry — ${name}`, 
+            message 
         });
-
+        await newMessage.save();
+        console.log("💾 Message saved to Database");
+        res.status(200).json({ success: true });
     } catch (err) {
-        console.error("❌ Route Error:", err.message);
-        if (!res.headersSent) res.status(500).json({ success: false });
+        console.error("❌ Save failed:", err.message);
+        res.status(500).json({ success: false });
     }
 });
 
@@ -175,11 +140,5 @@ app.get('/ping', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`🚀 Server is running on port ${PORT}`);
 });
-
-
-
-
-
-
