@@ -77,6 +77,45 @@
             background: rgba(255, 255, 255, 0.05); 
             border-right-color: var(--text-cream);
         }
+
+@media (max-width: 640px) {
+    #adminMessagesList .flex.justify-between.items-start {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    #adminMessagesList span.text-\[10px\] {
+        position: static !important;
+        display: block !important;
+        margin-top: 10px !important;
+        padding: 5px 12px !important;
+        background: rgba(238, 186, 11, 0.1) !important;
+        color: #eeba0b !important;
+        border-radius: 6px !important;
+        width: fit-content !important;
+        max-width: 100% !important;
+        font-family: monospace !important;
+        white-space: normal !important; 
+    }
+
+    .message-item {
+        padding: 15px !important;
+        overflow: hidden !important;
+        border-right: 3px solid #eeba0b !important;
+    }
+
+    .message-item .flex.gap-3.justify-end {
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    .message-item .flex.gap-3.justify-end a, 
+    .message-item .flex.gap-3.justify-end button {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+}
     </style>
 </head>
 <body class="flex flex-col items-center">
@@ -168,3 +207,4 @@
     <script src="admin.js"></script>
 </body>
 </html>
+
