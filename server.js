@@ -42,18 +42,24 @@ const messageSchema = new mongoose.Schema({
 const Message = mongoose.model('Message', messageSchema);
 
 const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, 
     auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-    }
+    },
+    tls: {
+        rejectUnauthorized: false 
+    },
+    connectionTimeout: 10000, 
 });
 
-transporter.verify(function (error, success) {
+transporter.verify((error, success) => {
     if (error) {
-        console.log("❌ Transporter verify error: " + error.message);
+        console.log("❌ Email Connection Failed: " + error.message);
     } else {
-        console.log("✅ Server is ready to take our messages");
+        console.log("✅ Server is ready to send emails!");
     }
 });
 
@@ -173,6 +179,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
