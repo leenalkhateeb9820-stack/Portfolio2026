@@ -1,4 +1,4 @@
-###Full-Stack Web Development Portfolio
+### Full-Stack Web Development Portfolio
 This project is a professional personal portfolio designed to showcase my web development work and technical expertise. It is architected as a robust full-stack application, providing a seamless and dynamic experience for both visitors and the administrator.
 
 ### Core Functionality
