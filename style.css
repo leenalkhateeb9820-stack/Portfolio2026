@@ -236,18 +236,43 @@ footer .fa-linkedin-in {
         padding: 10px !important;
     }
 
-    .message-item {
-        padding: 15px !important;
+    .message-item .flex.justify-between.items-start {
+        flex-direction: column !important; 
+        align-items: flex-start !important;
+        gap: 10px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 15px;
         margin-bottom: 15px;
     }
 
+    .message-item span.text-\[10px\] {
+        position: static !important; 
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 4px 10px;
+        border-radius: 6px;
+        color: var(--gold); 
+        font-size: 9px !important;
+        width: auto;
+        max-width: 100%;
+        word-break: break-all; 
+    }
+
+    .message-item {
+        padding: 15px !important;
+        margin-bottom: 20px;
+        overflow: hidden;
+    }
+
     .message-item h4 {
-        font-size: 1rem;
+        font-size: 1.1rem;
+        margin-bottom: 2px;
     }
 
     .message-item .flex.gap-3.justify-end {
         flex-direction: column;
         gap: 10px;
+        margin-top: 15px;
     }
 
     .message-item .flex.gap-3.justify-end a, 
@@ -255,6 +280,7 @@ footer .fa-linkedin-in {
         width: 100%;
         justify-content: center;
         padding: 12px;
+        font-size: 11px;
     }
 
     #adminProjectsGrid .flex.items-center.justify-between {
@@ -268,11 +294,5 @@ footer .fa-linkedin-in {
         justify-content: space-between;
         border-top: 1px solid rgba(255,255,255,0.1);
         padding-top: 10px;
-    }
-    
-    #addProjectForm input, 
-    #addProjectForm textarea, 
-    #addProjectForm select {
-        font-size: 16px !important;
     }
 }
