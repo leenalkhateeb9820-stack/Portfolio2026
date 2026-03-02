@@ -1,10 +1,10 @@
-# Full-Stack Web Development Portfolio 🚀
+# Full-Stack Web Development Portfolio 
 
 This project is a personal portfolio designed to showcase my web development work and technical skills. It is built as a full-stack application, ensuring a dynamic experience for both users and administrators.
 
 ---
 
-## 🛠 Tech Stack & Tools
+##  Tech Stack & Tools
 
 ### **Frontend**
 * **HTML5 & CSS3** - Core structure and advanced styling.
@@ -31,7 +31,7 @@ This project is a personal portfolio designed to showcase my web development wor
 
 ---
 
-## 🌟 Key Features
+##  Key Features
 
 * **Dynamic Project Gallery:** Fetches projects directly from MongoDB.
 * **Secure Admin Dashboard:** Password-protected area to manage content without touching the code.
@@ -41,7 +41,7 @@ This project is a personal portfolio designed to showcase my web development wor
 
 ---
 
-## 🚀 Development Status
+##  Development Status
 This project is the result of continuous iterations, focusing on clean code architecture and performance optimization. It is fully responsive and tested for cross-browser compatibility.
 
 ---
