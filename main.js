@@ -17,7 +17,8 @@ async function renderProjects() {
 
     container.innerHTML = `
         <div id="skeleton-loader" class="flex items-center justify-center w-full mb-12">
-                <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[3rem] p-8 h-[320px] bg-white/5 border border-white/10 flex flex-col justify-center">                <div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
+            <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 min-h-[300px] bg-white/5 border border-white/10 flex flex-col justify-center">
+                <div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
                 <div class="h-8 w-48 bg-white/10 rounded mb-4"></div>
                 <div class="h-16 w-full bg-white/10 rounded"></div>
             </div>
@@ -27,12 +28,7 @@ async function renderProjects() {
     let allProjects = [];
 
     try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 3000); 
-
-        const response = await fetch('https://leen-portfolio2026.onrender.com/api/projects', { signal: controller.signal });
-        clearTimeout(timeoutId);
-
+        const response = await fetch('https://leen-portfolio2026.onrender.com/api/projects');
         if (response.ok) {
             const dbProjects = await response.json();
             allProjects = dbProjects.length > 0 ? dbProjects : staticProjects;
@@ -42,11 +38,9 @@ async function renderProjects() {
     } catch (err) {
         allProjects = staticProjects;
     } finally {
-        container.innerHTML = allProjects.map((p, index) => {
-            const isFirst = index === 0; 
-            return `
+        container.innerHTML = allProjects.map(p => `
             <div class="reveal relative group flex items-center justify-center w-full mb-12">
-                    <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[320px] flex flex-col justify-center">
+                <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[300px] flex flex-col justify-center">
                     <div class="relative z-20 pr-32 md:pr-40 text-left"> 
                         <span class="gold-text font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">${p.type}</span>
                         <h4 class="text-xl md:text-3xl font-extrabold gold-text mb-3 leading-tight uppercase">${p.title}</h4>
@@ -63,16 +57,11 @@ async function renderProjects() {
                         </a>
                     </div>
                     <div class="absolute right-0 bottom-0 w-44 h-44 md:w-60 md:h-60 z-10 pointer-events-none transition-transform duration-700 group-hover:scale-105 translate-x-4 translate-y-4">
-                        <img src="${p.image}" 
-                         alt="${p.title}" 
-                         width="220" height="220"
-                         class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
-                         ${isFirst ? 'fetchpriority="high" loading="eager"' : 'loading="lazy"'}
-                        >
+                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
                     </div>
                 </div>
             </div>
-        `}).join('');
+        `).join('');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -84,7 +73,7 @@ async function renderProjects() {
         const preloader = document.getElementById('preloader');
         if (preloader) {
             preloader.classList.add('preloader-hidden');
-            setTimeout(() => { preloader.remove(); }, 300); 
+            setTimeout(() => { preloader.style.display = 'none'; }, 800);
         }
     }
 }
@@ -133,8 +122,6 @@ async function handleContactForm() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    renderProjects();
     handleContactForm();
-    setTimeout(() => {
-        renderProjects();
-    }, 100);
 });
