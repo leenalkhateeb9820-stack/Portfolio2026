@@ -1,3 +1,4 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 :root {
     --burgundy-light: #800020;
     --burgundy-dark: #4d0013;
@@ -7,7 +8,6 @@
     --bricolage: 'Bricolage Grotesque', sans-serif;
 }
 
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 
 .preloader-hidden { 
     opacity: 0 !important; 
@@ -229,3 +229,4 @@ footer .fa-github,
 footer .fa-linkedin-in {
     font-size: 1.6rem !important;
 }
+
