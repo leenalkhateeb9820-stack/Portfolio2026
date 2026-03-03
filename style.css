@@ -1,3 +1,6 @@
+.bg-gold { background-color: #eeba0b !important; }
+.text-gold { color: #eeba0b !important; }
+.bg-burgundy { background-color: #2d0505 !important; }
 :root {
     --burgundy-light: #800020;
     --burgundy-dark: #4d0013;
@@ -240,6 +243,7 @@ footer .fa-github,
 footer .fa-linkedin-in {
     font-size: 1.6rem !important;
 }
+
 
 
 
