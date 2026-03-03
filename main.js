@@ -17,7 +17,7 @@ async function renderProjects() {
 
     container.innerHTML = `
         <div id="skeleton-loader" class="flex items-center justify-center w-full mb-12">
-            <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 min-h-[300px] bg-white/5 border border-white/10 flex flex-col justify-center">
+            <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[3rem] p-8 min-h-[300px] bg-white/5 border border-white/10 flex flex-col justify-center">
                 <div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
                 <div class="h-8 w-48 bg-white/10 rounded mb-4"></div>
                 <div class="h-16 w-full bg-white/10 rounded"></div>
@@ -38,7 +38,9 @@ async function renderProjects() {
     } catch (err) {
         allProjects = staticProjects;
     } finally {
-        container.innerHTML = allProjects.map(p => `
+        container.innerHTML = allProjects.map((p, index) => {
+            const isFirst = index === 0; 
+            return `
             <div class="reveal relative group flex items-center justify-center w-full mb-12">
                 <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[300px] flex flex-col justify-center">
                     <div class="relative z-20 pr-32 md:pr-40 text-left"> 
@@ -57,11 +59,17 @@ async function renderProjects() {
                         </a>
                     </div>
                     <div class="absolute right-0 bottom-0 w-44 h-44 md:w-60 md:h-60 z-10 pointer-events-none transition-transform duration-700 group-hover:scale-105 translate-x-4 translate-y-4">
-                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
+                        <img src="${p.image}" 
+                             alt="${p.title}" 
+                             class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+                             width="240" 
+                             height="240"
+                             ${isFirst ? 'fetchpriority="high" loading="eager"' : 'loading="lazy"'}
+                        >
                     </div>
                 </div>
             </div>
-        `).join('');
+        `}).join('');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -73,7 +81,7 @@ async function renderProjects() {
         const preloader = document.getElementById('preloader');
         if (preloader) {
             preloader.classList.add('preloader-hidden');
-            setTimeout(() => { preloader.style.display = 'none'; }, 800);
+            setTimeout(() => { preloader.remove(); }, 500); 
         }
     }
 }
@@ -125,3 +133,4 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
