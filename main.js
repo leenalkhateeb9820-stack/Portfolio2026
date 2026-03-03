@@ -60,11 +60,10 @@ async function renderProjects() {
                     </div>
                     <div class="absolute right-0 bottom-0 w-44 h-44 md:w-60 md:h-60 z-10 pointer-events-none transition-transform duration-700 group-hover:scale-105 translate-x-4 translate-y-4">
                         <img src="${p.image}" 
-                             alt="${p.title}" 
-                             class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
-                             width="240" 
-                             height="240"
-                             ${isFirst ? 'fetchpriority="high" loading="eager"' : 'loading="lazy"'}
+                         alt="${p.title}" 
+                         class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+                         style="width: 220px; height: 220px; aspect-ratio: 1/1;" 
+                         ${isFirst ? 'fetchpriority="high" loading="eager"' : 'loading="lazy"'}
                         >
                     </div>
                 </div>
@@ -133,4 +132,5 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
