@@ -80,7 +80,7 @@ async function renderProjects() {
         const preloader = document.getElementById('preloader');
         if (preloader) {
             preloader.classList.add('preloader-hidden');
-            setTimeout(() => { preloader.remove(); }, 500); 
+            setTimeout(() => { preloader.remove(); }, 100); 
         }
     }
 }
@@ -132,5 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
 
