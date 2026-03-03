@@ -10,10 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-    <script>window.tailwind = { opacity: 0 }</script>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio" defer></script>
-
     <link rel="preload" href="style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="style.css"></noscript>
 
@@ -234,13 +230,14 @@
     }, { rootMargin: '0px 0px -100px 0px', threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
 <script src="main.js" defer></script>
 <script>
     function forceHidePreloader() {
         const preloader = document.getElementById('preloader');
         if (preloader && !preloader.classList.contains('preloader-hidden')) {
             preloader.classList.add('preloader-hidden');
-            setTimeout(() => { preloader.remove(); }, 500);
+            setTimeout(() => { preloader.remove(); }, 100);
         }
     }
     document.addEventListener('DOMContentLoaded', forceHidePreloader);
@@ -249,6 +246,7 @@
 </script>
 </body>
 </html>
+
 
 
 
