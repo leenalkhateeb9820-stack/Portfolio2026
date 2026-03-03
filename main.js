@@ -17,8 +17,7 @@ async function renderProjects() {
 
     container.innerHTML = `
         <div id="skeleton-loader" class="flex items-center justify-center w-full mb-12">
-            <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[3rem] p-8 h-[400px] bg-white/5 border border-white/10 flex flex-col justify-center">
-                <div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
+                <div class="glass-card animate-pulse w-full max-w-[550px] rounded-[3rem] p-8 h-[320px] bg-white/5 border border-white/10 flex flex-col justify-center">                <div class="h-4 w-24 bg-white/10 rounded mb-4"></div>
                 <div class="h-8 w-48 bg-white/10 rounded mb-4"></div>
                 <div class="h-16 w-full bg-white/10 rounded"></div>
             </div>
@@ -47,7 +46,7 @@ async function renderProjects() {
             const isFirst = index === 0; 
             return `
             <div class="reveal relative group flex items-center justify-center w-full mb-12">
-                <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[400px] flex flex-col justify-center">
+                    <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[320px] flex flex-col justify-center">
                     <div class="relative z-20 pr-32 md:pr-40 text-left"> 
                         <span class="gold-text font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">${p.type}</span>
                         <h4 class="text-xl md:text-3xl font-extrabold gold-text mb-3 leading-tight uppercase">${p.title}</h4>
@@ -137,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects();
     handleContactForm();
 });
+
 
 
 
