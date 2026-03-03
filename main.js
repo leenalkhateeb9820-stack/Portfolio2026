@@ -133,8 +133,10 @@ async function handleContactForm() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderProjects();
     handleContactForm();
+    setTimeout(() => {
+        renderProjects();
+    }, 100);
 });
 
 
