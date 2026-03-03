@@ -1,3 +1,10 @@
+html, body {
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
 :root {
     --burgundy-light: #800020;
     --burgundy-dark: #4d0013;
@@ -7,11 +14,10 @@
     --bricolage: 'Bricolage Grotesque', sans-serif;
 }
 
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
-
 .preloader-hidden { 
     opacity: 0 !important; 
     visibility: hidden !important; 
+    transition: opacity 0.3s ease;
 }
 
 body {
@@ -27,9 +33,10 @@ body {
 
 .glass-card {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(8px); 
     border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.4s ease;
+   
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
 }
 
 .project-glow {
@@ -50,8 +57,9 @@ body {
 
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: transform, opacity;
 }
 
 .reveal.active {
@@ -70,13 +78,13 @@ input:focus, textarea:focus {
     box-shadow: 0 0 15px rgba(238,186,11,0.25);
     outline: none;
     transform: scale(1.01);
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 button[type="submit"] {
     background-color: var(--gold) !important;
     color: #2d0505 !important;           
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     display: flex;
     justify-content: center;
     align-items: center;
