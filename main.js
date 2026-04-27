@@ -28,10 +28,10 @@ async function renderProjects() {
     let allProjects = [];
 
     try {
-        const response = await fetch('https://leen-portfolio2026.onrender.com/api/projects');
+        const response = await fetch('/api/projects');
         if (response.ok) {
             const dbProjects = await response.json();
-            allProjects = dbProjects.length > 0 ? dbProjects : staticProjects;
+            allProjects = (dbProjects && dbProjects.length > 0) ? dbProjects : staticProjects;
         } else {
             allProjects = staticProjects;
         }
@@ -98,7 +98,7 @@ async function handleContactForm() {
         };
 
         try {
-            const response = await fetch('https://leen-portfolio2026.onrender.com/api/contact', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
