@@ -25,51 +25,46 @@ async function renderProjects() {
         </div>
     `;
 
-    let allProjects = [];
-
     try {
         const response = await fetch('/api/projects');
         if (response.ok) {
-            const dbProjects = await response.json();
-            allProjects = (dbProjects && dbProjects.length > 0) ? dbProjects : staticProjects;
-        } else {
-            allProjects = staticProjects;
-        }
-    } catch (err) {
-        allProjects = staticProjects;
-    } finally {
-        container.innerHTML = allProjects.map(p => `
-            <div class="reveal relative group flex items-center justify-center w-full mb-12">
-                <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[300px] flex flex-col justify-center">
-                    <div class="relative z-20 pr-32 md:pr-40 text-left"> 
-                        <span class="gold-text font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">${p.type}</span>
-                        <h4 class="text-xl md:text-3xl font-extrabold gold-text mb-3 leading-tight uppercase">${p.title}</h4>
-                        <p class="soft-cream text-[11px] md:text-xs leading-relaxed mb-4 normal-case">${p.description}</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            ${p.tags ? p.tags.map(tag => `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-md text-[9px] soft-cream font-bold uppercase tracking-wider">${tag}</span>`).join('') : ''}
+            const allProjects = await response.json();
+            
+            container.innerHTML = allProjects.map(p => `
+                <div class="reveal relative group flex items-center justify-center w-full mb-12">
+                    <div class="glass-card ${p.glowClass || 'project-glow'} w-full max-w-[550px] rounded-[2.5rem] md:rounded-[3rem] p-6 md:p-8 relative overflow-hidden transition-all duration-500 min-h-[300px] flex flex-col justify-center">
+                        <div class="relative z-20 pr-32 md:pr-40 text-left"> 
+                            <span class="gold-text font-black text-[8px] md:text-[9px] tracking-[0.3em] uppercase mb-2 block">${p.type}</span>
+                            <h4 class="text-xl md:text-3xl font-extrabold gold-text mb-3 leading-tight uppercase">${p.title}</h4>
+                            <p class="soft-cream text-[11px] md:text-xs leading-relaxed mb-4 normal-case">${p.description}</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                ${p.tags ? p.tags.map(tag => `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded-md text-[9px] soft-cream font-bold uppercase tracking-wider">${tag}</span>`).join('') : ''}
+                            </div>
+                            <a href="${p.link}" target="_blank" class="gold-text font-bold text-[10px] uppercase tracking-widest group/link inline-flex items-center">
+                                Explore Project 
+                                <svg class="w-4 h-4 stroke-current fill-none ml-2 transition-transform group-hover/link:translate-x-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
                         </div>
-                        <a href="${p.link}" target="_blank" class="gold-text font-bold text-[10px] uppercase tracking-widest group/link inline-flex items-center">
-                            Explore Project 
-                            <svg class="w-4 h-4 stroke-current fill-none ml-2 transition-transform group-hover/link:translate-x-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                    </div>
-                    <div class="absolute right-0 bottom-0 w-44 h-44 md:w-60 md:h-60 z-10 pointer-events-none transition-transform duration-700 group-hover:scale-105 translate-x-4 translate-y-4">
-                        <img src="${p.image}" alt="${p.title}" class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
+                        <div class="absolute right-0 bottom-0 w-44 h-44 md:w-60 md:h-60 z-10 pointer-events-none transition-transform duration-700 group-hover:scale-105 translate-x-4 translate-y-4">
+                            <img src="${p.image}" alt="${p.title}" class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]">
+                        </div>
                     </div>
                 </div>
-            </div>
-        `).join('');
+            `).join('');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+    } catch (err) {
+        console.error(err);
+    } finally {
         const preloader = document.getElementById('preloader');
         if (preloader) {
             preloader.classList.add('preloader-hidden');
