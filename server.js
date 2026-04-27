@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
+const { createClient } = require('@supabase/supabase-js');
 const cors = require('cors');
 const path = require('path');
 
@@ -14,31 +14,9 @@ app.use(cors({
 }));
 app.use(express.static(__dirname)); 
 
-const mongoURI = process.env.MONGODB_URI;
-mongoose.connect(mongoURI)
-    .then(() => console.log("✅ Successfully connected to MongoDB Atlas!"))
-    .catch(err => console.error("❌ Connection error:", err));
-
-const projectSchema = new mongoose.Schema({
-    title: String,
-    type: String,
-    description: String,
-    image: String,
-    link: String,
-    tags: [String],
-    colorClass: String,
-    glowClass: String
-});
-const Project = mongoose.model('Project', projectSchema);
-
-const messageSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    subject: String,
-    message: String,
-    date: { type: Date, default: Date.now }
-});
-const Message = mongoose.model('Message', messageSchema);
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 app.post('/api/verify-password', (req, res) => {
     const { password } = req.body;
@@ -51,14 +29,11 @@ app.post('/api/verify-password', (req, res) => {
     }
 });
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
-
 app.get('/api/projects', async (req, res) => {
     try {
-        const projects = await Project.find();
-        res.json(projects);
+        const { data, error } = await supabase.from('projects').select('*');
+        if (error) throw error;
+        res.json(data);
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -66,9 +41,9 @@ app.get('/api/projects', async (req, res) => {
 
 app.post('/api/projects', async (req, res) => {
     try {
-        const newProject = new Project(req.body);
-        await newProject.save();
-        res.status(201).json(newProject);
+        const { data, error } = await supabase.from('projects').insert([req.body]).select();
+        if (error) throw error;
+        res.status(201).json(data[0]);
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
@@ -76,13 +51,10 @@ app.post('/api/projects', async (req, res) => {
 
 app.put('/api/projects/:id', async (req, res) => {
     try {
-        const updatedProject = await Project.findByIdAndUpdate(
-            req.params.id, 
-            req.body, 
-            { new: true, runValidators: true }
-        );
-        if (!updatedProject) return res.status(404).json({ message: "Project not found" });
-        res.json(updatedProject);
+        const { data, error } = await supabase.from('projects').update(req.body).eq('id', req.params.id).select();
+        if (error) throw error;
+        if (!data || data.length === 0) return res.status(404).json({ message: "Project not found" });
+        res.json(data[0]);
     } catch (err) {
         res.status(400).json({ error: err.message });
     }
@@ -90,8 +62,48 @@ app.put('/api/projects/:id', async (req, res) => {
 
 app.delete('/api/projects/:id', async (req, res) => {
     try {
-        await Project.findByIdAndDelete(req.params.id);
+        const { error } = await supabase.from('projects').delete().eq('id', req.params.id);
+        if (error) throw error;
         res.json({ message: "Project deleted successfully" });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.post('/api/contact', async (req, res) => {
+    console.log("📥 New message received");
+    try {
+        const { name, email, message } = req.body;
+        const { error } = await supabase.from('messages').insert([{ 
+            name, 
+            email, 
+            subject: `Inquiry — ${name}`, 
+            message 
+        }]);
+        if (error) throw error;
+        console.log("💾 Message saved to Supabase");
+        res.status(200).json({ success: true });
+    } catch (err) {
+        console.error("❌ Save failed:", err.message);
+        res.status(500).json({ success: false });
+    }
+});
+
+app.get('/api/messages', async (req, res) => {
+    try {
+        const { data, error } = await supabase.from('messages').select('*').order('created_at', { ascending: false });
+        if (error) throw error;
+        res.json(data);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.delete('/api/messages/:id', async (req, res) => {
+    try {
+        const { error } = await supabase.from('messages').delete().eq('id', req.params.id);
+        if (error) throw error;
+        res.json({ success: true });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
